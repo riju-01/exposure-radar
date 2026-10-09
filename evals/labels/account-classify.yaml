@@ -1,0 +1,91 @@
+# Hand-labelled gold set for the account-classify feature (30 accounts, 15 prospects / 15 not).
+#
+# Labelling policy (the product decision, written down so labels are consistent):
+#   - is_prospect = the account is an organisation defending ITS OWN systems (business, education,
+#     government, healthcare provider, nonprofit). Hosting providers, ISPs/telcos and multi-tenant
+#     platforms are NOT prospects even when they are large companies: their scanned IP space is
+#     mostly their customers', so the findings are not theirs to fix and the pitch doesn't land.
+#   - industry: `industry_ok` lists every answer we accept when the honest answer is ambiguous.
+#   - difficulty: easy = domain/cert names the entity; medium = needs judgement; hard = misleading clues
+#     (keyword traps like "bank", tenant page titles, customer devices on an ISP's network).
+#
+# Excluded on purpose: the four accounts used as few-shot examples in account-classify/v2
+# (rose-hulman.edu, ReadyIDC Co.,Ltd., watchguard.com, leadpops.com) so v2 can't score by memorisation.
+#
+# Provenance: candidates sampled by stratum (top-tier / org-keyed / domain-keyed / rDNS-keyed / keyword
+# traps) with evals/sample_candidates.py; labels drafted by the author with an AI assistant from each
+# account card plus public knowledge of the organisation. STATUS: pending human review.
+labelled_by: author + AI assistant (draft)
+reviewed: false
+examples:
+  # --- prospects: education / nonprofit -------------------------------------------------------
+  - {account_key: uni-kl.de, entity_type: education, is_prospect: true, industry: education, difficulty: easy,
+     note: "University of Kaiserslautern-Landau; cert org confirms."}
+  - {account_key: mit.edu, entity_type: education, is_prospect: true, industry: education, difficulty: easy,
+     note: "Network owners are Akamai/AWS; must not be mistaken for a CDN."}
+  - {account_key: fuller.edu, entity_type: education, is_prospect: true, industry: education, difficulty: easy,
+     note: "Fuller Theological Seminary."}
+  - {account_key: utoronto.ca, entity_type: education, is_prospect: true, industry: education, difficulty: easy,
+     note: ".ca has no .edu marker; cert org names the university."}
+  - {account_key: ohioschoolboards.org, entity_type: nonprofit, is_prospect: true, industry: nonprofit,
+     industry_ok: [nonprofit, education], difficulty: medium,
+     note: "School boards association: a member nonprofit serving education."}
+  # --- prospects: healthcare --------------------------------------------------------------------
+  - {account_key: ooda-health.io, entity_type: business, is_prospect: true, industry: healthcare,
+     industry_ok: [healthcare, technology, finance], difficulty: medium,
+     note: "Healthcare payments/billing technology company; hosted on third-party networks."}
+  - {account_key: mwdental.com, entity_type: healthcare_provider, is_prospect: true, industry: healthcare,
+     industry_ok: [healthcare], difficulty: easy, note: "Dental practice/lab running its own FileMaker + ownCloud."}
+  - {account_key: biotechclinical.com, entity_type: healthcare_provider, is_prospect: true, industry: healthcare,
+     difficulty: easy, note: "Clinical laboratory; 'Request Test Results' portal."}
+  - {account_key: chippewachiropracticclinic.com, entity_type: healthcare_provider, is_prospect: true,
+     industry: healthcare, difficulty: easy, note: "Chiropractic clinic; card has almost no hints beyond the domain."}
+  - {account_key: caredental.com, entity_type: healthcare_provider, is_prospect: true, industry: healthcare,
+     difficulty: easy, note: "Dental practice on DigitalOcean."}
+  # --- prospects: other businesses -------------------------------------------------------------
+  - {account_key: connection-technologies.co.uk, entity_type: business, is_prospect: true, industry: technology,
+     industry_ok: [technology, professional_services], difficulty: medium,
+     note: "UK IT services company; card shows only a default Apache page."}
+  - {account_key: softwareforculture.com, entity_type: business, is_prospect: true, industry: technology,
+     difficulty: easy, note: "Cultureware: software vendor for cultural organisations."}
+  - {account_key: pcmonteur.nl, entity_type: business, is_prospect: true, industry: technology,
+     industry_ok: [technology, professional_services, retail_ecommerce], difficulty: medium,
+     note: "Local PC repair business in Bakel; SMB."}
+  - {account_key: reyengineers.com, entity_type: business, is_prospect: true, industry: professional_services,
+     industry_ok: [professional_services, manufacturing], difficulty: medium,
+     note: "Engineering consultancy; network owner is DreamHost (hosting) -> must not flip to hosting."}
+  - {account_key: bankruptcyattorneyshingham.com, entity_type: business, is_prospect: true,
+     industry: professional_services, difficulty: hard,
+     note: "Law office. Keyword trap: 'bank' in domain must not yield finance."}
+  # --- not prospects: hosting providers --------------------------------------------------------
+  - {account_key: zonevs.eu, entity_type: hosting_provider, is_prospect: false, industry: hosting_telecom,
+     difficulty: medium, note: "Zone Media virtual servers (rDNS of VPS customers: vs-dip-...)."}
+  - {account_key: "org:ALEXHOST S.R.L.", entity_type: hosting_provider, is_prospect: false,
+     industry: hosting_telecom, difficulty: easy, note: "VPS/dedicated hosting; Plesk/FASTPANEL panels."}
+  - {account_key: "org:Telepoint Ltd", entity_type: hosting_provider, is_prospect: false, industry: hosting_telecom,
+     difficulty: hard, note: "Bulgarian data-centre/colocation provider; card has no textual hints."}
+  - {account_key: vulut.com, entity_type: hosting_provider, is_prospect: false, industry: hosting_telecom,
+     difficulty: hard, note: "Turkish IT/hosting provider; proxies and Portainer on customer IPs."}
+  - {account_key: liquidnetlimited.com, entity_type: hosting_provider, is_prospect: false,
+     industry: hosting_telecom, difficulty: medium, note: "Hosting network; 'successfully set up your website' pages."}
+  - {account_key: privatelayer.com, entity_type: hosting_provider, is_prospect: false, industry: hosting_telecom,
+     difficulty: hard, note: "Swiss hosting; tenant titles include a *cybersecurity* firm (trap) and CLIENTxxxx owners."}
+  - {account_key: "org:3nt solutions LLP", entity_type: hosting_provider, is_prospect: false,
+     industry: hosting_telecom, difficulty: hard, note: "Hosting provider named like a consultancy; cPanel/FASTPANEL/SOCKS."}
+  # --- not prospects: ISPs / telcos ------------------------------------------------------------
+  - {account_key: "org:PT. Mora Telematika Indonesia", entity_type: telecom_isp, is_prospect: false,
+     industry: hosting_telecom, difficulty: medium, note: "Moratelindo, Indonesian network operator; tenant titles mislead."}
+  - {account_key: "org:Logix", entity_type: telecom_isp, is_prospect: false, industry: hosting_telecom,
+     difficulty: hard, note: "Logix Fiber Networks (Texas ISP); customer FortiGates/SonicWalls on its IPs."}
+  - {account_key: "org:Part Payam Paya LLC", entity_type: telecom_isp, is_prospect: false,
+     industry: hosting_telecom, difficulty: medium, note: "Wireless ISP: MikroTik/Ubiquiti CPE everywhere."}
+  - {account_key: nowinynet.pl, entity_type: telecom_isp, is_prospect: false, industry: hosting_telecom,
+     difficulty: hard, note: "Small Polish local ISP identified via a domain (not org); network owner 'Net Center'."}
+  - {account_key: datafon.net.tr, entity_type: telecom_isp, is_prospect: false, industry: hosting_telecom,
+     difficulty: medium, note: "Datafon Teknoloji, Turkish ISP (.net.tr)."}
+  - {account_key: "org:Korbank S. A.", entity_type: telecom_isp, is_prospect: false, industry: hosting_telecom,
+     difficulty: hard, note: "Polish ISP. Keyword trap: 'bank'."}
+  - {account_key: "org:SoftBank Corp.", entity_type: telecom_isp, is_prospect: false, industry: hosting_telecom,
+     difficulty: hard, note: "Japanese mobile/broadband operator; customer NVRs/firewalls on its space. Trap: 'bank'."}
+  - {account_key: alticeusa.com, entity_type: telecom_isp, is_prospect: false, industry: hosting_telecom,
+     difficulty: hard, note: "Cable operator. Policy call: telcos excluded even for corporate assets (ICP fit 0.1)."}

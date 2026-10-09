@@ -6,3 +6,5 @@ dist/
 .env
 .venv/
 traces/*.jsonl
+traces/*.sqlite
+web/dist/

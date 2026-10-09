@@ -1,0 +1,130 @@
+# Case-insensitive regex fragments. An org whose name matches is treated as infrastructure
+# (hosting/cloud/telecom), so its name alone never becomes a prospect account.
+hosting
+\bhost
+cloud
+telecom
+telekom
+telecommunication
+communications
+\bcable\b
+broadband
+internet
+\bisp\b
+\bdata ?cent(er|re)
+datacenter
+\bserver
+\bvps\b
+\bcolo
+network(s)?\b
+\bmobile\b
+wireless
+\bunicom\b
+\bnet\b
+\bonline\b
+\btelco
+akamai
+incapsula
+imperva
+cloudflare
+fastly
+amazon
+google
+microsoft
+alibaba
+aliyun
+tencent
+huawei cloud
+\bovh
+hetzner
+digitalocean
+linode
+contabo
+ionos
+scaleway
+leaseweb
+choopa
+vultr
+godaddy
+unified layer
+hostgator
+namecheap
+hostpapa
+charter
+comcast
+verizon
+at&t
+spectrum
+vodafone
+orange
+telefonica
+\bkddi\b
+\bntt\b
+korea telecom
+china mobile
+china telecom
+chinanet
+\bbt\b
+\bsk broadband
+\blg (u\+|dacom)
+rostelecom
+reliance jio
+bharti
+airtel
+singtel
+starhub
+telstra
+optus
+\btelus\b
+\bbell\b
+rogers
+shaw
+cogent
+level ?3
+lumen
+zayo
+\bgtt\b
+hurricane electric
+he\.net
+meteverse
+\bace\b
+aceville
+ip pools
+fly\.io
+facebook
+meta platforms
+bitly
+fib(er|re)
+\bdsl\b
+telefon
+telecomunica
+customer
+end user
+address pool
+dynamic
+residential
+subscriber
+private customer
+\bsky\b
+\bee limited
+\biinet\b
+\bwind tre
+\bp4 sp
+dimension data
+\bclaro\b
+\bvnpt\b
+\bviettel\b
+so-net
+\bmelita\b
+\bhiper\b
+\baltice\b
+\btelmex\b
+cable
+pool
+dhcp
+moviles
+static
+ono
+dna oyj
+netspeed
+tele

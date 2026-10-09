@@ -1,0 +1,39 @@
+# Ideal Customer Profile: how well an account FITS what we sell, independent of need.
+# Edit this file to retarget the whole ranking (e.g. a new territory); re-run `python -m salesintel.pipeline --from score`.
+# Every weight is 0..1 and is multiplied into the fit score.
+
+# Exposed footprint (distinct internet-facing IPs) is the only size proxy in scan data.
+segments:
+  micro:      {max_ips: 1,      weight: 0.45}   # single host: often a small business or project site
+  small:      {max_ips: 5,      weight: 0.80}
+  mid_market: {max_ips: 50,     weight: 1.00}   # sweet spot: real attack surface, no 50-person SOC
+  enterprise: {max_ips: 100000, weight: 0.75}   # high value, but long cycles / incumbent vendors
+
+regions:
+  North America: 1.00
+  Europe: 0.95
+  APAC: 0.85
+  Oceania: 0.95
+  Latin America: 0.70
+  Middle East & Africa: 0.70
+  Other: 0.50
+
+industries:
+  healthcare: 1.00
+  finance: 1.00
+  manufacturing: 0.95
+  education: 0.85
+  retail_ecommerce: 0.85
+  professional_services: 0.90
+  technology: 0.80
+  media_entertainment: 0.70
+  government: 0.60        # procurement-heavy; still a fit
+  nonprofit: 0.60
+  hosting_telecom: 0.10   # mostly not a buyer of what we sell
+  unknown: 0.75
+
+# Who runs the infrastructure. Self-hosted estates have the most to defend themselves.
+hosting:
+  self_hosted: 1.00
+  hybrid: 0.95
+  cloud: 0.80

@@ -1,0 +1,9 @@
+[project]
+name = "salesintel"
+version = "1.0.0"
+description = "Exposure-led prospecting for a cybersecurity sales team"
+requires-python = ">=3.11"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]

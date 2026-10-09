@@ -1,0 +1,292 @@
+{
+  "run_id": "20261009T143922Z-05c13e",
+  "summaries": [
+    {
+      "feature": "account-classify",
+      "version": "baseline",
+      "run_id": "20261009T143922Z-05c13e",
+      "status": "ran",
+      "n": 30,
+      "headline": {
+        "prospect_precision": 0.56,
+        "prospect_recall": 0.933,
+        "prospect_f1": 0.7,
+        "entity_type_acc": 0.433,
+        "industry_acc": 0.533
+      },
+      "ops": {
+        "model": "rules-v0",
+        "total_cost_usd": 0.0,
+        "cost_per_example_usd": 0.0,
+        "latency_p50_ms": 0,
+        "latency_p95_ms": 0,
+        "statuses": {
+          "ok": 30
+        }
+      },
+      "previous": null,
+      "ts": "2026-10-09T14:39:23+00:00"
+    },
+    {
+      "feature": "account-classify",
+      "version": "v1",
+      "run_id": "20261009T143922Z-05c13e",
+      "status": "skipped",
+      "reason": "ANTHROPIC_API_KEY not set",
+      "previous": null
+    },
+    {
+      "feature": "account-classify",
+      "version": "v2",
+      "run_id": "20261009T143922Z-05c13e",
+      "status": "skipped",
+      "reason": "ANTHROPIC_API_KEY not set",
+      "previous": null
+    }
+  ],
+  "metrics": {
+    "baseline": {
+      "n": 30,
+      "prospect": {
+        "precision": 0.56,
+        "recall": 0.933,
+        "f1": 0.7,
+        "accuracy": 0.6,
+        "confusion": {
+          "tp": 14,
+          "fp": 11,
+          "fn": 1,
+          "tn": 4
+        }
+      },
+      "entity_type_accuracy": 0.433,
+      "industry_accuracy": 0.533,
+      "consistency_violations": 0,
+      "by_difficulty": {
+        "easy": {
+          "n": 10,
+          "prospect_correct": 9,
+          "accuracy": 0.9
+        },
+        "hard": {
+          "n": 10,
+          "prospect_correct": 3,
+          "accuracy": 0.3
+        },
+        "medium": {
+          "n": 10,
+          "prospect_correct": 6,
+          "accuracy": 0.6
+        }
+      },
+      "errors": [
+        {
+          "id": "pcmonteur.nl",
+          "gold": {
+            "entity_type": "business",
+            "is_prospect": true,
+            "industry": "technology"
+          },
+          "pred": {
+            "entity_type": "business",
+            "is_prospect": true,
+            "industry": "unknown"
+          },
+          "rationale": "keyword rules (matched: no industry keyword)"
+        },
+        {
+          "id": "reyengineers.com",
+          "gold": {
+            "entity_type": "business",
+            "is_prospect": true,
+            "industry": "professional_services"
+          },
+          "pred": {
+            "entity_type": "hosting_provider",
+            "is_prospect": false,
+            "industry": "hosting_telecom"
+          },
+          "rationale": "keyword rules (matched: no industry keyword)"
+        },
+        {
+          "id": "bankruptcyattorneyshingham.com",
+          "gold": {
+            "entity_type": "business",
+            "is_prospect": true,
+            "industry": "professional_services"
+          },
+          "pred": {
+            "entity_type": "business",
+            "is_prospect": true,
+            "industry": "finance"
+          },
+          "rationale": "keyword rules (matched: bank)"
+        },
+        {
+          "id": "zonevs.eu",
+          "gold": {
+            "entity_type": "hosting_provider",
+            "is_prospect": false,
+            "industry": "hosting_telecom"
+          },
+          "pred": {
+            "entity_type": "business",
+            "is_prospect": true,
+            "industry": "unknown"
+          },
+          "rationale": "keyword rules (matched: no industry keyword)"
+        },
+        {
+          "id": "org:ALEXHOST S.R.L.",
+          "gold": {
+            "entity_type": "hosting_provider",
+            "is_prospect": false,
+            "industry": "hosting_telecom"
+          },
+          "pred": {
+            "entity_type": "business",
+            "is_prospect": true,
+            "industry": "unknown"
+          },
+          "rationale": "keyword rules (matched: no industry keyword)"
+        },
+        {
+          "id": "org:Telepoint Ltd",
+          "gold": {
+            "entity_type": "hosting_provider",
+            "is_prospect": false,
+            "industry": "hosting_telecom"
+          },
+          "pred": {
+            "entity_type": "business",
+            "is_prospect": true,
+            "industry": "unknown"
+          },
+          "rationale": "keyword rules (matched: no industry keyword)"
+        },
+        {
+          "id": "vulut.com",
+          "gold": {
+            "entity_type": "hosting_provider",
+            "is_prospect": false,
+            "industry": "hosting_telecom"
+          },
+          "pred": {
+            "entity_type": "business",
+            "is_prospect": true,
+            "industry": "unknown"
+          },
+          "rationale": "keyword rules (matched: no industry keyword)"
+        },
+        {
+          "id": "liquidnetlimited.com",
+          "gold": {
+            "entity_type": "hosting_provider",
+            "is_prospect": false,
+            "industry": "hosting_telecom"
+          },
+          "pred": {
+            "entity_type": "business",
+            "is_prospect": true,
+            "industry": "unknown"
+          },
+          "rationale": "keyword rules (matched: no industry keyword)"
+        },
+        {
+          "id": "org:3nt solutions LLP",
+          "gold": {
+            "entity_type": "hosting_provider",
+            "is_prospect": false,
+            "industry": "hosting_telecom"
+          },
+          "pred": {
+            "entity_type": "business",
+            "is_prospect": true,
+            "industry": "technology"
+          },
+          "rationale": "keyword rules (matched: solutions)"
+        },
+        {
+          "id": "org:PT. Mora Telematika Indonesia",
+          "gold": {
+            "entity_type": "telecom_isp",
+            "is_prospect": false,
+            "industry": "hosting_telecom"
+          },
+          "pred": {
+            "entity_type": "business",
+            "is_prospect": true,
+            "industry": "unknown"
+          },
+          "rationale": "keyword rules (matched: no industry keyword)"
+        },
+        {
+          "id": "org:Logix",
+          "gold": {
+            "entity_type": "telecom_isp",
+            "is_prospect": false,
+            "industry": "hosting_telecom"
+          },
+          "pred": {
+            "entity_type": "business",
+            "is_prospect": true,
+            "industry": "unknown"
+          },
+          "rationale": "keyword rules (matched: no industry keyword)"
+        },
+        {
+          "id": "nowinynet.pl",
+          "gold": {
+            "entity_type": "telecom_isp",
+            "is_prospect": false,
+            "industry": "hosting_telecom"
+          },
+          "pred": {
+            "entity_type": "business",
+            "is_prospect": true,
+            "industry": "unknown"
+          },
+          "rationale": "keyword rules (matched: no industry keyword)"
+        },
+        {
+          "id": "org:SoftBank Corp.",
+          "gold": {
+            "entity_type": "telecom_isp",
+            "is_prospect": false,
+            "industry": "hosting_telecom"
+          },
+          "pred": {
+            "entity_type": "business",
+            "is_prospect": true,
+            "industry": "technology"
+          },
+          "rationale": "keyword rules (matched: Software)"
+        },
+        {
+          "id": "alticeusa.com",
+          "gold": {
+            "entity_type": "telecom_isp",
+            "is_prospect": false,
+            "industry": "hosting_telecom"
+          },
+          "pred": {
+            "entity_type": "business",
+            "is_prospect": true,
+            "industry": "unknown"
+          },
+          "rationale": "keyword rules (matched: no industry keyword)"
+        }
+      ],
+      "ops": {
+        "model": "rules-v0",
+        "total_cost_usd": 0.0,
+        "cost_per_example_usd": 0.0,
+        "latency_p50_ms": 0,
+        "latency_p95_ms": 0,
+        "statuses": {
+          "ok": 30
+        }
+      }
+    }
+  }
+}

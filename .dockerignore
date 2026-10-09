@@ -1,0 +1,10 @@
+data/slim
+data/*.parquet
+data/*.duckdb
+data/*.log
+data/smoke_*
+web/node_modules
+traces/*.jsonl
+traces/*.sqlite
+**/__pycache__
+.git

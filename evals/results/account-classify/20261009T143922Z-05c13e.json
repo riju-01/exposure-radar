@@ -1,0 +1,970 @@
+{
+  "run_id": "20261009T143922Z-05c13e",
+  "feature": "account-classify",
+  "versions": [
+    "baseline",
+    "v1",
+    "v2"
+  ],
+  "results": {
+    "baseline": {
+      "version": "baseline",
+      "metrics": {
+        "n": 30,
+        "prospect": {
+          "precision": 0.56,
+          "recall": 0.933,
+          "f1": 0.7,
+          "accuracy": 0.6,
+          "confusion": {
+            "tp": 14,
+            "fp": 11,
+            "fn": 1,
+            "tn": 4
+          }
+        },
+        "entity_type_accuracy": 0.433,
+        "industry_accuracy": 0.533,
+        "consistency_violations": 0,
+        "by_difficulty": {
+          "easy": {
+            "n": 10,
+            "prospect_correct": 9,
+            "accuracy": 0.9
+          },
+          "hard": {
+            "n": 10,
+            "prospect_correct": 3,
+            "accuracy": 0.3
+          },
+          "medium": {
+            "n": 10,
+            "prospect_correct": 6,
+            "accuracy": 0.6
+          }
+        },
+        "errors": [
+          {
+            "id": "pcmonteur.nl",
+            "gold": {
+              "entity_type": "business",
+              "is_prospect": true,
+              "industry": "technology"
+            },
+            "pred": {
+              "entity_type": "business",
+              "is_prospect": true,
+              "industry": "unknown"
+            },
+            "rationale": "keyword rules (matched: no industry keyword)"
+          },
+          {
+            "id": "reyengineers.com",
+            "gold": {
+              "entity_type": "business",
+              "is_prospect": true,
+              "industry": "professional_services"
+            },
+            "pred": {
+              "entity_type": "hosting_provider",
+              "is_prospect": false,
+              "industry": "hosting_telecom"
+            },
+            "rationale": "keyword rules (matched: no industry keyword)"
+          },
+          {
+            "id": "bankruptcyattorneyshingham.com",
+            "gold": {
+              "entity_type": "business",
+              "is_prospect": true,
+              "industry": "professional_services"
+            },
+            "pred": {
+              "entity_type": "business",
+              "is_prospect": true,
+              "industry": "finance"
+            },
+            "rationale": "keyword rules (matched: bank)"
+          },
+          {
+            "id": "zonevs.eu",
+            "gold": {
+              "entity_type": "hosting_provider",
+              "is_prospect": false,
+              "industry": "hosting_telecom"
+            },
+            "pred": {
+              "entity_type": "business",
+              "is_prospect": true,
+              "industry": "unknown"
+            },
+            "rationale": "keyword rules (matched: no industry keyword)"
+          },
+          {
+            "id": "org:ALEXHOST S.R.L.",
+            "gold": {
+              "entity_type": "hosting_provider",
+              "is_prospect": false,
+              "industry": "hosting_telecom"
+            },
+            "pred": {
+              "entity_type": "business",
+              "is_prospect": true,
+              "industry": "unknown"
+            },
+            "rationale": "keyword rules (matched: no industry keyword)"
+          },
+          {
+            "id": "org:Telepoint Ltd",
+            "gold": {
+              "entity_type": "hosting_provider",
+              "is_prospect": false,
+              "industry": "hosting_telecom"
+            },
+            "pred": {
+              "entity_type": "business",
+              "is_prospect": true,
+              "industry": "unknown"
+            },
+            "rationale": "keyword rules (matched: no industry keyword)"
+          },
+          {
+            "id": "vulut.com",
+            "gold": {
+              "entity_type": "hosting_provider",
+              "is_prospect": false,
+              "industry": "hosting_telecom"
+            },
+            "pred": {
+              "entity_type": "business",
+              "is_prospect": true,
+              "industry": "unknown"
+            },
+            "rationale": "keyword rules (matched: no industry keyword)"
+          },
+          {
+            "id": "liquidnetlimited.com",
+            "gold": {
+              "entity_type": "hosting_provider",
+              "is_prospect": false,
+              "industry": "hosting_telecom"
+            },
+            "pred": {
+              "entity_type": "business",
+              "is_prospect": true,
+              "industry": "unknown"
+            },
+            "rationale": "keyword rules (matched: no industry keyword)"
+          },
+          {
+            "id": "org:3nt solutions LLP",
+            "gold": {
+              "entity_type": "hosting_provider",
+              "is_prospect": false,
+              "industry": "hosting_telecom"
+            },
+            "pred": {
+              "entity_type": "business",
+              "is_prospect": true,
+              "industry": "technology"
+            },
+            "rationale": "keyword rules (matched: solutions)"
+          },
+          {
+            "id": "org:PT. Mora Telematika Indonesia",
+            "gold": {
+              "entity_type": "telecom_isp",
+              "is_prospect": false,
+              "industry": "hosting_telecom"
+            },
+            "pred": {
+              "entity_type": "business",
+              "is_prospect": true,
+              "industry": "unknown"
+            },
+            "rationale": "keyword rules (matched: no industry keyword)"
+          },
+          {
+            "id": "org:Logix",
+            "gold": {
+              "entity_type": "telecom_isp",
+              "is_prospect": false,
+              "industry": "hosting_telecom"
+            },
+            "pred": {
+              "entity_type": "business",
+              "is_prospect": true,
+              "industry": "unknown"
+            },
+            "rationale": "keyword rules (matched: no industry keyword)"
+          },
+          {
+            "id": "nowinynet.pl",
+            "gold": {
+              "entity_type": "telecom_isp",
+              "is_prospect": false,
+              "industry": "hosting_telecom"
+            },
+            "pred": {
+              "entity_type": "business",
+              "is_prospect": true,
+              "industry": "unknown"
+            },
+            "rationale": "keyword rules (matched: no industry keyword)"
+          },
+          {
+            "id": "org:SoftBank Corp.",
+            "gold": {
+              "entity_type": "telecom_isp",
+              "is_prospect": false,
+              "industry": "hosting_telecom"
+            },
+            "pred": {
+              "entity_type": "business",
+              "is_prospect": true,
+              "industry": "technology"
+            },
+            "rationale": "keyword rules (matched: Software)"
+          },
+          {
+            "id": "alticeusa.com",
+            "gold": {
+              "entity_type": "telecom_isp",
+              "is_prospect": false,
+              "industry": "hosting_telecom"
+            },
+            "pred": {
+              "entity_type": "business",
+              "is_prospect": true,
+              "industry": "unknown"
+            },
+            "rationale": "keyword rules (matched: no industry keyword)"
+          }
+        ],
+        "ops": {
+          "model": "rules-v0",
+          "total_cost_usd": 0.0,
+          "cost_per_example_usd": 0.0,
+          "latency_p50_ms": 0,
+          "latency_p95_ms": 0,
+          "statuses": {
+            "ok": 30
+          }
+        }
+      },
+      "rows": [
+        {
+          "id": "uni-kl.de",
+          "pred": {
+            "entity_type": "education",
+            "is_prospect": true,
+            "industry": "education",
+            "confidence": "low",
+            "rationale": "keyword rules (matched: Univ)"
+          },
+          "status": "ok",
+          "note": null,
+          "call_id": "e9aeb5396ca843058282b5b66fa32c7d",
+          "gold": {
+            "entity_type": "education",
+            "is_prospect": true,
+            "industry": "education",
+            "industry_ok": [
+              "education"
+            ]
+          },
+          "difficulty": "easy"
+        },
+        {
+          "id": "mit.edu",
+          "pred": {
+            "entity_type": "education",
+            "is_prospect": true,
+            "industry": "education",
+            "confidence": "low",
+            "rationale": "keyword rules (matched: .edu)"
+          },
+          "status": "ok",
+          "note": null,
+          "call_id": "27c96f181f1542a3a5714bf32a897575",
+          "gold": {
+            "entity_type": "education",
+            "is_prospect": true,
+            "industry": "education",
+            "industry_ok": [
+              "education"
+            ]
+          },
+          "difficulty": "easy"
+        },
+        {
+          "id": "fuller.edu",
+          "pred": {
+            "entity_type": "education",
+            "is_prospect": true,
+            "industry": "education",
+            "confidence": "low",
+            "rationale": "keyword rules (matched: .edu)"
+          },
+          "status": "ok",
+          "note": null,
+          "call_id": "7707c8f6633c4e1cad149d77d99a7074",
+          "gold": {
+            "entity_type": "education",
+            "is_prospect": true,
+            "industry": "education",
+            "industry_ok": [
+              "education"
+            ]
+          },
+          "difficulty": "easy"
+        },
+        {
+          "id": "utoronto.ca",
+          "pred": {
+            "entity_type": "education",
+            "is_prospect": true,
+            "industry": "education",
+            "confidence": "low",
+            "rationale": "keyword rules (matched: Univ)"
+          },
+          "status": "ok",
+          "note": null,
+          "call_id": "d9e309dcad99489b81961fbe6721b8b6",
+          "gold": {
+            "entity_type": "education",
+            "is_prospect": true,
+            "industry": "education",
+            "industry_ok": [
+              "education"
+            ]
+          },
+          "difficulty": "easy"
+        },
+        {
+          "id": "ohioschoolboards.org",
+          "pred": {
+            "entity_type": "education",
+            "is_prospect": true,
+            "industry": "education",
+            "confidence": "low",
+            "rationale": "keyword rules (matched: school)"
+          },
+          "status": "ok",
+          "note": null,
+          "call_id": "90a6060d9fcb48969a4bf405a663e305",
+          "gold": {
+            "entity_type": "nonprofit",
+            "is_prospect": true,
+            "industry": "nonprofit",
+            "industry_ok": [
+              "nonprofit",
+              "education"
+            ]
+          },
+          "difficulty": "medium"
+        },
+        {
+          "id": "ooda-health.io",
+          "pred": {
+            "entity_type": "healthcare_provider",
+            "is_prospect": true,
+            "industry": "healthcare",
+            "confidence": "low",
+            "rationale": "keyword rules (matched: health)"
+          },
+          "status": "ok",
+          "note": null,
+          "call_id": "be07ffc9abc94607b8c516ce55c79f4c",
+          "gold": {
+            "entity_type": "business",
+            "is_prospect": true,
+            "industry": "healthcare",
+            "industry_ok": [
+              "healthcare",
+              "technology",
+              "finance"
+            ]
+          },
+          "difficulty": "medium"
+        },
+        {
+          "id": "mwdental.com",
+          "pred": {
+            "entity_type": "healthcare_provider",
+            "is_prospect": true,
+            "industry": "healthcare",
+            "confidence": "low",
+            "rationale": "keyword rules (matched: dental)"
+          },
+          "status": "ok",
+          "note": null,
+          "call_id": "93f012f340254783acd56e3b8ce15655",
+          "gold": {
+            "entity_type": "healthcare_provider",
+            "is_prospect": true,
+            "industry": "healthcare",
+            "industry_ok": [
+              "healthcare"
+            ]
+          },
+          "difficulty": "easy"
+        },
+        {
+          "id": "biotechclinical.com",
+          "pred": {
+            "entity_type": "healthcare_provider",
+            "is_prospect": true,
+            "industry": "healthcare",
+            "confidence": "low",
+            "rationale": "keyword rules (matched: biotech)"
+          },
+          "status": "ok",
+          "note": null,
+          "call_id": "a869ee34baea48ed9205bda1d5a0085f",
+          "gold": {
+            "entity_type": "healthcare_provider",
+            "is_prospect": true,
+            "industry": "healthcare",
+            "industry_ok": [
+              "healthcare"
+            ]
+          },
+          "difficulty": "easy"
+        },
+        {
+          "id": "chippewachiropracticclinic.com",
+          "pred": {
+            "entity_type": "healthcare_provider",
+            "is_prospect": true,
+            "industry": "healthcare",
+            "confidence": "low",
+            "rationale": "keyword rules (matched: clinic)"
+          },
+          "status": "ok",
+          "note": null,
+          "call_id": "bcef922c62c74539bfab2098a5c47fbe",
+          "gold": {
+            "entity_type": "healthcare_provider",
+            "is_prospect": true,
+            "industry": "healthcare",
+            "industry_ok": [
+              "healthcare"
+            ]
+          },
+          "difficulty": "easy"
+        },
+        {
+          "id": "caredental.com",
+          "pred": {
+            "entity_type": "healthcare_provider",
+            "is_prospect": true,
+            "industry": "healthcare",
+            "confidence": "low",
+            "rationale": "keyword rules (matched: dental)"
+          },
+          "status": "ok",
+          "note": null,
+          "call_id": "38868d2147d748778d5ccd475921e92f",
+          "gold": {
+            "entity_type": "healthcare_provider",
+            "is_prospect": true,
+            "industry": "healthcare",
+            "industry_ok": [
+              "healthcare"
+            ]
+          },
+          "difficulty": "easy"
+        },
+        {
+          "id": "connection-technologies.co.uk",
+          "pred": {
+            "entity_type": "business",
+            "is_prospect": true,
+            "industry": "technology",
+            "confidence": "low",
+            "rationale": "keyword rules (matched: technolog)"
+          },
+          "status": "ok",
+          "note": null,
+          "call_id": "c20c410a73e54910828ba97aa6a33314",
+          "gold": {
+            "entity_type": "business",
+            "is_prospect": true,
+            "industry": "technology",
+            "industry_ok": [
+              "technology",
+              "professional_services"
+            ]
+          },
+          "difficulty": "medium"
+        },
+        {
+          "id": "softwareforculture.com",
+          "pred": {
+            "entity_type": "business",
+            "is_prospect": true,
+            "industry": "technology",
+            "confidence": "low",
+            "rationale": "keyword rules (matched: software)"
+          },
+          "status": "ok",
+          "note": null,
+          "call_id": "98a61cc1e21a42fc8a2963b456e75509",
+          "gold": {
+            "entity_type": "business",
+            "is_prospect": true,
+            "industry": "technology",
+            "industry_ok": [
+              "technology"
+            ]
+          },
+          "difficulty": "easy"
+        },
+        {
+          "id": "pcmonteur.nl",
+          "pred": {
+            "entity_type": "business",
+            "is_prospect": true,
+            "industry": "unknown",
+            "confidence": "low",
+            "rationale": "keyword rules (matched: no industry keyword)"
+          },
+          "status": "ok",
+          "note": null,
+          "call_id": "bbea75d182a441d5ac87e9063972b0cb",
+          "gold": {
+            "entity_type": "business",
+            "is_prospect": true,
+            "industry": "technology",
+            "industry_ok": [
+              "technology",
+              "professional_services",
+              "retail_ecommerce"
+            ]
+          },
+          "difficulty": "medium"
+        },
+        {
+          "id": "reyengineers.com",
+          "pred": {
+            "entity_type": "hosting_provider",
+            "is_prospect": false,
+            "industry": "hosting_telecom",
+            "confidence": "low",
+            "rationale": "keyword rules (matched: no industry keyword)"
+          },
+          "status": "ok",
+          "note": null,
+          "call_id": "3686404c79df4ba5a2997a03b0cbc17b",
+          "gold": {
+            "entity_type": "business",
+            "is_prospect": true,
+            "industry": "professional_services",
+            "industry_ok": [
+              "professional_services",
+              "manufacturing"
+            ]
+          },
+          "difficulty": "medium"
+        },
+        {
+          "id": "bankruptcyattorneyshingham.com",
+          "pred": {
+            "entity_type": "business",
+            "is_prospect": true,
+            "industry": "finance",
+            "confidence": "low",
+            "rationale": "keyword rules (matched: bank)"
+          },
+          "status": "ok",
+          "note": null,
+          "call_id": "99718d1e40b34ebe9d10af37d85a662a",
+          "gold": {
+            "entity_type": "business",
+            "is_prospect": true,
+            "industry": "professional_services",
+            "industry_ok": [
+              "professional_services"
+            ]
+          },
+          "difficulty": "hard"
+        },
+        {
+          "id": "zonevs.eu",
+          "pred": {
+            "entity_type": "business",
+            "is_prospect": true,
+            "industry": "unknown",
+            "confidence": "low",
+            "rationale": "keyword rules (matched: no industry keyword)"
+          },
+          "status": "ok",
+          "note": null,
+          "call_id": "b712a991b2b74b6192abe402cc7dd5ec",
+          "gold": {
+            "entity_type": "hosting_provider",
+            "is_prospect": false,
+            "industry": "hosting_telecom",
+            "industry_ok": [
+              "hosting_telecom"
+            ]
+          },
+          "difficulty": "medium"
+        },
+        {
+          "id": "org:ALEXHOST S.R.L.",
+          "pred": {
+            "entity_type": "business",
+            "is_prospect": true,
+            "industry": "unknown",
+            "confidence": "low",
+            "rationale": "keyword rules (matched: no industry keyword)"
+          },
+          "status": "ok",
+          "note": null,
+          "call_id": "ac0814b8bd7e44c18a628231b40083b6",
+          "gold": {
+            "entity_type": "hosting_provider",
+            "is_prospect": false,
+            "industry": "hosting_telecom",
+            "industry_ok": [
+              "hosting_telecom"
+            ]
+          },
+          "difficulty": "easy"
+        },
+        {
+          "id": "org:Telepoint Ltd",
+          "pred": {
+            "entity_type": "business",
+            "is_prospect": true,
+            "industry": "unknown",
+            "confidence": "low",
+            "rationale": "keyword rules (matched: no industry keyword)"
+          },
+          "status": "ok",
+          "note": null,
+          "call_id": "1e2ef0babb8a4408abbc2b92887820bc",
+          "gold": {
+            "entity_type": "hosting_provider",
+            "is_prospect": false,
+            "industry": "hosting_telecom",
+            "industry_ok": [
+              "hosting_telecom"
+            ]
+          },
+          "difficulty": "hard"
+        },
+        {
+          "id": "vulut.com",
+          "pred": {
+            "entity_type": "business",
+            "is_prospect": true,
+            "industry": "unknown",
+            "confidence": "low",
+            "rationale": "keyword rules (matched: no industry keyword)"
+          },
+          "status": "ok",
+          "note": null,
+          "call_id": "c9de8179404c47598b4dcb5e9025f4b7",
+          "gold": {
+            "entity_type": "hosting_provider",
+            "is_prospect": false,
+            "industry": "hosting_telecom",
+            "industry_ok": [
+              "hosting_telecom"
+            ]
+          },
+          "difficulty": "hard"
+        },
+        {
+          "id": "liquidnetlimited.com",
+          "pred": {
+            "entity_type": "business",
+            "is_prospect": true,
+            "industry": "unknown",
+            "confidence": "low",
+            "rationale": "keyword rules (matched: no industry keyword)"
+          },
+          "status": "ok",
+          "note": null,
+          "call_id": "d38a43a205a84de88bcec70a276a83df",
+          "gold": {
+            "entity_type": "hosting_provider",
+            "is_prospect": false,
+            "industry": "hosting_telecom",
+            "industry_ok": [
+              "hosting_telecom"
+            ]
+          },
+          "difficulty": "medium"
+        },
+        {
+          "id": "privatelayer.com",
+          "pred": {
+            "entity_type": "hosting_provider",
+            "is_prospect": false,
+            "industry": "hosting_telecom",
+            "confidence": "low",
+            "rationale": "keyword rules (matched: no industry keyword)"
+          },
+          "status": "ok",
+          "note": null,
+          "call_id": "6c1ae5e42c6d40a8be8c02e5266e8d70",
+          "gold": {
+            "entity_type": "hosting_provider",
+            "is_prospect": false,
+            "industry": "hosting_telecom",
+            "industry_ok": [
+              "hosting_telecom"
+            ]
+          },
+          "difficulty": "hard"
+        },
+        {
+          "id": "org:3nt solutions LLP",
+          "pred": {
+            "entity_type": "business",
+            "is_prospect": true,
+            "industry": "technology",
+            "confidence": "low",
+            "rationale": "keyword rules (matched: solutions)"
+          },
+          "status": "ok",
+          "note": null,
+          "call_id": "12aeed421ad740028e2859ca1ccb04af",
+          "gold": {
+            "entity_type": "hosting_provider",
+            "is_prospect": false,
+            "industry": "hosting_telecom",
+            "industry_ok": [
+              "hosting_telecom"
+            ]
+          },
+          "difficulty": "hard"
+        },
+        {
+          "id": "org:PT. Mora Telematika Indonesia",
+          "pred": {
+            "entity_type": "business",
+            "is_prospect": true,
+            "industry": "unknown",
+            "confidence": "low",
+            "rationale": "keyword rules (matched: no industry keyword)"
+          },
+          "status": "ok",
+          "note": null,
+          "call_id": "8c61f93df9884a57a4447c81cd3a9c94",
+          "gold": {
+            "entity_type": "telecom_isp",
+            "is_prospect": false,
+            "industry": "hosting_telecom",
+            "industry_ok": [
+              "hosting_telecom"
+            ]
+          },
+          "difficulty": "medium"
+        },
+        {
+          "id": "org:Logix",
+          "pred": {
+            "entity_type": "business",
+            "is_prospect": true,
+            "industry": "unknown",
+            "confidence": "low",
+            "rationale": "keyword rules (matched: no industry keyword)"
+          },
+          "status": "ok",
+          "note": null,
+          "call_id": "4aab6e33d441432e8cb844c05c6ef6bb",
+          "gold": {
+            "entity_type": "telecom_isp",
+            "is_prospect": false,
+            "industry": "hosting_telecom",
+            "industry_ok": [
+              "hosting_telecom"
+            ]
+          },
+          "difficulty": "hard"
+        },
+        {
+          "id": "org:Part Payam Paya LLC",
+          "pred": {
+            "entity_type": "hosting_provider",
+            "is_prospect": false,
+            "industry": "hosting_telecom",
+            "confidence": "low",
+            "rationale": "keyword rules (matched: no industry keyword)"
+          },
+          "status": "ok",
+          "note": null,
+          "call_id": "80a3fc6c961b404cb5d4cf38520aab6a",
+          "gold": {
+            "entity_type": "telecom_isp",
+            "is_prospect": false,
+            "industry": "hosting_telecom",
+            "industry_ok": [
+              "hosting_telecom"
+            ]
+          },
+          "difficulty": "medium"
+        },
+        {
+          "id": "nowinynet.pl",
+          "pred": {
+            "entity_type": "business",
+            "is_prospect": true,
+            "industry": "unknown",
+            "confidence": "low",
+            "rationale": "keyword rules (matched: no industry keyword)"
+          },
+          "status": "ok",
+          "note": null,
+          "call_id": "26b7d08d6bb24b39b168a6516bb07d79",
+          "gold": {
+            "entity_type": "telecom_isp",
+            "is_prospect": false,
+            "industry": "hosting_telecom",
+            "industry_ok": [
+              "hosting_telecom"
+            ]
+          },
+          "difficulty": "hard"
+        },
+        {
+          "id": "datafon.net.tr",
+          "pred": {
+            "entity_type": "hosting_provider",
+            "is_prospect": false,
+            "industry": "hosting_telecom",
+            "confidence": "low",
+            "rationale": "keyword rules (matched: no industry keyword)"
+          },
+          "status": "ok",
+          "note": null,
+          "call_id": "5f566d2b0ca34252850d3cc9b4237ba9",
+          "gold": {
+            "entity_type": "telecom_isp",
+            "is_prospect": false,
+            "industry": "hosting_telecom",
+            "industry_ok": [
+              "hosting_telecom"
+            ]
+          },
+          "difficulty": "medium"
+        },
+        {
+          "id": "org:Korbank S. A.",
+          "pred": {
+            "entity_type": "hosting_provider",
+            "is_prospect": false,
+            "industry": "hosting_telecom",
+            "confidence": "low",
+            "rationale": "keyword rules (matched: Host)"
+          },
+          "status": "ok",
+          "note": null,
+          "call_id": "3d3b9a5e7e6a4eb08818735dcd60bd64",
+          "gold": {
+            "entity_type": "telecom_isp",
+            "is_prospect": false,
+            "industry": "hosting_telecom",
+            "industry_ok": [
+              "hosting_telecom"
+            ]
+          },
+          "difficulty": "hard"
+        },
+        {
+          "id": "org:SoftBank Corp.",
+          "pred": {
+            "entity_type": "business",
+            "is_prospect": true,
+            "industry": "technology",
+            "confidence": "low",
+            "rationale": "keyword rules (matched: Software)"
+          },
+          "status": "ok",
+          "note": null,
+          "call_id": "5bccbb5a09664da28d6db45036f753be",
+          "gold": {
+            "entity_type": "telecom_isp",
+            "is_prospect": false,
+            "industry": "hosting_telecom",
+            "industry_ok": [
+              "hosting_telecom"
+            ]
+          },
+          "difficulty": "hard"
+        },
+        {
+          "id": "alticeusa.com",
+          "pred": {
+            "entity_type": "business",
+            "is_prospect": true,
+            "industry": "unknown",
+            "confidence": "low",
+            "rationale": "keyword rules (matched: no industry keyword)"
+          },
+          "status": "ok",
+          "note": null,
+          "call_id": "53a78318269c452bbe91228d5e5df938",
+          "gold": {
+            "entity_type": "telecom_isp",
+            "is_prospect": false,
+            "industry": "hosting_telecom",
+            "industry_ok": [
+              "hosting_telecom"
+            ]
+          },
+          "difficulty": "hard"
+        }
+      ]
+    }
+  },
+  "summaries": [
+    {
+      "feature": "account-classify",
+      "version": "baseline",
+      "run_id": "20261009T143922Z-05c13e",
+      "status": "ran",
+      "n": 30,
+      "headline": {
+        "prospect_precision": 0.56,
+        "prospect_recall": 0.933,
+        "prospect_f1": 0.7,
+        "entity_type_acc": 0.433,
+        "industry_acc": 0.533
+      },
+      "ops": {
+        "model": "rules-v0",
+        "total_cost_usd": 0.0,
+        "cost_per_example_usd": 0.0,
+        "latency_p50_ms": 0,
+        "latency_p95_ms": 0,
+        "statuses": {
+          "ok": 30
+        }
+      },
+      "previous": null,
+      "ts": "2026-10-09T14:39:23+00:00"
+    },
+    {
+      "feature": "account-classify",
+      "version": "v1",
+      "run_id": "20261009T143922Z-05c13e",
+      "status": "skipped",
+      "reason": "ANTHROPIC_API_KEY not set",
+      "previous": null
+    },
+    {
+      "feature": "account-classify",
+      "version": "v2",
+      "run_id": "20261009T143922Z-05c13e",
+      "status": "skipped",
+      "reason": "ANTHROPIC_API_KEY not set",
+      "previous": null
+    }
+  ]
+}

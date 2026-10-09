@@ -5,7 +5,7 @@ stream into newline-aligned chunks; a worker pool parses each chunk with orjson,
 keeps only the fields we use downstream, and writes one Parquet file per chunk.
 
 Usage:
-    python -P etl/extract.py <raw.zst> data/slim [--limit-chunks N]
+    python -m salesintel.etl.extract <raw.zst> data/slim [--limit-chunks N]
 """
 from __future__ import annotations
 

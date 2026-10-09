@@ -1,0 +1,15 @@
+# Prompt registry: which version of each feature the app serves.
+#   active:    served in the app and in batch jobs
+#   candidate: evaluated against `active` by `python -m evals.run <feature>`; promote by editing `active`
+#              only after the candidate wins on the labelled set (see evals/README.md).
+features:
+  account-classify:
+    active: v1
+    candidate: v2
+    owner: sales-intel
+    description: Decide whether an account is a real prospect (vs hosting/ISP/platform noise) and its industry.
+  outreach-draft:
+    active: v1
+    candidate: v2
+    owner: sales-intel
+    description: Evidence-grounded account brief + first-touch email for a rep.
