@@ -1,20 +1,25 @@
 {
-  "run_id": "20261009T143923Z-1f9eaa",
+  "run_id": "20261012T175608Z-f313de",
   "summaries": [
     {
       "feature": "outreach-draft",
       "version": "baseline",
-      "run_id": "20261009T143923Z-1f9eaa",
+      "run_id": "20261012T175608Z-f313de",
       "status": "ran",
       "n": 9,
       "headline": {
         "guardrail_pass": 1.0,
         "cve_grounding": 1.0,
         "supported_points": 1.0,
-        "avg_words": 94.9
+        "avg_words": 94.9,
+        "fallback_rate": 0.0
       },
       "ops": {
         "model": "template-v0",
+        "provider": "offline",
+        "models_used": {
+          "template-v0": 9
+        },
         "total_cost_usd": 0.0,
         "cost_per_example_usd": 0.0,
         "latency_p50_ms": 0,
@@ -23,26 +28,83 @@
           "ok": 9
         }
       },
-      "previous": null,
-      "ts": "2026-10-09T14:39:23+00:00"
+      "previous": {
+        "guardrail_pass": 1.0,
+        "cve_grounding": 1.0,
+        "supported_points": 1.0,
+        "avg_words": 94.9
+      },
+      "ts": "2026-10-12T17:56:08+00:00"
     },
     {
       "feature": "outreach-draft",
       "version": "v1",
-      "run_id": "20261009T143923Z-1f9eaa",
-      "status": "skipped",
-      "reason": "ANTHROPIC_API_KEY not set",
-      "previous": null
+      "run_id": "20261012T175608Z-f313de",
+      "status": "ran",
+      "n": 9,
+      "headline": {
+        "guardrail_pass": 0.667,
+        "cve_grounding": 1.0,
+        "supported_points": 1.0,
+        "avg_words": 98.2,
+        "fallback_rate": 0.111
+      },
+      "ops": {
+        "model": "gemini-3-flash-preview",
+        "provider": "gemini",
+        "models_used": {
+          "gemini-3-flash-preview": 5,
+          "template-v0": 1,
+          "gemini-3.8-flash": 3
+        },
+        "total_cost_usd": 0.0,
+        "cost_per_example_usd": 0.0,
+        "latency_p50_ms": 21267,
+        "latency_p95_ms": 48771,
+        "statuses": {
+          "ok": 8,
+          "fallback": 1
+        }
+      },
+      "previous": null,
+      "ts": "2026-10-12T18:00:14+00:00"
     },
     {
       "feature": "outreach-draft",
       "version": "v2",
-      "run_id": "20261009T143923Z-1f9eaa",
-      "status": "skipped",
-      "reason": "ANTHROPIC_API_KEY not set",
-      "previous": null
+      "run_id": "20261012T175608Z-f313de",
+      "status": "ran",
+      "n": 9,
+      "headline": {
+        "guardrail_pass": 1.0,
+        "cve_grounding": 1.0,
+        "supported_points": 1.0,
+        "avg_words": 98.6,
+        "fallback_rate": 0.111
+      },
+      "ops": {
+        "model": "gemini-3-flash-preview",
+        "provider": "gemini",
+        "models_used": {
+          "gemini-3-flash-preview": 5,
+          "gemini-3.8-flash": 2,
+          "template-v0": 1,
+          "gemini-3.6-flash": 1
+        },
+        "total_cost_usd": 0.0,
+        "cost_per_example_usd": 0.0,
+        "latency_p50_ms": 22284,
+        "latency_p95_ms": 86783,
+        "statuses": {
+          "ok": 8,
+          "fallback": 1
+        }
+      },
+      "previous": null,
+      "ts": "2026-10-12T18:07:33+00:00"
     }
   ],
+  "note": "Reported run = first live run. The later run 20261012T181258Z hit the Gemini free-tier daily quota (HTTP 429) on the Flash models: v2 9/9 and v1 3/9 rows fell back to the template, so it is not a valid measurement of the prompts. Both runs remain in history.jsonl.",
   "metrics": {
     "baseline": {
       "n": 9,
@@ -54,12 +116,88 @@
       "failures": [],
       "ops": {
         "model": "template-v0",
+        "provider": "offline",
+        "models_used": {
+          "template-v0": 9
+        },
         "total_cost_usd": 0.0,
         "cost_per_example_usd": 0.0,
         "latency_p50_ms": 0,
         "latency_p95_ms": 0,
         "statuses": {
           "ok": 9
+        }
+      }
+    },
+    "v1": {
+      "n": 9,
+      "guardrail_pass_rate": 0.667,
+      "cve_grounding_rate": 1.0,
+      "cves_mentioned": 33,
+      "supported_point_rate": 1.0,
+      "avg_email_words": 98.2,
+      "failures": [
+        {
+          "id": "crazroid.com",
+          "issues": [
+            "forbidden phrasing in email: ['hacked']"
+          ]
+        },
+        {
+          "id": "semantia.com.au",
+          "issues": [
+            "references unknown evidence ids:  desert E4"
+          ]
+        },
+        {
+          "id": "unam.mx",
+          "issues": [
+            "subject line too long"
+          ]
+        }
+      ],
+      "ops": {
+        "model": "gemini-3-flash-preview",
+        "provider": "gemini",
+        "models_used": {
+          "gemini-3-flash-preview": 5,
+          "template-v0": 1,
+          "gemini-3.8-flash": 3
+        },
+        "total_cost_usd": 0.0,
+        "cost_per_example_usd": 0.0,
+        "latency_p50_ms": 21267,
+        "latency_p95_ms": 48771,
+        "statuses": {
+          "ok": 8,
+          "fallback": 1
+        }
+      }
+    },
+    "v2": {
+      "n": 9,
+      "guardrail_pass_rate": 1.0,
+      "cve_grounding_rate": 1.0,
+      "cves_mentioned": 30,
+      "supported_point_rate": 1.0,
+      "avg_email_words": 98.6,
+      "failures": [],
+      "ops": {
+        "model": "gemini-3-flash-preview",
+        "provider": "gemini",
+        "models_used": {
+          "gemini-3-flash-preview": 5,
+          "gemini-3.8-flash": 2,
+          "template-v0": 1,
+          "gemini-3.6-flash": 1
+        },
+        "total_cost_usd": 0.0,
+        "cost_per_example_usd": 0.0,
+        "latency_p50_ms": 22284,
+        "latency_p95_ms": 86783,
+        "statuses": {
+          "ok": 8,
+          "fallback": 1
         }
       }
     }

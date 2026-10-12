@@ -1,0 +1,1737 @@
+{
+  "run_id": "20261012T181258Z-86f3e2",
+  "feature": "outreach-draft",
+  "versions": [
+    "baseline",
+    "v1",
+    "v2"
+  ],
+  "results": {
+    "baseline": {
+      "version": "baseline",
+      "metrics": {
+        "n": 9,
+        "guardrail_pass_rate": 1.0,
+        "cve_grounding_rate": 1.0,
+        "cves_mentioned": 0,
+        "supported_point_rate": 1.0,
+        "avg_email_words": 94.9,
+        "failures": [],
+        "ops": {
+          "model": "template-v0",
+          "provider": "offline",
+          "models_used": {
+            "template-v0": 9
+          },
+          "total_cost_usd": 0.0,
+          "cost_per_example_usd": 0.0,
+          "latency_p50_ms": 0,
+          "latency_p95_ms": 0,
+          "statuses": {
+            "ok": 9
+          }
+        }
+      },
+      "rows": [
+        {
+          "id": "ooda-health.io",
+          "pred": {
+            "summary": "ooda-health.io: 11 internet-facing IPs; need 88/100. Top issue: 13 assets running software with vulnerabilities on CISA's Known Exploited list.",
+            "why_now": [
+              {
+                "point": "13 assets running software with vulnerabilities on CISA's Known Exploited list",
+                "evidence": [
+                  "E1",
+                  "E2",
+                  "E3"
+                ]
+              },
+              {
+                "point": "11 assets running end-of-life software that no longer receives security patches",
+                "evidence": [
+                  "E1",
+                  "E2",
+                  "E3"
+                ]
+              },
+              {
+                "point": "2 services still accepting outdated encryption (SSLv3/TLS 1.0)",
+                "evidence": [
+                  "E11",
+                  "E12"
+                ]
+              }
+            ],
+            "talk_track": [
+              "Open with the specific finding, not the product.",
+              "Position as an outside-in view they may not have; offer the full findings list.",
+              "Ask who owns external exposure / patching today."
+            ],
+            "email": {
+              "subject": "External exposure findings for ooda-health.io",
+              "body": "Hi {first_name},\n\nOur external attack-surface monitoring picked up a few internet-facing findings for ooda-health.io that teams usually want to know about early:\n\n- 13 assets running software with vulnerabilities on CISA's Known Exploited list\n- 11 assets running end-of-life software that no longer receives security patches\n- 2 services still accepting outdated encryption (SSLv3/TLS 1.0)\n\nThese come from public scan data, so they may already be on your radar. If useful, I can share the full list with remediation priorities. No strings attached.\n\nWould a 15-minute call next week be worthwhile?\n\nBest,\n{sender_name}"
+            },
+            "cited_cves": []
+          },
+          "status": "ok",
+          "note": null,
+          "call_id": "e97314b35c1b49058810e8e458789ca9",
+          "checks": {
+            "passed": true,
+            "issues": [],
+            "metrics": {
+              "cves_mentioned": 0,
+              "cves_grounded": 0,
+              "why_now_points": 3,
+              "why_now_supported": 3,
+              "email_words": 93
+            }
+          }
+        },
+        {
+          "id": "castle-it.net",
+          "pred": {
+            "summary": "castle-it.net: 3 internet-facing IPs; need 86/100. Top issue: 1 asset flagged by the scanner with indicators of compromise.",
+            "why_now": [
+              {
+                "point": "1 asset flagged by the scanner with indicators of compromise",
+                "evidence": [
+                  "E1",
+                  "E2"
+                ]
+              },
+              {
+                "point": "1 database reachable from the internet without authentication",
+                "evidence": [
+                  "E1",
+                  "E2"
+                ]
+              },
+              {
+                "point": "1 asset running end-of-life software that no longer receives security patches",
+                "evidence": [
+                  "E1",
+                  "E2"
+                ]
+              }
+            ],
+            "talk_track": [
+              "Open with the specific finding, not the product.",
+              "Position as an outside-in view they may not have; offer the full findings list.",
+              "Ask who owns external exposure / patching today."
+            ],
+            "email": {
+              "subject": "External exposure findings for castle-it.net",
+              "body": "Hi {first_name},\n\nOur external attack-surface monitoring picked up a few internet-facing findings for castle-it.net that teams usually want to know about early:\n\n- 1 asset flagged by the scanner with indicators of compromise\n- 1 database reachable from the internet without authentication\n- 1 asset running end-of-life software that no longer receives security patches\n\nThese come from public scan data, so they may already be on your radar. If useful, I can share the full list with remediation priorities. No strings attached.\n\nWould a 15-minute call next week be worthwhile?\n\nBest,\n{sender_name}"
+            },
+            "cited_cves": []
+          },
+          "status": "ok",
+          "note": null,
+          "call_id": "f06c86d5886048068627dfa32f139345",
+          "checks": {
+            "passed": true,
+            "issues": [],
+            "metrics": {
+              "cves_mentioned": 0,
+              "cves_grounded": 0,
+              "why_now_points": 3,
+              "why_now_supported": 3,
+              "email_words": 92
+            }
+          }
+        },
+        {
+          "id": "cycu.edu.tw",
+          "pred": {
+            "summary": "cycu.edu.tw: 24 internet-facing IPs; need 88/100. Top issue: 1 asset running software with vulnerabilities on CISA's Known Exploited list.",
+            "why_now": [
+              {
+                "point": "1 asset running software with vulnerabilities on CISA's Known Exploited list",
+                "evidence": [
+                  "E1"
+                ]
+              },
+              {
+                "point": "1 industrial-control system interface exposed to the internet",
+                "evidence": [
+                  "E2"
+                ]
+              },
+              {
+                "point": "1 asset with vulnerabilities rated likely to be exploited (EPSS >= 10%)",
+                "evidence": [
+                  "E3"
+                ]
+              }
+            ],
+            "talk_track": [
+              "Open with the specific finding, not the product.",
+              "Position as an outside-in view they may not have; offer the full findings list.",
+              "Ask who owns external exposure / patching today."
+            ],
+            "email": {
+              "subject": "External exposure findings for cycu.edu.tw",
+              "body": "Hi {first_name},\n\nOur external attack-surface monitoring picked up a few internet-facing findings for cycu.edu.tw that teams usually want to know about early:\n\n- 1 asset running software with vulnerabilities on CISA's Known Exploited list\n- 1 industrial-control system interface exposed to the internet\n- 1 asset with vulnerabilities rated likely to be exploited (EPSS >= 10%)\n\nThese come from public scan data, so they may already be on your radar. If useful, I can share the full list with remediation priorities. No strings attached.\n\nWould a 15-minute call next week be worthwhile?\n\nBest,\n{sender_name}"
+            },
+            "cited_cves": []
+          },
+          "status": "ok",
+          "note": null,
+          "call_id": "64d044bb1dd9483780101e9a3b1b3a67",
+          "checks": {
+            "passed": true,
+            "issues": [],
+            "metrics": {
+              "cves_mentioned": 0,
+              "cves_grounded": 0,
+              "why_now_points": 3,
+              "why_now_supported": 3,
+              "email_words": 94
+            }
+          }
+        },
+        {
+          "id": "crazroid.com",
+          "pred": {
+            "summary": "crazroid.com: 3 internet-facing IPs; need 89/100. Top issue: 3 assets flagged by the scanner with indicators of compromise.",
+            "why_now": [
+              {
+                "point": "3 assets flagged by the scanner with indicators of compromise",
+                "evidence": [
+                  "E1",
+                  "E2",
+                  "E3"
+                ]
+              },
+              {
+                "point": "3 assets with vulnerabilities rated likely to be exploited (EPSS >= 10%)",
+                "evidence": [
+                  "E1",
+                  "E2",
+                  "E3"
+                ]
+              },
+              {
+                "point": "3 services still accepting outdated encryption (SSLv3/TLS 1.0)",
+                "evidence": [
+                  "E1",
+                  "E2",
+                  "E3"
+                ]
+              }
+            ],
+            "talk_track": [
+              "Open with the specific finding, not the product.",
+              "Position as an outside-in view they may not have; offer the full findings list.",
+              "Ask who owns external exposure / patching today."
+            ],
+            "email": {
+              "subject": "External exposure findings for crazroid.com",
+              "body": "Hi {first_name},\n\nOur external attack-surface monitoring picked up a few internet-facing findings for crazroid.com that teams usually want to know about early:\n\n- 3 assets flagged by the scanner with indicators of compromise\n- 3 assets with vulnerabilities rated likely to be exploited (EPSS >= 10%)\n- 3 services still accepting outdated encryption (SSLv3/TLS 1.0)\n\nThese come from public scan data, so they may already be on your radar. If useful, I can share the full list with remediation priorities. No strings attached.\n\nWould a 15-minute call next week be worthwhile?\n\nBest,\n{sender_name}"
+            },
+            "cited_cves": []
+          },
+          "status": "ok",
+          "note": null,
+          "call_id": "4e1d11aa58be456b92619ceeb6298b74",
+          "checks": {
+            "passed": true,
+            "issues": [],
+            "metrics": {
+              "cves_mentioned": 0,
+              "cves_grounded": 0,
+              "why_now_points": 3,
+              "why_now_supported": 3,
+              "email_words": 93
+            }
+          }
+        },
+        {
+          "id": "privatelayer.com",
+          "pred": {
+            "summary": "privatelayer.com: 37 internet-facing IPs; need 94/100. Top issue: 3 assets running software with vulnerabilities on CISA's Known Exploited list.",
+            "why_now": [
+              {
+                "point": "3 assets running software with vulnerabilities on CISA's Known Exploited list",
+                "evidence": [
+                  "E1",
+                  "E2",
+                  "E3"
+                ]
+              },
+              {
+                "point": "2 assets with vulnerabilities rated likely to be exploited (EPSS >= 10%)",
+                "evidence": [
+                  "E4",
+                  "E5"
+                ]
+              },
+              {
+                "point": "1 remote-access service (RDP/SMB/Telnet/VNC) open to the internet",
+                "evidence": [
+                  "E6"
+                ]
+              }
+            ],
+            "talk_track": [
+              "Open with the specific finding, not the product.",
+              "Position as an outside-in view they may not have; offer the full findings list.",
+              "Ask who owns external exposure / patching today."
+            ],
+            "email": {
+              "subject": "External exposure findings for privatelayer.com",
+              "body": "Hi {first_name},\n\nOur external attack-surface monitoring picked up a few internet-facing findings for privatelayer.com that teams usually want to know about early:\n\n- 3 assets running software with vulnerabilities on CISA's Known Exploited list\n- 2 assets with vulnerabilities rated likely to be exploited (EPSS >= 10%)\n- 1 remote-access service (RDP/SMB/Telnet/VNC) open to the internet\n\nThese come from public scan data, so they may already be on your radar. If useful, I can share the full list with remediation priorities. No strings attached.\n\nWould a 15-minute call next week be worthwhile?\n\nBest,\n{sender_name}"
+            },
+            "cited_cves": []
+          },
+          "status": "ok",
+          "note": null,
+          "call_id": "6611daa3ba0e4209a10fb8431a87e646",
+          "checks": {
+            "passed": true,
+            "issues": [],
+            "metrics": {
+              "cves_mentioned": 0,
+              "cves_grounded": 0,
+              "why_now_points": 3,
+              "why_now_supported": 3,
+              "email_words": 94
+            }
+          }
+        },
+        {
+          "id": "ibero.mx",
+          "pred": {
+            "summary": "ibero.mx: 36 internet-facing IPs; need 93/100. Top issue: 9 assets running software with vulnerabilities on CISA's Known Exploited list.",
+            "why_now": [
+              {
+                "point": "9 assets running software with vulnerabilities on CISA's Known Exploited list",
+                "evidence": [
+                  "E1",
+                  "E2",
+                  "E3"
+                ]
+              },
+              {
+                "point": "2 assets with vulnerabilities rated likely to be exploited (EPSS >= 10%)",
+                "evidence": [
+                  "E12"
+                ]
+              },
+              {
+                "point": "6 assets running end-of-life software that no longer receives security patches",
+                "evidence": [
+                  "E2",
+                  "E3",
+                  "E4"
+                ]
+              }
+            ],
+            "talk_track": [
+              "Open with the specific finding, not the product.",
+              "Position as an outside-in view they may not have; offer the full findings list.",
+              "Ask who owns external exposure / patching today."
+            ],
+            "email": {
+              "subject": "External exposure findings for ibero.mx",
+              "body": "Hi {first_name},\n\nOur external attack-surface monitoring picked up a few internet-facing findings for ibero.mx that teams usually want to know about early:\n\n- 9 assets running software with vulnerabilities on CISA's Known Exploited list\n- 2 assets with vulnerabilities rated likely to be exploited (EPSS >= 10%)\n- 6 assets running end-of-life software that no longer receives security patches\n\nThese come from public scan data, so they may already be on your radar. If useful, I can share the full list with remediation priorities. No strings attached.\n\nWould a 15-minute call next week be worthwhile?\n\nBest,\n{sender_name}"
+            },
+            "cited_cves": []
+          },
+          "status": "ok",
+          "note": null,
+          "call_id": "736f8677239b4b70b7c0b72f39e4e8c6",
+          "checks": {
+            "passed": true,
+            "issues": [],
+            "metrics": {
+              "cves_mentioned": 0,
+              "cves_grounded": 0,
+              "why_now_points": 3,
+              "why_now_supported": 3,
+              "email_words": 97
+            }
+          }
+        },
+        {
+          "id": "semantia.com.au",
+          "pred": {
+            "summary": "semantia.com.au: 10 internet-facing IPs; need 94/100. Top issue: 6 assets running software with vulnerabilities on CISA's Known Exploited list.",
+            "why_now": [
+              {
+                "point": "6 assets running software with vulnerabilities on CISA's Known Exploited list",
+                "evidence": [
+                  "E1",
+                  "E2",
+                  "E3"
+                ]
+              },
+              {
+                "point": "2 assets with vulnerabilities rated likely to be exploited (EPSS >= 10%)",
+                "evidence": [
+                  "E7",
+                  "E8"
+                ]
+              },
+              {
+                "point": "4 assets running end-of-life software that no longer receives security patches",
+                "evidence": [
+                  "E1",
+                  "E2",
+                  "E3"
+                ]
+              }
+            ],
+            "talk_track": [
+              "Open with the specific finding, not the product.",
+              "Position as an outside-in view they may not have; offer the full findings list.",
+              "Ask who owns external exposure / patching today."
+            ],
+            "email": {
+              "subject": "External exposure findings for semantia.com.au",
+              "body": "Hi {first_name},\n\nOur external attack-surface monitoring picked up a few internet-facing findings for semantia.com.au that teams usually want to know about early:\n\n- 6 assets running software with vulnerabilities on CISA's Known Exploited list\n- 2 assets with vulnerabilities rated likely to be exploited (EPSS >= 10%)\n- 4 assets running end-of-life software that no longer receives security patches\n\nThese come from public scan data, so they may already be on your radar. If useful, I can share the full list with remediation priorities. No strings attached.\n\nWould a 15-minute call next week be worthwhile?\n\nBest,\n{sender_name}"
+            },
+            "cited_cves": []
+          },
+          "status": "ok",
+          "note": null,
+          "call_id": "2f2e78581ea142f183335552d440da70",
+          "checks": {
+            "passed": true,
+            "issues": [],
+            "metrics": {
+              "cves_mentioned": 0,
+              "cves_grounded": 0,
+              "why_now_points": 3,
+              "why_now_supported": 3,
+              "email_words": 97
+            }
+          }
+        },
+        {
+          "id": "utoronto.ca",
+          "pred": {
+            "summary": "utoronto.ca: 44 internet-facing IPs; need 93/100. Top issue: 6 assets running software with vulnerabilities on CISA's Known Exploited list.",
+            "why_now": [
+              {
+                "point": "6 assets running software with vulnerabilities on CISA's Known Exploited list",
+                "evidence": [
+                  "E1",
+                  "E2",
+                  "E3"
+                ]
+              },
+              {
+                "point": "7 assets with vulnerabilities rated likely to be exploited (EPSS >= 10%)",
+                "evidence": [
+                  "E7",
+                  "E8",
+                  "E9"
+                ]
+              },
+              {
+                "point": "3 assets running end-of-life software that no longer receives security patches",
+                "evidence": [
+                  "E11"
+                ]
+              }
+            ],
+            "talk_track": [
+              "Open with the specific finding, not the product.",
+              "Position as an outside-in view they may not have; offer the full findings list.",
+              "Ask who owns external exposure / patching today."
+            ],
+            "email": {
+              "subject": "External exposure findings for utoronto.ca",
+              "body": "Hi {first_name},\n\nOur external attack-surface monitoring picked up a few internet-facing findings for utoronto.ca that teams usually want to know about early:\n\n- 6 assets running software with vulnerabilities on CISA's Known Exploited list\n- 7 assets with vulnerabilities rated likely to be exploited (EPSS >= 10%)\n- 3 assets running end-of-life software that no longer receives security patches\n\nThese come from public scan data, so they may already be on your radar. If useful, I can share the full list with remediation priorities. No strings attached.\n\nWould a 15-minute call next week be worthwhile?\n\nBest,\n{sender_name}"
+            },
+            "cited_cves": []
+          },
+          "status": "ok",
+          "note": null,
+          "call_id": "482d2a3baeb74f0d8084ef54ae11398c",
+          "checks": {
+            "passed": true,
+            "issues": [],
+            "metrics": {
+              "cves_mentioned": 0,
+              "cves_grounded": 0,
+              "why_now_points": 3,
+              "why_now_supported": 3,
+              "email_words": 97
+            }
+          }
+        },
+        {
+          "id": "unam.mx",
+          "pred": {
+            "summary": "unam.mx: 99 internet-facing IPs; need 99/100. Top issue: 29 assets running software with vulnerabilities on CISA's Known Exploited list.",
+            "why_now": [
+              {
+                "point": "29 assets running software with vulnerabilities on CISA's Known Exploited list",
+                "evidence": [
+                  "E1",
+                  "E2",
+                  "E3"
+                ]
+              },
+              {
+                "point": "21 assets with vulnerabilities rated likely to be exploited (EPSS >= 10%)",
+                "evidence": [
+                  "E10"
+                ]
+              },
+              {
+                "point": "18 assets running end-of-life software that no longer receives security patches",
+                "evidence": [
+                  "E1",
+                  "E2",
+                  "E3"
+                ]
+              }
+            ],
+            "talk_track": [
+              "Open with the specific finding, not the product.",
+              "Position as an outside-in view they may not have; offer the full findings list.",
+              "Ask who owns external exposure / patching today."
+            ],
+            "email": {
+              "subject": "External exposure findings for unam.mx",
+              "body": "Hi {first_name},\n\nOur external attack-surface monitoring picked up a few internet-facing findings for unam.mx that teams usually want to know about early:\n\n- 29 assets running software with vulnerabilities on CISA's Known Exploited list\n- 21 assets with vulnerabilities rated likely to be exploited (EPSS >= 10%)\n- 18 assets running end-of-life software that no longer receives security patches\n\nThese come from public scan data, so they may already be on your radar. If useful, I can share the full list with remediation priorities. No strings attached.\n\nWould a 15-minute call next week be worthwhile?\n\nBest,\n{sender_name}"
+            },
+            "cited_cves": []
+          },
+          "status": "ok",
+          "note": null,
+          "call_id": "cdbad9b5525140d596d142d1af08434d",
+          "checks": {
+            "passed": true,
+            "issues": [],
+            "metrics": {
+              "cves_mentioned": 0,
+              "cves_grounded": 0,
+              "why_now_points": 3,
+              "why_now_supported": 3,
+              "email_words": 97
+            }
+          }
+        }
+      ]
+    },
+    "v1": {
+      "version": "v1",
+      "metrics": {
+        "n": 9,
+        "guardrail_pass_rate": 0.889,
+        "cve_grounding_rate": 1.0,
+        "cves_mentioned": 37,
+        "supported_point_rate": 1.0,
+        "avg_email_words": 98.4,
+        "failures": [
+          {
+            "id": "crazroid.com",
+            "issues": [
+              "forbidden phrasing in email: ['breach', 'hacked']"
+            ]
+          }
+        ],
+        "ops": {
+          "model": "gemini-3-flash-preview",
+          "provider": "gemini",
+          "models_used": {
+            "gemini-3-flash-preview": 6,
+            "template-v0": 3
+          },
+          "total_cost_usd": 0.0,
+          "cost_per_example_usd": 0.0,
+          "latency_p50_ms": 20353,
+          "latency_p95_ms": 83886,
+          "statuses": {
+            "ok": 6,
+            "fallback": 3
+          }
+        }
+      },
+      "rows": [
+        {
+          "id": "ooda-health.io",
+          "pred": {
+            "summary": "Ooda Health is a healthcare technology firm currently operating a self-hosted infrastructure with significant security exposures across 11 IPs. They require immediate assistance because 13 of their public-facing assets are running end-of-life Apache software vulnerable to exploits on CISA's Known Exploited list.",
+            "why_now": [
+              {
+                "point": "Critical Apache vulnerabilities with a CVSS of 9.8 and a maximum EPSS score of 1.0 are currently active on production-facing hostnames.",
+                "evidence": [
+                  "E1",
+                  "E2",
+                  "E11",
+                  "E12"
+                ]
+              },
+              {
+                "point": "Multiple assets are running end-of-life software versions that no longer receive security patches, increasing the risk of unmitigated breaches.",
+                "evidence": [
+                  "E1",
+                  "E4",
+                  "E8"
+                ]
+              },
+              {
+                "point": "The presence of outdated TLS 1.0 and self-signed certificates on public servers indicates critical gaps in encryption standards.",
+                "evidence": [
+                  "E11",
+                  "E12"
+                ]
+              }
+            ],
+            "talk_track": [
+              "Address the critical risk of running end-of-life Apache 2.4.6 on azblue.prod.ooda-health.io which contains vulnerabilities on CISA's Known Exploited list.",
+              "Discuss the implications of CVE-2024-25117 and other high-CVSS vulnerabilities found across their 1,600+ detected services.",
+              "Review the remediation strategy for shifting away from weak encryption protocols like TLS 1.0 still active in their environment."
+            ],
+            "email": {
+              "subject": "Critical exposure found on ooda-health.io production assets",
+              "body": "Hi {first_name}, I was reviewing Ooda Health's external attack surface and identified several high-priority security risks that could impact your healthcare data integrity. Multiple assets, specifically those related to your prod.ooda-health.io subdomains, are running end-of-life Apache software with vulnerabilities featured on CISA's Known Exploited list. Of particular concern is the presence of CVE-2024-25117, which carries a CVSS 9.8 and is actively being targeted. Beyond software patches, we also detected the use of outdated SSL/TLS protocols and self-signed certificates on your public infrastructure. Do you have 10 minutes this week to discuss how we can help you automate the identification and remediation of these exposures? Best, {sender_name}"
+            },
+            "cited_cves": [
+              "CVE-2024-25117",
+              "CVE-2024-5458",
+              "CVE-2024-3566",
+              "CVE-2022-4900"
+            ]
+          },
+          "status": "ok",
+          "note": null,
+          "call_id": "7d0a6e0a66ba41079d2e2dd255480d13",
+          "checks": {
+            "passed": true,
+            "issues": [],
+            "metrics": {
+              "cves_mentioned": 4,
+              "cves_grounded": 4,
+              "why_now_points": 3,
+              "why_now_supported": 3,
+              "email_words": 106
+            }
+          }
+        },
+        {
+          "id": "castle-it.net",
+          "pred": {
+            "summary": "Castle-it.net is currently exposing critical database infrastructure that shows active indicators of compromise. They require immediate assistance to secure unauthenticated Elastic instances and remediate high-severity vulnerabilities in their self-hosted network.",
+            "why_now": [
+              {
+                "point": "Active indicators of compromise were detected on their externally reachable Elastic infrastructure.",
+                "evidence": [
+                  "E1",
+                  "E2"
+                ]
+              },
+              {
+                "point": "Critical databases are currently exposed to the internet without any authentication on port 9200.",
+                "evidence": [
+                  "E1",
+                  "E2"
+                ]
+              },
+              {
+                "point": "The organization is running end-of-life software vulnerable to over 30 known exploits with CVSS scores up to 8.8.",
+                "evidence": [
+                  "E1",
+                  "E2"
+                ]
+              }
+            ],
+            "talk_track": [
+              "Address the immediate risk of the unauthenticated Elastic database exposed on port 9200.",
+              "Discuss the specific indicators of compromise identified by our scanners on their self-hosted Irish infrastructure.",
+              "Provide a remediation roadmap for the 30+ CVEs currently impacting their Elastic 8.15.0 deployment."
+            ],
+            "email": {
+              "subject": "Urgent: Security exposure detected at castle-it.net",
+              "body": "Hi {first_name}, I am reaching out because our latest scan of castle-it.net identified a critical security risk. We found an unauthenticated Elastic database on port 9200 that is currently flagged with indicators of compromise and multiple high-severity vulnerabilities, including CVE-2026-94397. This instance is running end-of-life software, leaving your data exposed to unauthorized access. I have the full report with the technical details of these findings—would you be open to a brief call this week to review the remediation steps? Regards, {sender_name}"
+            },
+            "cited_cves": [
+              "CVE-2026-94397",
+              "CVE-2026-94398",
+              "CVE-2026-94399",
+              "CVE-2026-94408",
+              "CVE-2026-82294",
+              "CVE-2026-82300"
+            ]
+          },
+          "status": "ok",
+          "note": null,
+          "call_id": "15e880303bf24c61b58247363f981aff",
+          "checks": {
+            "passed": true,
+            "issues": [],
+            "metrics": {
+              "cves_mentioned": 6,
+              "cves_grounded": 6,
+              "why_now_points": 3,
+              "why_now_supported": 3,
+              "email_words": 81
+            }
+          }
+        },
+        {
+          "id": "cycu.edu.tw",
+          "pred": {
+            "summary": "cycu.edu.tw: 24 internet-facing IPs; need 88/100. Top issue: 1 asset running software with vulnerabilities on CISA's Known Exploited list.",
+            "why_now": [
+              {
+                "point": "1 asset running software with vulnerabilities on CISA's Known Exploited list",
+                "evidence": [
+                  "E1"
+                ]
+              },
+              {
+                "point": "1 industrial-control system interface exposed to the internet",
+                "evidence": [
+                  "E2"
+                ]
+              },
+              {
+                "point": "1 asset with vulnerabilities rated likely to be exploited (EPSS >= 10%)",
+                "evidence": [
+                  "E3"
+                ]
+              }
+            ],
+            "talk_track": [
+              "Open with the specific finding, not the product.",
+              "Position as an outside-in view they may not have; offer the full findings list.",
+              "Ask who owns external exposure / patching today."
+            ],
+            "email": {
+              "subject": "External exposure findings for cycu.edu.tw",
+              "body": "Hi {first_name},\n\nOur external attack-surface monitoring picked up a few internet-facing findings for cycu.edu.tw that teams usually want to know about early:\n\n- 1 asset running software with vulnerabilities on CISA's Known Exploited list\n- 1 industrial-control system interface exposed to the internet\n- 1 asset with vulnerabilities rated likely to be exploited (EPSS >= 10%)\n\nThese come from public scan data, so they may already be on your radar. If useful, I can share the full list with remediation priorities. No strings attached.\n\nWould a 15-minute call next week be worthwhile?\n\nBest,\n{sender_name}"
+            },
+            "cited_cves": []
+          },
+          "status": "fallback",
+          "note": "error: gave up after 4 attempts: gemini-3.8-flash HTTP 429: You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usa",
+          "call_id": "eca5c3d959e741429cb0867474fba14c",
+          "checks": {
+            "passed": true,
+            "issues": [],
+            "metrics": {
+              "cves_mentioned": 0,
+              "cves_grounded": 0,
+              "why_now_points": 3,
+              "why_now_supported": 3,
+              "email_words": 94
+            }
+          }
+        },
+        {
+          "id": "crazroid.com",
+          "pred": {
+            "summary": "crazroid.com is a small US-based organization currently experiencing a visible security breach. Multiple web assets are displaying active defacement markers and harbor over 100 critical vulnerabilities, necessitating immediate incident response and surface hardening.",
+            "why_now": [
+              {
+                "point": "Active indicators of compromise were detected across all primary assets, currently displaying 'Hacked By MR.GREEN' in page titles.",
+                "evidence": [
+                  "E1",
+                  "E2",
+                  "E3"
+                ]
+              },
+              {
+                "point": "Critical vulnerabilities with an extremely high likelihood of exploitation (EPSS 0.64) and CVSS scores of 9.3 are currently exposed.",
+                "evidence": [
+                  "E1",
+                  "E2",
+                  "E3"
+                ]
+              },
+              {
+                "point": "Legacy security configurations, including outdated TLS/SSL versions, are still in use across their cloud-hosted infrastructure.",
+                "evidence": [
+                  "E1",
+                  "E2",
+                  "E3"
+                ]
+              }
+            ],
+            "talk_track": [
+              "Identify the current status of the 'Hacked By MR.GREEN' defacement and whether an incident response plan is underway.",
+              "Review the exposure of over 100 WordPress-related CVEs found on their public-facing IPs.",
+              "Discuss securing their Cloudflare-hosted environment by remediating high-EPSS vulnerabilities and upgrading weak TLS configurations."
+            ],
+            "email": {
+              "subject": "Urgent: Security breach detected on crazroid.com",
+              "body": "Hi {first_name}, I'm reaching out because our automated attack surface monitoring has identified an active compromise on crazroid.com. Several of your public-facing assets are currently displaying defacement titles ('Hacked By MR.GREEN') and are exposed to critical vulnerabilities, specifically CVE-2022-21662 and CVE-2023-22622. With over 100 unpatched vulnerabilities and high exploitation likelihood scores detected, your infrastructure is at significant risk for further data loss. Do you have time for a brief call to review these findings and discuss how we can help you secure your external perimeter? Best, {sender_name}"
+            },
+            "cited_cves": [
+              "CVE-2022-4973",
+              "CVE-2023-22622",
+              "CVE-2022-3590",
+              "CVE-2022-21662",
+              "CVE-2022-21663",
+              "CVE-2022-21664"
+            ]
+          },
+          "status": "ok",
+          "note": null,
+          "call_id": "31fce5ff18574ef889575b78cf44b496",
+          "checks": {
+            "passed": false,
+            "issues": [
+              "forbidden phrasing in email: ['breach', 'hacked']"
+            ],
+            "metrics": {
+              "cves_mentioned": 6,
+              "cves_grounded": 6,
+              "why_now_points": 3,
+              "why_now_supported": 3,
+              "email_words": 87
+            }
+          }
+        },
+        {
+          "id": "privatelayer.com",
+          "pred": {
+            "summary": "Privatelayer.com is a Swiss-based hosting and infrastructure entity currently running several critical services with vulnerabilities on CISA's Known Exploited list. With a high need score of 94/100, the company is at immediate risk due to multiple CVSS 9.8 vulnerabilities and exposed administrative ports like RDP.",
+            "why_now": [
+              {
+                "point": "Critical Nginx and Apache vulnerabilities are currently listed on the CISA KEV, with some reaching a 100% exploitation probability (EPSS 1.0).",
+                "evidence": [
+                  "E1",
+                  "E2",
+                  "E3"
+                ]
+              },
+              {
+                "point": "High-impact vulnerabilities (CVSS 9.8) are present in foundational services including OpenSSH and Exim smtpd.",
+                "evidence": [
+                  "E4",
+                  "E5"
+                ]
+              },
+              {
+                "point": "Dangerous administrative and file-level exposure via an open Remote Desktop Protocol (RDP) port and a public directory listing.",
+                "evidence": [
+                  "E6",
+                  "E7"
+                ]
+              }
+            ],
+            "talk_track": [
+              "Prioritizing the remediation of CISA KEV vulnerabilities like CVE-2023-44487 which have a 100% likelihood of exploitation.",
+              "Securing exposed administrative access points including the RDP port and the VPN gateway to prevent initial access by threat actors.",
+              "Addressing the risk of data leakage stemming from the open directory listing on port 5000 and several end-of-life software instances."
+            ],
+            "email": {
+              "subject": "Urgent: Critical exposures detected on privatelayer.com assets",
+              "body": "Hi {first_name}, I was looking into privatelayer.com's external attack surface and identified several high-risk vulnerabilities that require immediate attention. Specifically, your Nginx and Apache web servers are currently running versions with known exploited vulnerabilities (including CVE-2023-44487) that have a 100% exploitation probability score. Beyond these, you have an open RDP port and a public directory listing on port 5000, which are common targets for automated scanners looking for initial access. I'd love to show you how we can help your team automate the detection and prioritization of these critical risks. Do you have 10 minutes later this week? Best, {sender_name}"
+            },
+            "cited_cves": [
+              "CVE-2023-44487",
+              "CVE-2025-23419",
+              "CVE-2026-93546",
+              "CVE-2026-94056",
+              "CVE-2026-73281"
+            ]
+          },
+          "status": "ok",
+          "note": null,
+          "call_id": "741e5044f49242d18f2fdb417b9b7f6a",
+          "checks": {
+            "passed": true,
+            "issues": [],
+            "metrics": {
+              "cves_mentioned": 5,
+              "cves_grounded": 5,
+              "why_now_points": 3,
+              "why_now_supported": 3,
+              "email_words": 100
+            }
+          }
+        },
+        {
+          "id": "ibero.mx",
+          "pred": {
+            "summary": "Universidad Iberoamericana is a Mexican higher education institution currently exposed to high-risk vulnerabilities, including multiple assets running software on CISA's Known Exploited Vulnerabilities (KEV) list with CVSS scores up to 9.8. Their attack surface includes several end-of-life nginx servers and Apache instances with critical security gaps that demand immediate remediation to prevent potential data breaches or service disruption.",
+            "why_now": [
+              {
+                "point": "Multiple public-facing assets, including Apache and nginx servers, are running software with critical vulnerabilities listed on CISA's KEV catalog and possess the maximum EPSS score of 1.0.",
+                "evidence": [
+                  "E1",
+                  "E2",
+                  "E3",
+                  "E4",
+                  "E5",
+                  "E6",
+                  "E7",
+                  "E8",
+                  "E9",
+                  "E10",
+                  "E11"
+                ]
+              },
+              {
+                "point": "There is widespread use of end-of-life (EOL) software versions for nginx (1.20.1 and 1.22.1) that no longer receive security patches.",
+                "evidence": [
+                  "E2",
+                  "E3",
+                  "E4",
+                  "E5",
+                  "E6",
+                  "E7",
+                  "E8",
+                  "E9"
+                ]
+              },
+              {
+                "point": "Significant security hygiene issues were detected including expired certificates, self-signed certificates, and outdated TLS encryption (SSLv3/TLS 1.0) on active services.",
+                "evidence": [
+                  "E1",
+                  "E10",
+                  "E11",
+                  "E12"
+                ]
+              },
+              {
+                "point": "A Citrix Netscaler instance is exposed with a high likelihood of exploitation score of 0.954.",
+                "evidence": [
+                  "E12"
+                ]
+              }
+            ],
+            "talk_track": [
+              "Address the 9 assets currently running software with vulnerabilities found on CISA's Known Exploited list, specifically the Apache 2.4.6 instances with CVSS 9.8.",
+              "Discuss the risks associated with the 6 assets running end-of-life nginx versions (1.20.1 and 1.22.1) that are no longer supported with security updates.",
+              "Review the exposure on the Citrix Netscaler instance and the general lack of encryption standards across the public footprint."
+            ],
+            "email": {
+              "subject": "Critical security vulnerabilities identified on ibero.mx infrastructure",
+              "body": "Hi {first_name}, I was reviewing the external attack surface for Universidad Iberoamericana and identified several high-priority security risks that require your team's attention. Our scan found 9 assets running software with vulnerabilities listed on CISA's Known Exploited list, including multiple Apache 2.4.6 instances with a CVSS score of 9.8. Furthermore, several of your nginx servers (versions 1.20.1 and 1.22.1) are currently end-of-life and lack necessary security patches, while some services are still relying on outdated TLS 1.0 encryption. Given the high likelihood of exploitation for these specific CVEs, I would love to share the full report with you and discuss how we can help automate the detection and remediation of these exposures. Do you have 10 minutes this week? Best, {sender_name}."
+            },
+            "cited_cves": [
+              "CVE-2026-54874",
+              "CVE-2026-7383",
+              "CVE-2026-9076",
+              "CVE-2026-45447",
+              "CVE-2026-42766",
+              "CVE-2026-34180",
+              "CVE-2025-23419",
+              "CVE-2023-44487",
+              "CVE-2021-3618"
+            ]
+          },
+          "status": "ok",
+          "note": null,
+          "call_id": "9ea9cc8c7a8f4420afbe0d344c2710d2",
+          "checks": {
+            "passed": true,
+            "issues": [],
+            "metrics": {
+              "cves_mentioned": 9,
+              "cves_grounded": 9,
+              "why_now_points": 4,
+              "why_now_supported": 4,
+              "email_words": 121
+            }
+          }
+        },
+        {
+          "id": "semantia.com.au",
+          "pred": {
+            "summary": "Semantia is an Australian AI and software automation firm currently operating with a critical security risk profile, including a need score of 94/100. Their external attack surface shows multiple assets running end-of-life software with known exploited vulnerabilities, threatening their core AI development and DevOps environment.",
+            "why_now": [
+              {
+                "point": "Critical exploitation risk with an EPSS score of 1.0 on six assets running Apache 2.4.6, indicating that these vulnerabilities are actively being exploited in the wild.",
+                "evidence": [
+                  "E1",
+                  "E2",
+                  "E3",
+                  "E4",
+                  "E5",
+                  "E6"
+                ]
+              },
+              {
+                "point": "Sensitive AI and DevOps automation tools like Hermes Agent are exposed to the public internet using outdated TLS 1.0 encryption.",
+                "evidence": [
+                  "E9",
+                  "E10"
+                ]
+              },
+              {
+                "point": "Significant technical debt identified through end-of-life software and expired TLS certificates on production-facing hostnames.",
+                "evidence": [
+                  "E1",
+                  "E3",
+                  "E11"
+                ]
+              }
+            ],
+            "talk_track": [
+              "Address the presence of Apache 2.4.6 servers that carry multiple CISA Known Exploited Vulnerabilities and have reached end-of-life status.",
+              "Discuss the risks associated with exposing internal DevOps tools like Hermes Agent over weak encryption protocols.",
+              "Contrast their market position as an 'Intelligent Software' leader with the current state of their public-facing infrastructure security."
+            ],
+            "email": {
+              "subject": "Security risk alert for semantia.com.au",
+              "body": "Hi {first_name}, I'm reaching out because our platform has identified critical security gaps on semantia.com.au that directly impact your AI development infrastructure. We found six assets running end-of-life Apache web servers that are currently on CISA's Known Exploited list, with an EPSS score of 1.0—meaning exploitation is highly likely. Furthermore, sensitive DevOps tools like your Hermes Agent instances are exposed via outdated TLS protocols. Given Semantia's focus on software automation, these legacy vulnerabilities present a significant risk to your production environment and intellectual property. Do you have 10 minutes this week to walk through the findings and our recommended remediation steps? Best, {sender_name}"
+            },
+            "cited_cves": [
+              "CVE-2024-5458",
+              "CVE-2024-3566",
+              "CVE-2024-25117",
+              "CVE-2022-4900",
+              "CVE-2013-2220",
+              "CVE-2007-3205",
+              "CVE-2014-4078"
+            ]
+          },
+          "status": "ok",
+          "note": null,
+          "call_id": "4cfcc5348c824eb09b5db2b538a3b4a4",
+          "checks": {
+            "passed": true,
+            "issues": [],
+            "metrics": {
+              "cves_mentioned": 7,
+              "cves_grounded": 7,
+              "why_now_points": 3,
+              "why_now_supported": 3,
+              "email_words": 103
+            }
+          }
+        },
+        {
+          "id": "utoronto.ca",
+          "pred": {
+            "summary": "utoronto.ca: 44 internet-facing IPs; need 93/100. Top issue: 6 assets running software with vulnerabilities on CISA's Known Exploited list.",
+            "why_now": [
+              {
+                "point": "6 assets running software with vulnerabilities on CISA's Known Exploited list",
+                "evidence": [
+                  "E1",
+                  "E2",
+                  "E3"
+                ]
+              },
+              {
+                "point": "7 assets with vulnerabilities rated likely to be exploited (EPSS >= 10%)",
+                "evidence": [
+                  "E7",
+                  "E8",
+                  "E9"
+                ]
+              },
+              {
+                "point": "3 assets running end-of-life software that no longer receives security patches",
+                "evidence": [
+                  "E11"
+                ]
+              }
+            ],
+            "talk_track": [
+              "Open with the specific finding, not the product.",
+              "Position as an outside-in view they may not have; offer the full findings list.",
+              "Ask who owns external exposure / patching today."
+            ],
+            "email": {
+              "subject": "External exposure findings for utoronto.ca",
+              "body": "Hi {first_name},\n\nOur external attack-surface monitoring picked up a few internet-facing findings for utoronto.ca that teams usually want to know about early:\n\n- 6 assets running software with vulnerabilities on CISA's Known Exploited list\n- 7 assets with vulnerabilities rated likely to be exploited (EPSS >= 10%)\n- 3 assets running end-of-life software that no longer receives security patches\n\nThese come from public scan data, so they may already be on your radar. If useful, I can share the full list with remediation priorities. No strings attached.\n\nWould a 15-minute call next week be worthwhile?\n\nBest,\n{sender_name}"
+            },
+            "cited_cves": []
+          },
+          "status": "fallback",
+          "note": "error: gave up after 4 attempts: gemini-3.8-flash HTTP 429: You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usa",
+          "call_id": "2dc71a5e006749999056af08eeaceabe",
+          "checks": {
+            "passed": true,
+            "issues": [],
+            "metrics": {
+              "cves_mentioned": 0,
+              "cves_grounded": 0,
+              "why_now_points": 3,
+              "why_now_supported": 3,
+              "email_words": 97
+            }
+          }
+        },
+        {
+          "id": "unam.mx",
+          "pred": {
+            "summary": "unam.mx: 99 internet-facing IPs; need 99/100. Top issue: 29 assets running software with vulnerabilities on CISA's Known Exploited list.",
+            "why_now": [
+              {
+                "point": "29 assets running software with vulnerabilities on CISA's Known Exploited list",
+                "evidence": [
+                  "E1",
+                  "E2",
+                  "E3"
+                ]
+              },
+              {
+                "point": "21 assets with vulnerabilities rated likely to be exploited (EPSS >= 10%)",
+                "evidence": [
+                  "E10"
+                ]
+              },
+              {
+                "point": "18 assets running end-of-life software that no longer receives security patches",
+                "evidence": [
+                  "E1",
+                  "E2",
+                  "E3"
+                ]
+              }
+            ],
+            "talk_track": [
+              "Open with the specific finding, not the product.",
+              "Position as an outside-in view they may not have; offer the full findings list.",
+              "Ask who owns external exposure / patching today."
+            ],
+            "email": {
+              "subject": "External exposure findings for unam.mx",
+              "body": "Hi {first_name},\n\nOur external attack-surface monitoring picked up a few internet-facing findings for unam.mx that teams usually want to know about early:\n\n- 29 assets running software with vulnerabilities on CISA's Known Exploited list\n- 21 assets with vulnerabilities rated likely to be exploited (EPSS >= 10%)\n- 18 assets running end-of-life software that no longer receives security patches\n\nThese come from public scan data, so they may already be on your radar. If useful, I can share the full list with remediation priorities. No strings attached.\n\nWould a 15-minute call next week be worthwhile?\n\nBest,\n{sender_name}"
+            },
+            "cited_cves": []
+          },
+          "status": "fallback",
+          "note": "error: gave up after 4 attempts: gemini-3.8-flash HTTP 429: You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usa",
+          "call_id": "0143b969c6f84c07a530ff03b239a2d0",
+          "checks": {
+            "passed": true,
+            "issues": [],
+            "metrics": {
+              "cves_mentioned": 0,
+              "cves_grounded": 0,
+              "why_now_points": 3,
+              "why_now_supported": 3,
+              "email_words": 97
+            }
+          }
+        }
+      ]
+    },
+    "v2": {
+      "version": "v2",
+      "metrics": {
+        "n": 9,
+        "guardrail_pass_rate": 1.0,
+        "cve_grounding_rate": 1.0,
+        "cves_mentioned": 0,
+        "supported_point_rate": 1.0,
+        "avg_email_words": 94.9,
+        "failures": [],
+        "ops": {
+          "model": "template-v0",
+          "provider": "gemini",
+          "models_used": {
+            "template-v0": 9
+          },
+          "total_cost_usd": 0.0,
+          "cost_per_example_usd": 0.0,
+          "latency_p50_ms": 0,
+          "latency_p95_ms": 0,
+          "statuses": {
+            "fallback": 9
+          }
+        }
+      },
+      "rows": [
+        {
+          "id": "ooda-health.io",
+          "pred": {
+            "summary": "ooda-health.io: 11 internet-facing IPs; need 88/100. Top issue: 13 assets running software with vulnerabilities on CISA's Known Exploited list.",
+            "why_now": [
+              {
+                "point": "13 assets running software with vulnerabilities on CISA's Known Exploited list",
+                "evidence": [
+                  "E1",
+                  "E2",
+                  "E3"
+                ]
+              },
+              {
+                "point": "11 assets running end-of-life software that no longer receives security patches",
+                "evidence": [
+                  "E1",
+                  "E2",
+                  "E3"
+                ]
+              },
+              {
+                "point": "2 services still accepting outdated encryption (SSLv3/TLS 1.0)",
+                "evidence": [
+                  "E11",
+                  "E12"
+                ]
+              }
+            ],
+            "talk_track": [
+              "Open with the specific finding, not the product.",
+              "Position as an outside-in view they may not have; offer the full findings list.",
+              "Ask who owns external exposure / patching today."
+            ],
+            "email": {
+              "subject": "External exposure findings for ooda-health.io",
+              "body": "Hi {first_name},\n\nOur external attack-surface monitoring picked up a few internet-facing findings for ooda-health.io that teams usually want to know about early:\n\n- 13 assets running software with vulnerabilities on CISA's Known Exploited list\n- 11 assets running end-of-life software that no longer receives security patches\n- 2 services still accepting outdated encryption (SSLv3/TLS 1.0)\n\nThese come from public scan data, so they may already be on your radar. If useful, I can share the full list with remediation priorities. No strings attached.\n\nWould a 15-minute call next week be worthwhile?\n\nBest,\n{sender_name}"
+            },
+            "cited_cves": []
+          },
+          "status": "fallback",
+          "note": "error: gave up after 4 attempts: gemini-3.8-flash HTTP 429: You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usa",
+          "call_id": "9c520dc035d04510a8528e080017ee8e",
+          "checks": {
+            "passed": true,
+            "issues": [],
+            "metrics": {
+              "cves_mentioned": 0,
+              "cves_grounded": 0,
+              "why_now_points": 3,
+              "why_now_supported": 3,
+              "email_words": 93
+            }
+          }
+        },
+        {
+          "id": "castle-it.net",
+          "pred": {
+            "summary": "castle-it.net: 3 internet-facing IPs; need 86/100. Top issue: 1 asset flagged by the scanner with indicators of compromise.",
+            "why_now": [
+              {
+                "point": "1 asset flagged by the scanner with indicators of compromise",
+                "evidence": [
+                  "E1",
+                  "E2"
+                ]
+              },
+              {
+                "point": "1 database reachable from the internet without authentication",
+                "evidence": [
+                  "E1",
+                  "E2"
+                ]
+              },
+              {
+                "point": "1 asset running end-of-life software that no longer receives security patches",
+                "evidence": [
+                  "E1",
+                  "E2"
+                ]
+              }
+            ],
+            "talk_track": [
+              "Open with the specific finding, not the product.",
+              "Position as an outside-in view they may not have; offer the full findings list.",
+              "Ask who owns external exposure / patching today."
+            ],
+            "email": {
+              "subject": "External exposure findings for castle-it.net",
+              "body": "Hi {first_name},\n\nOur external attack-surface monitoring picked up a few internet-facing findings for castle-it.net that teams usually want to know about early:\n\n- 1 asset flagged by the scanner with indicators of compromise\n- 1 database reachable from the internet without authentication\n- 1 asset running end-of-life software that no longer receives security patches\n\nThese come from public scan data, so they may already be on your radar. If useful, I can share the full list with remediation priorities. No strings attached.\n\nWould a 15-minute call next week be worthwhile?\n\nBest,\n{sender_name}"
+            },
+            "cited_cves": []
+          },
+          "status": "fallback",
+          "note": "error: gave up after 4 attempts: gemini-3.8-flash HTTP 429: You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usa",
+          "call_id": "a436a99ab45f40d0bab764876e47f5c8",
+          "checks": {
+            "passed": true,
+            "issues": [],
+            "metrics": {
+              "cves_mentioned": 0,
+              "cves_grounded": 0,
+              "why_now_points": 3,
+              "why_now_supported": 3,
+              "email_words": 92
+            }
+          }
+        },
+        {
+          "id": "cycu.edu.tw",
+          "pred": {
+            "summary": "cycu.edu.tw: 24 internet-facing IPs; need 88/100. Top issue: 1 asset running software with vulnerabilities on CISA's Known Exploited list.",
+            "why_now": [
+              {
+                "point": "1 asset running software with vulnerabilities on CISA's Known Exploited list",
+                "evidence": [
+                  "E1"
+                ]
+              },
+              {
+                "point": "1 industrial-control system interface exposed to the internet",
+                "evidence": [
+                  "E2"
+                ]
+              },
+              {
+                "point": "1 asset with vulnerabilities rated likely to be exploited (EPSS >= 10%)",
+                "evidence": [
+                  "E3"
+                ]
+              }
+            ],
+            "talk_track": [
+              "Open with the specific finding, not the product.",
+              "Position as an outside-in view they may not have; offer the full findings list.",
+              "Ask who owns external exposure / patching today."
+            ],
+            "email": {
+              "subject": "External exposure findings for cycu.edu.tw",
+              "body": "Hi {first_name},\n\nOur external attack-surface monitoring picked up a few internet-facing findings for cycu.edu.tw that teams usually want to know about early:\n\n- 1 asset running software with vulnerabilities on CISA's Known Exploited list\n- 1 industrial-control system interface exposed to the internet\n- 1 asset with vulnerabilities rated likely to be exploited (EPSS >= 10%)\n\nThese come from public scan data, so they may already be on your radar. If useful, I can share the full list with remediation priorities. No strings attached.\n\nWould a 15-minute call next week be worthwhile?\n\nBest,\n{sender_name}"
+            },
+            "cited_cves": []
+          },
+          "status": "fallback",
+          "note": "error: gave up after 4 attempts: gemini-3.8-flash HTTP 429: You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usa",
+          "call_id": "a5d96bbe35b94eeba311db979ad9fbed",
+          "checks": {
+            "passed": true,
+            "issues": [],
+            "metrics": {
+              "cves_mentioned": 0,
+              "cves_grounded": 0,
+              "why_now_points": 3,
+              "why_now_supported": 3,
+              "email_words": 94
+            }
+          }
+        },
+        {
+          "id": "crazroid.com",
+          "pred": {
+            "summary": "crazroid.com: 3 internet-facing IPs; need 89/100. Top issue: 3 assets flagged by the scanner with indicators of compromise.",
+            "why_now": [
+              {
+                "point": "3 assets flagged by the scanner with indicators of compromise",
+                "evidence": [
+                  "E1",
+                  "E2",
+                  "E3"
+                ]
+              },
+              {
+                "point": "3 assets with vulnerabilities rated likely to be exploited (EPSS >= 10%)",
+                "evidence": [
+                  "E1",
+                  "E2",
+                  "E3"
+                ]
+              },
+              {
+                "point": "3 services still accepting outdated encryption (SSLv3/TLS 1.0)",
+                "evidence": [
+                  "E1",
+                  "E2",
+                  "E3"
+                ]
+              }
+            ],
+            "talk_track": [
+              "Open with the specific finding, not the product.",
+              "Position as an outside-in view they may not have; offer the full findings list.",
+              "Ask who owns external exposure / patching today."
+            ],
+            "email": {
+              "subject": "External exposure findings for crazroid.com",
+              "body": "Hi {first_name},\n\nOur external attack-surface monitoring picked up a few internet-facing findings for crazroid.com that teams usually want to know about early:\n\n- 3 assets flagged by the scanner with indicators of compromise\n- 3 assets with vulnerabilities rated likely to be exploited (EPSS >= 10%)\n- 3 services still accepting outdated encryption (SSLv3/TLS 1.0)\n\nThese come from public scan data, so they may already be on your radar. If useful, I can share the full list with remediation priorities. No strings attached.\n\nWould a 15-minute call next week be worthwhile?\n\nBest,\n{sender_name}"
+            },
+            "cited_cves": []
+          },
+          "status": "fallback",
+          "note": "error: gave up after 4 attempts: gemini-3.8-flash HTTP 429: You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usa",
+          "call_id": "0d46a74dae194193b3bfdde1049470c4",
+          "checks": {
+            "passed": true,
+            "issues": [],
+            "metrics": {
+              "cves_mentioned": 0,
+              "cves_grounded": 0,
+              "why_now_points": 3,
+              "why_now_supported": 3,
+              "email_words": 93
+            }
+          }
+        },
+        {
+          "id": "privatelayer.com",
+          "pred": {
+            "summary": "privatelayer.com: 37 internet-facing IPs; need 94/100. Top issue: 3 assets running software with vulnerabilities on CISA's Known Exploited list.",
+            "why_now": [
+              {
+                "point": "3 assets running software with vulnerabilities on CISA's Known Exploited list",
+                "evidence": [
+                  "E1",
+                  "E2",
+                  "E3"
+                ]
+              },
+              {
+                "point": "2 assets with vulnerabilities rated likely to be exploited (EPSS >= 10%)",
+                "evidence": [
+                  "E4",
+                  "E5"
+                ]
+              },
+              {
+                "point": "1 remote-access service (RDP/SMB/Telnet/VNC) open to the internet",
+                "evidence": [
+                  "E6"
+                ]
+              }
+            ],
+            "talk_track": [
+              "Open with the specific finding, not the product.",
+              "Position as an outside-in view they may not have; offer the full findings list.",
+              "Ask who owns external exposure / patching today."
+            ],
+            "email": {
+              "subject": "External exposure findings for privatelayer.com",
+              "body": "Hi {first_name},\n\nOur external attack-surface monitoring picked up a few internet-facing findings for privatelayer.com that teams usually want to know about early:\n\n- 3 assets running software with vulnerabilities on CISA's Known Exploited list\n- 2 assets with vulnerabilities rated likely to be exploited (EPSS >= 10%)\n- 1 remote-access service (RDP/SMB/Telnet/VNC) open to the internet\n\nThese come from public scan data, so they may already be on your radar. If useful, I can share the full list with remediation priorities. No strings attached.\n\nWould a 15-minute call next week be worthwhile?\n\nBest,\n{sender_name}"
+            },
+            "cited_cves": []
+          },
+          "status": "fallback",
+          "note": "error: gave up after 4 attempts: gemini-3.8-flash HTTP 429: You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usa",
+          "call_id": "4630ba245b1543a8a4409c3c36ce8c0a",
+          "checks": {
+            "passed": true,
+            "issues": [],
+            "metrics": {
+              "cves_mentioned": 0,
+              "cves_grounded": 0,
+              "why_now_points": 3,
+              "why_now_supported": 3,
+              "email_words": 94
+            }
+          }
+        },
+        {
+          "id": "ibero.mx",
+          "pred": {
+            "summary": "ibero.mx: 36 internet-facing IPs; need 93/100. Top issue: 9 assets running software with vulnerabilities on CISA's Known Exploited list.",
+            "why_now": [
+              {
+                "point": "9 assets running software with vulnerabilities on CISA's Known Exploited list",
+                "evidence": [
+                  "E1",
+                  "E2",
+                  "E3"
+                ]
+              },
+              {
+                "point": "2 assets with vulnerabilities rated likely to be exploited (EPSS >= 10%)",
+                "evidence": [
+                  "E12"
+                ]
+              },
+              {
+                "point": "6 assets running end-of-life software that no longer receives security patches",
+                "evidence": [
+                  "E2",
+                  "E3",
+                  "E4"
+                ]
+              }
+            ],
+            "talk_track": [
+              "Open with the specific finding, not the product.",
+              "Position as an outside-in view they may not have; offer the full findings list.",
+              "Ask who owns external exposure / patching today."
+            ],
+            "email": {
+              "subject": "External exposure findings for ibero.mx",
+              "body": "Hi {first_name},\n\nOur external attack-surface monitoring picked up a few internet-facing findings for ibero.mx that teams usually want to know about early:\n\n- 9 assets running software with vulnerabilities on CISA's Known Exploited list\n- 2 assets with vulnerabilities rated likely to be exploited (EPSS >= 10%)\n- 6 assets running end-of-life software that no longer receives security patches\n\nThese come from public scan data, so they may already be on your radar. If useful, I can share the full list with remediation priorities. No strings attached.\n\nWould a 15-minute call next week be worthwhile?\n\nBest,\n{sender_name}"
+            },
+            "cited_cves": []
+          },
+          "status": "fallback",
+          "note": "error: gave up after 4 attempts: gemini-3.8-flash HTTP 429: You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usa",
+          "call_id": "32e5e34395604be3aa79d41af4daeffc",
+          "checks": {
+            "passed": true,
+            "issues": [],
+            "metrics": {
+              "cves_mentioned": 0,
+              "cves_grounded": 0,
+              "why_now_points": 3,
+              "why_now_supported": 3,
+              "email_words": 97
+            }
+          }
+        },
+        {
+          "id": "semantia.com.au",
+          "pred": {
+            "summary": "semantia.com.au: 10 internet-facing IPs; need 94/100. Top issue: 6 assets running software with vulnerabilities on CISA's Known Exploited list.",
+            "why_now": [
+              {
+                "point": "6 assets running software with vulnerabilities on CISA's Known Exploited list",
+                "evidence": [
+                  "E1",
+                  "E2",
+                  "E3"
+                ]
+              },
+              {
+                "point": "2 assets with vulnerabilities rated likely to be exploited (EPSS >= 10%)",
+                "evidence": [
+                  "E7",
+                  "E8"
+                ]
+              },
+              {
+                "point": "4 assets running end-of-life software that no longer receives security patches",
+                "evidence": [
+                  "E1",
+                  "E2",
+                  "E3"
+                ]
+              }
+            ],
+            "talk_track": [
+              "Open with the specific finding, not the product.",
+              "Position as an outside-in view they may not have; offer the full findings list.",
+              "Ask who owns external exposure / patching today."
+            ],
+            "email": {
+              "subject": "External exposure findings for semantia.com.au",
+              "body": "Hi {first_name},\n\nOur external attack-surface monitoring picked up a few internet-facing findings for semantia.com.au that teams usually want to know about early:\n\n- 6 assets running software with vulnerabilities on CISA's Known Exploited list\n- 2 assets with vulnerabilities rated likely to be exploited (EPSS >= 10%)\n- 4 assets running end-of-life software that no longer receives security patches\n\nThese come from public scan data, so they may already be on your radar. If useful, I can share the full list with remediation priorities. No strings attached.\n\nWould a 15-minute call next week be worthwhile?\n\nBest,\n{sender_name}"
+            },
+            "cited_cves": []
+          },
+          "status": "fallback",
+          "note": "error: gave up after 4 attempts: gemini-3.8-flash HTTP 429: You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usa",
+          "call_id": "3e43c5147b9a41fdbb446cbf65c6a80b",
+          "checks": {
+            "passed": true,
+            "issues": [],
+            "metrics": {
+              "cves_mentioned": 0,
+              "cves_grounded": 0,
+              "why_now_points": 3,
+              "why_now_supported": 3,
+              "email_words": 97
+            }
+          }
+        },
+        {
+          "id": "utoronto.ca",
+          "pred": {
+            "summary": "utoronto.ca: 44 internet-facing IPs; need 93/100. Top issue: 6 assets running software with vulnerabilities on CISA's Known Exploited list.",
+            "why_now": [
+              {
+                "point": "6 assets running software with vulnerabilities on CISA's Known Exploited list",
+                "evidence": [
+                  "E1",
+                  "E2",
+                  "E3"
+                ]
+              },
+              {
+                "point": "7 assets with vulnerabilities rated likely to be exploited (EPSS >= 10%)",
+                "evidence": [
+                  "E7",
+                  "E8",
+                  "E9"
+                ]
+              },
+              {
+                "point": "3 assets running end-of-life software that no longer receives security patches",
+                "evidence": [
+                  "E11"
+                ]
+              }
+            ],
+            "talk_track": [
+              "Open with the specific finding, not the product.",
+              "Position as an outside-in view they may not have; offer the full findings list.",
+              "Ask who owns external exposure / patching today."
+            ],
+            "email": {
+              "subject": "External exposure findings for utoronto.ca",
+              "body": "Hi {first_name},\n\nOur external attack-surface monitoring picked up a few internet-facing findings for utoronto.ca that teams usually want to know about early:\n\n- 6 assets running software with vulnerabilities on CISA's Known Exploited list\n- 7 assets with vulnerabilities rated likely to be exploited (EPSS >= 10%)\n- 3 assets running end-of-life software that no longer receives security patches\n\nThese come from public scan data, so they may already be on your radar. If useful, I can share the full list with remediation priorities. No strings attached.\n\nWould a 15-minute call next week be worthwhile?\n\nBest,\n{sender_name}"
+            },
+            "cited_cves": []
+          },
+          "status": "fallback",
+          "note": "error: gave up after 4 attempts: gemini-3.8-flash HTTP 429: You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usa",
+          "call_id": "08e6a2167e5d476eb5e800532f718f2c",
+          "checks": {
+            "passed": true,
+            "issues": [],
+            "metrics": {
+              "cves_mentioned": 0,
+              "cves_grounded": 0,
+              "why_now_points": 3,
+              "why_now_supported": 3,
+              "email_words": 97
+            }
+          }
+        },
+        {
+          "id": "unam.mx",
+          "pred": {
+            "summary": "unam.mx: 99 internet-facing IPs; need 99/100. Top issue: 29 assets running software with vulnerabilities on CISA's Known Exploited list.",
+            "why_now": [
+              {
+                "point": "29 assets running software with vulnerabilities on CISA's Known Exploited list",
+                "evidence": [
+                  "E1",
+                  "E2",
+                  "E3"
+                ]
+              },
+              {
+                "point": "21 assets with vulnerabilities rated likely to be exploited (EPSS >= 10%)",
+                "evidence": [
+                  "E10"
+                ]
+              },
+              {
+                "point": "18 assets running end-of-life software that no longer receives security patches",
+                "evidence": [
+                  "E1",
+                  "E2",
+                  "E3"
+                ]
+              }
+            ],
+            "talk_track": [
+              "Open with the specific finding, not the product.",
+              "Position as an outside-in view they may not have; offer the full findings list.",
+              "Ask who owns external exposure / patching today."
+            ],
+            "email": {
+              "subject": "External exposure findings for unam.mx",
+              "body": "Hi {first_name},\n\nOur external attack-surface monitoring picked up a few internet-facing findings for unam.mx that teams usually want to know about early:\n\n- 29 assets running software with vulnerabilities on CISA's Known Exploited list\n- 21 assets with vulnerabilities rated likely to be exploited (EPSS >= 10%)\n- 18 assets running end-of-life software that no longer receives security patches\n\nThese come from public scan data, so they may already be on your radar. If useful, I can share the full list with remediation priorities. No strings attached.\n\nWould a 15-minute call next week be worthwhile?\n\nBest,\n{sender_name}"
+            },
+            "cited_cves": []
+          },
+          "status": "fallback",
+          "note": "error: gave up after 4 attempts: gemini-3.8-flash HTTP 429: You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usa",
+          "call_id": "90af13967ef84625a99755a03727f14f",
+          "checks": {
+            "passed": true,
+            "issues": [],
+            "metrics": {
+              "cves_mentioned": 0,
+              "cves_grounded": 0,
+              "why_now_points": 3,
+              "why_now_supported": 3,
+              "email_words": 97
+            }
+          }
+        }
+      ]
+    }
+  },
+  "summaries": [
+    {
+      "feature": "outreach-draft",
+      "version": "baseline",
+      "run_id": "20261012T181258Z-86f3e2",
+      "status": "ran",
+      "n": 9,
+      "headline": {
+        "guardrail_pass": 1.0,
+        "cve_grounding": 1.0,
+        "supported_points": 1.0,
+        "avg_words": 94.9,
+        "fallback_rate": 0.0
+      },
+      "ops": {
+        "model": "template-v0",
+        "provider": "offline",
+        "models_used": {
+          "template-v0": 9
+        },
+        "total_cost_usd": 0.0,
+        "cost_per_example_usd": 0.0,
+        "latency_p50_ms": 0,
+        "latency_p95_ms": 0,
+        "statuses": {
+          "ok": 9
+        }
+      },
+      "previous": {
+        "guardrail_pass": 1.0,
+        "cve_grounding": 1.0,
+        "supported_points": 1.0,
+        "avg_words": 94.9
+      },
+      "ts": "2026-10-12T18:12:58+00:00"
+    },
+    {
+      "feature": "outreach-draft",
+      "version": "v1",
+      "run_id": "20261012T181258Z-86f3e2",
+      "status": "ran",
+      "n": 9,
+      "headline": {
+        "guardrail_pass": 0.889,
+        "cve_grounding": 1.0,
+        "supported_points": 1.0,
+        "avg_words": 98.4,
+        "fallback_rate": 0.333
+      },
+      "ops": {
+        "model": "gemini-3-flash-preview",
+        "provider": "gemini",
+        "models_used": {
+          "gemini-3-flash-preview": 6,
+          "template-v0": 3
+        },
+        "total_cost_usd": 0.0,
+        "cost_per_example_usd": 0.0,
+        "latency_p50_ms": 20353,
+        "latency_p95_ms": 83886,
+        "statuses": {
+          "ok": 6,
+          "fallback": 3
+        }
+      },
+      "previous": {
+        "guardrail_pass": 0.667,
+        "cve_grounding": 1.0,
+        "supported_points": 1.0,
+        "avg_words": 98.2
+      },
+      "ts": "2026-10-12T18:19:22+00:00"
+    },
+    {
+      "feature": "outreach-draft",
+      "version": "v2",
+      "run_id": "20261012T181258Z-86f3e2",
+      "status": "ran",
+      "n": 9,
+      "headline": {
+        "guardrail_pass": 1.0,
+        "cve_grounding": 1.0,
+        "supported_points": 1.0,
+        "avg_words": 94.9,
+        "fallback_rate": 1.0
+      },
+      "ops": {
+        "model": "template-v0",
+        "provider": "gemini",
+        "models_used": {
+          "template-v0": 9
+        },
+        "total_cost_usd": 0.0,
+        "cost_per_example_usd": 0.0,
+        "latency_p50_ms": 0,
+        "latency_p95_ms": 0,
+        "statuses": {
+          "fallback": 9
+        }
+      },
+      "previous": {
+        "guardrail_pass": 1.0,
+        "cve_grounding": 1.0,
+        "supported_points": 1.0,
+        "avg_words": 98.6
+      },
+      "ts": "2026-10-12T18:24:24+00:00"
+    }
+  ]
+}

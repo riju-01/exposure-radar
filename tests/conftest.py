@@ -69,6 +69,7 @@ def app_db(tmp_path, monkeypatch):
     monkeypatch.setattr(config, "TRACES_DB", tmp_path / "traces.sqlite")
     monkeypatch.setattr(config, "TRACES_JSONL", tmp_path / "traces.jsonl")
     monkeypatch.setattr(config, "ANTHROPIC_API_KEY", None)
+    monkeypatch.setattr(config, "GEMINI_API_KEY", None)  # tests never hit a real model
     import salesintel.llm.tracing as tracing
     monkeypatch.setattr(tracing, "_default", None)
 

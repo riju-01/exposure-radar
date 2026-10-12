@@ -40,12 +40,16 @@ python -m evals.run
 ```
 Run every command from the repo root.
 
-**LLM mode.** Without `ANTHROPIC_API_KEY` the app runs in *offline* mode: AI features return clearly labelled
-rule/template fallbacks, and evals run the baselines only. Set the key to go live:
-```bash
-set ANTHROPIC_API_KEY=sk-ant-...            # PowerShell: $env:ANTHROPIC_API_KEY="sk-ant-..."
-set SI_LLM_DAILY_BUDGET_USD=2               # hard daily cap for app traffic (default 2)
-```
+**LLM mode.** Copy `.env.example` to `.env` and add a key. The app picks a provider automatically:
+
+| Key in `.env` | Provider | Models |
+|---|---|---|
+| `ANTHROPIC_API_KEY` | Claude (production design target) | Haiku 5.5 (classify) · Sonnet 5.5 (outreach) |
+| `GEMINI_API_KEY` | Gemini free tier (how the evals were measured) | gemini-3.5-flash-lite (classify) · gemini-3.8-flash → 3.6-flash → 3-flash-preview (outreach) |
+| none | offline | clearly labelled rule/template fallbacks |
+
+Prompts declare a Claude tier (cheap/strong); on Gemini each tier maps to the models above. Every call,
+whichever provider, goes through the same runner: tracing, daily budget, schema validation, guardrails, fallbacks.
 
 ## Repository map
 ```

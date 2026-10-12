@@ -20,7 +20,7 @@ from salesintel import config
 from salesintel.llm import registry
 from salesintel.llm.context import AccountContext
 from salesintel.llm.pricing import cost_usd
-from salesintel.llm.providers import AnthropicProvider, OfflineProvider, ProviderError, default_provider
+from salesintel.llm.providers import OfflineProvider, ProviderError, default_provider
 from salesintel.llm.schemas import validate
 from salesintel.llm.tracing import TraceRecord, Tracer, default_tracer
 
@@ -93,7 +93,7 @@ def run_feature(feature: str, ctx: AccountContext, variables: dict[str, str] | N
     account_id = ctx.account.get("id")
     note = None
 
-    if isinstance(provider, AnthropicProvider) and env == "app" \
+    if provider.name != "offline" and env == "app" \
             and tracer.spend_today("app") >= config.LLM_DAILY_BUDGET_USD:
         tracer.log(TraceRecord(env=env, run_id=run_id, feature=feature, prompt_version=prompt.version,
                                prompt_sha=prompt.sha, provider=provider.name, model=prompt.model,

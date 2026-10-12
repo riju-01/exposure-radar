@@ -37,7 +37,7 @@ seconds without re-reading the raw dump (`--from resolve|features|score`).
 | Records with ≥1 CVE / on CISA KEV | 148,312 / 70,299 |
 | Honeypots (excluded) | 60,080 |
 | Accounts resolved / with ≥1 signal | 299,114 / 96,098 |
-| Tiers among prospects | A 1,480 · B 12,069 · C 81,656 |
+| Tiers among prospects | A 1,480 · B 12,069 · C 81,656 (rules); A 1,309 after the AI check removed 171 non-buyers from the top 300 |
 
 ## 3. Entity resolution (record → account): the hardest problem
 **Finding:** neither `org` nor `domains` identifies the customer for most records. `org` is usually the
@@ -114,6 +114,14 @@ explainable ("why is this an A?"), stable between runs, auditable across territo
   from the prompt's front matter. Outreach requests opt into the server-side refusal fallback
   (`fallbacks: "default"`) because security content can trip the cyber safety classifier. API errors are
   caught as a typed chain (rate limit / auth / 4xx / 5xx / connection). `OfflineProvider` runs the rules.
+  `GeminiProvider` exists because no paid Claude key was available during the build: the evals were
+  measured on Google's free tier. Prompts keep their Claude tier and the provider maps it (cheap →
+  `gemini-3.5-flash-lite`, strong → `gemini-3.8-flash` with `3.6-flash` / `3-flash-preview` as an
+  overload fallback chain), using `responseJsonSchema` for the same schema-enforced output. Free-tier
+  handling lives inside the provider: ~4 s minimum spacing between calls, backoff on 429/5xx, and model
+  rotation on 503 "high demand". Selection is automatic (`SI_LLM_PROVIDER=auto`: Anthropic key, else Gemini
+  key, else offline). Free-tier calls are traced with their real token counts and `cost_usd = 0` (nothing is
+  billed); the cost model in §8 stays priced on Claude, the production target.
 - **Prompt registry** (`registry.py`, `prompts/`): `prompts/<feature>/<version>.md` with YAML front matter
   (model, schema, max_tokens, effort, changelog) and `# system` / `# user` sections. `registry.yaml` names
   the **active** version (served) and the **candidate** (evaluated against it). The prompt SHA-256 is
@@ -152,11 +160,30 @@ recent calls, latest eval results.
   difficulty, consistency violations, cost/example, p50/p95 latency. Outreach → guardrail pass rate,
   CVE grounding rate, supported-point rate, email length.
 
-**Current measured result (no API key available during the build):** rules baseline: prospect precision
-**0.56**, recall **0.93**, F1 **0.70**, entity-type accuracy 0.43, industry accuracy 0.53, and 0.3 accuracy on
-hard cases. The baseline is high-recall and low-precision: it lets almost every ISP and hosting company
-through. That is the bar prompt v1/v2 must clear. With `ANTHROPIC_API_KEY` set, the same command produces the
-v1-vs-v2 numbers.
+**Measured results (Gemini free tier; details and both runs in `evals/README.md`):**
+
+| account-classify (30 ex.) | precision | recall | F1 | hard-case acc |
+|---|---|---|---|---|
+| rules baseline | 0.56 | 0.93 | 0.70 | 0.3 |
+| v1 | 0.63–0.71 | 1.00 | 0.77–0.83 | 0.5 |
+| **v2 (active)** | **0.94–1.00** | **1.00** | **0.97–1.00** | **1.0** |
+
+| outreach-draft (9 ex.) | guardrail pass | CVE grounding | supported points |
+|---|---|---|---|
+| v1 | 0.67 | 1.00 | 1.00 |
+| **v2 (active)** | **1.00** | 1.00 | 1.00 |
+
+**Product impact.** Running v2 over the top 300 A-tier accounts (`python -m salesintel.cli classify-batch
+--tier A --limit 300`, 300/300 live calls, no fallbacks) removed **171 (57%)** as non-buyers: 126 hosting
+providers, 26 ISPs, 12 individuals/hobby sites, 5 platforms. Rules alone would have sent reps to them first.
+The remaining 1,180 A-tier accounts are still rule-classified, the next batch to run.
+
+The rules baseline is high-recall, low-precision: it lets almost every ISP and hosting company through.
+v1 fixes recall but keeps marking ISPs as prospects (it never defines "prospect"); v2's decision procedure
+fixes that. v2 was promoted on these numbers (`prompts/registry.yaml`). Two process lessons the harness caught:
+**fallback rows contaminate metrics** (a second run hit the free-tier daily quota and 9/9 v2 drafts silently
+became the template, so `fallback_rate` is now part of every headline), and **runs vary** (v2 precision 0.94
+vs 1.00 across identical runs), so the docs report both runs.
 
 ## 8. Cost model (`salesintel/llm/cost_model.py`, also live on `/ops`)
 Token sizes were measured by rendering the real prompts for 20 A-tier accounts (classify v2 ≈ 920 input
@@ -173,8 +200,8 @@ Sonnet 5.5 $2/$10, Opus 5.5 $4/$20 per MTok. After live calls, measured averages
 
 Math for one on-demand draft: (1,100 × $2 + 1,500 × $10) / 1M = $0.0172.
 
-**Model choice per task:** classification on Sonnet would be 20× the cost (~$31/mo backfill) for a narrow enum
-task that the eval should show Haiku handles. Outreach on Opus would be ~$216/mo (2×) for a 120-word email.
+**Model choice per task:** classification on Sonnet would be 20× the cost (~$26/mo backfill) for a narrow enum
+task that the eval should show Haiku handles. Outreach on Opus would be ~$189/mo (2×) for a 120-word email.
 Outreach on Haiku would be ~$5/mo, so if a future eval shows Haiku drafts pass the guardrails and the human
 rubric, that's the next cost lever. Caching: drafts are cached per account and prompt version, and only regenerate on request.
 

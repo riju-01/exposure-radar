@@ -8,3 +8,4 @@ traces/*.jsonl
 traces/*.sqlite
 **/__pycache__
 .git
+.env

@@ -20,7 +20,7 @@ from fastapi.staticfiles import StaticFiles
 from salesintel import config, db, services
 from salesintel.api.queries import AccountFilter, account_detail, export_rows, facets, list_accounts
 from salesintel.llm import cost_model, registry
-from salesintel.llm.providers import live_available
+from salesintel.llm.providers import active_provider_name, live_available
 from salesintel.llm.tracing import default_tracer
 
 _con: sqlite3.Connection | None = None
@@ -85,7 +85,7 @@ def meta(con=Depends(get_con)):
     return {
         "dataset": db.get_meta(con, "dataset"), "build": db.get_meta(con, "build"),
         "resolution": db.get_meta(con, "resolution"), "facets": cached_facets(con),
-        "llm": {"mode": "live" if live_available() else "offline",
+        "llm": {"mode": "live" if live_available() else "offline", "provider": active_provider_name(),
                 "prompts": {f: registry.active_version(f) for f in registry.features()},
                 "daily_budget_usd": config.LLM_DAILY_BUDGET_USD,
                 "spent_today_usd": round(default_tracer().spend_today("app"), 4)},
@@ -175,11 +175,12 @@ def ops():
                   round(avg(latency_ms)) avg_latency_ms
            from llm_calls where ts >= ? group by 1,2,3,4,5,6 order by calls desc""", (since,))
     lat = [r["latency_ms"] for r in t.query(
-        "select latency_ms from llm_calls where provider = 'anthropic' and latency_ms is not null and ts >= ?", (since,))]
+        "select latency_ms from llm_calls where provider <> 'offline' and latency_ms is not null and ts >= ?", (since,))]
     recent = t.query(
         """select call_id, ts, env, feature, prompt_version, provider, model, account_id, status, decision,
                   input_tokens, output_tokens, latency_ms, cost_usd, error
            from llm_calls order by ts desc limit 50""")
+    # The cost model is priced in Claude tokens; other providers' tokenizers aren't comparable.
     measured = {}
     for r in t.query("""select feature, avg(input_tokens) i, avg(output_tokens) o from llm_calls
                         where provider = 'anthropic' and status = 'ok' group by feature"""):
@@ -191,6 +192,7 @@ def ops():
             evals[f] = json.loads(p.read_text(encoding="utf-8"))["summaries"]
     return {
         "llm_mode": "live" if live_available() else "offline",
+        "llm_provider": active_provider_name(),
         "budget": {"daily_usd": config.LLM_DAILY_BUDGET_USD, "spent_today_usd": round(t.spend_today("app"), 4)},
         "usage_30d": by_feature,
         "latency_ms": {"p50": _percentile(lat, 0.5), "p95": _percentile(lat, 0.95),

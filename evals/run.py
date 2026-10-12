@@ -29,7 +29,7 @@ from salesintel.llm import registry
 from salesintel.llm.context import AccountContext
 from salesintel.llm.grounding import check_outreach
 from salesintel.llm.offline import OFFLINE
-from salesintel.llm.providers import AnthropicProvider, OfflineProvider, live_available
+from salesintel.llm.providers import OfflineProvider, active_provider_name, default_provider, live_available
 from salesintel.llm.runner import run_feature
 from salesintel.llm.schemas import PROSPECT_ENTITY_TYPES
 
@@ -100,26 +100,30 @@ SCORERS = {"account-classify": score_classify, "outreach-draft": score_outreach}
 # --------------------------------------------------------------------------- running
 def run_version(feature: str, version: str, dataset: list[dict], run_id: str) -> dict:
     is_baseline = version == BASELINE
-    provider = OfflineProvider() if is_baseline else AnthropicProvider()
+    provider = OfflineProvider() if is_baseline else default_provider()
     prompt_version = registry.active_version(feature) if is_baseline else version
-    rows, costs, latencies, statuses = [], [], [], {}
+    rows, costs, latencies, statuses, models = [], [], [], {}, {}
     for ex in dataset:
         ctx = AccountContext.from_dict(ex["context"])
         res = run_feature(feature, ctx, version=prompt_version, provider=provider, env="eval", run_id=run_id)
         statuses[res.status] = statuses.get(res.status, 0) + 1
         costs.append(res.cost_usd)
         latencies.append(res.latency_ms)
+        models[res.model] = models.get(res.model, 0) + 1
         row = {"id": ex["id"], "pred": res.output, "status": res.status, "note": res.note, "call_id": res.call_id}
         if feature == "account-classify":
             row.update(gold=ex["gold"], difficulty=ex["difficulty"])
         else:
             row["checks"] = check_outreach(res.output, ctx)
         rows.append(row)
-        print(f"  {version:<9} {ex['id'][:40]:<40} {res.status}", flush=True)
+        print(f"  {version:<9} {ex['id'][:40]:<40} {res.status:<9} {res.model}", flush=True)
     metrics = SCORERS[feature](rows)
     lat = sorted(latencies)
     metrics["ops"] = {
-        "model": OFFLINE[feature][0] if is_baseline else registry.load(feature, version).model,
+        # the model that actually answered most rows (fallback rows show up as rules-v0/template-v0)
+        "model": OFFLINE[feature][0] if is_baseline else max(models, key=models.get),
+        "provider": "offline" if is_baseline else provider.name,
+        "models_used": models,
         "total_cost_usd": round(sum(costs), 5), "cost_per_example_usd": round(sum(costs) / len(costs), 6),
         "latency_p50_ms": lat[len(lat) // 2], "latency_p95_ms": lat[min(len(lat) - 1, int(len(lat) * 0.95))],
         "statuses": statuses,
@@ -128,12 +132,18 @@ def run_version(feature: str, version: str, dataset: list[dict], run_id: str) ->
 
 
 def _headline(feature: str, metrics: dict) -> dict:
+    # Rows that fell back (provider overloaded / invalid output) were answered by the offline
+    # rules/template, not the prompt under test, so the fallback rate is part of every headline.
+    st = metrics["ops"]["statuses"]
+    fallback_rate = round(st.get("fallback", 0) / max(1, sum(st.values())), 3)
     if feature == "account-classify":
         p = metrics["prospect"]
         return {"prospect_precision": p["precision"], "prospect_recall": p["recall"], "prospect_f1": p["f1"],
-                "entity_type_acc": metrics["entity_type_accuracy"], "industry_acc": metrics["industry_accuracy"]}
+                "entity_type_acc": metrics["entity_type_accuracy"], "industry_acc": metrics["industry_accuracy"],
+                "fallback_rate": fallback_rate}
     return {"guardrail_pass": metrics["guardrail_pass_rate"], "cve_grounding": metrics["cve_grounding_rate"],
-            "supported_points": metrics["supported_point_rate"], "avg_words": metrics["avg_email_words"]}
+            "supported_points": metrics["supported_point_rate"], "avg_words": metrics["avg_email_words"],
+            "fallback_rate": fallback_rate}
 
 
 def _previous(feature: str, version: str) -> dict | None:
@@ -156,8 +166,8 @@ def evaluate(feature: str, versions: list[str], limit: int | None) -> dict:
         prev = _previous(feature, v)
         if v != BASELINE and not live_available():
             summaries.append({"feature": feature, "version": v, "run_id": run_id, "status": "skipped",
-                              "reason": "ANTHROPIC_API_KEY not set", "previous": prev and prev["headline"]})
-            print(f"  {v:<9} skipped (ANTHROPIC_API_KEY not set)")
+                              "reason": "no LLM API key set (ANTHROPIC_API_KEY or GEMINI_API_KEY)", "previous": prev and prev["headline"]})
+            print(f"  {v:<9} skipped (no LLM API key set)")
             continue
         res = run_version(feature, v, dataset, run_id)
         results[v] = res
@@ -205,6 +215,8 @@ def write_report() -> None:
         active = registry.active_version(feature)
         lines += [f"## {feature}", "", f"Run `{data['run_id']}` · active prompt **{active}** · "
                   f"candidate **{registry._registry()['features'][feature].get('candidate', '–')}**", ""]
+        if data.get("note"):
+            lines += [f"> **Note:** {data['note']}", ""]
         heads = None
         for s in data["summaries"]:
             if s["status"] != "ran":

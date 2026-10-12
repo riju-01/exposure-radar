@@ -16,7 +16,11 @@ output → fix → commit**.
 4. **Measure, then fix.** The eval harness ran against the rules baseline before any prompt was tuned, and
    immediately found a real product bug: some why-now points had no evidence row behind them, because the evidence
    pack was "top 12 by severity". Coverage-first evidence selection took supported points from 89% to 100%.
-5. **Tests pin the behaviour** (51 tests: resolution helpers, scoring invariants, every guardrail, the runner's
+5. **Measure on a real model, then promote.** With a free Gemini key, `python -m evals.run` compared baseline,
+   v1 and v2 on live calls. v2 won (classify precision 0.63 → 0.94, outreach guardrail failures 3 → 0), was promoted
+   in `prompts/registry.yaml` with the numbers in its changelog, and then classified the top 300 A-tier accounts for real:
+   57% turned out to be hosting companies, ISPs or hobby sites, and dropped out of the reps' list.
+6. **Tests pin the behaviour** (54 tests: resolution helpers, scoring invariants, every guardrail, the runner's
    refusal / invalid-JSON / budget paths with a fake provider, API smoke tests on a fixture DB).
 
 Tools: Claude Code for code, data exploration and docs; the in-app browser for checking the UI;
@@ -41,10 +45,13 @@ refusal-fallback parameters (so none of it came from memory).
   Checking them is human work, and the labels are marked unreviewed until that's done.
 
 ## One known weakness to flag to a teammate
-**The LLM numbers don't exist yet.** No API key was available during the build, so the eval harness has
-only been run against the rules/template baselines. The harness, prompts v1/v2, tracing and cost model are
-complete and tested with a fake provider, but whether Haiku actually beats the 0.56-precision rules
-baseline is unmeasured. First job for whoever picks this up: set `ANTHROPIC_API_KEY`, have a second person
-review `evals/labels/account-classify.yaml`, run `python -m evals.run` (~$0.35), and only then promote a prompt.
+**The eval numbers are Gemini numbers on 30 self-drafted labels, not Claude numbers on reviewed labels.**
+No paid Claude key was available, so the prompts were measured on Google's free tier (v2 classify: precision
+0.94–1.00, recall 1.00; v2 outreach: 0 guardrail failures in 8 live drafts). That proves the harness and the
+v1 → v2 improvement, but the production design targets Claude. First jobs for whoever picks this up: have a second person
+review `evals/labels/account-classify.yaml` (labels are marked `reviewed: false`), then set `ANTHROPIC_API_KEY`
+and re-run `python -m evals.run --versions baseline v1 v2` (~$0.35) before trusting the promotion on Claude.
+Free-tier quotas also make Gemini unfit for production traffic: one eval run exhausted the daily quota of
+the writing models, and that run is why `fallback_rate` is now part of every eval headline.
 A close second: entity resolution is heuristic, and roughly half of signal-bearing records can't be attributed
 to any company at all.

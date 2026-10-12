@@ -1,0 +1,2628 @@
+{
+  "run_id": "20261012T175210Z-f2c372",
+  "feature": "account-classify",
+  "versions": [
+    "baseline",
+    "v1",
+    "v2"
+  ],
+  "results": {
+    "baseline": {
+      "version": "baseline",
+      "metrics": {
+        "n": 30,
+        "prospect": {
+          "precision": 0.56,
+          "recall": 0.933,
+          "f1": 0.7,
+          "accuracy": 0.6,
+          "confusion": {
+            "tp": 14,
+            "fp": 11,
+            "fn": 1,
+            "tn": 4
+          }
+        },
+        "entity_type_accuracy": 0.433,
+        "industry_accuracy": 0.533,
+        "consistency_violations": 0,
+        "by_difficulty": {
+          "easy": {
+            "n": 10,
+            "prospect_correct": 9,
+            "accuracy": 0.9
+          },
+          "hard": {
+            "n": 10,
+            "prospect_correct": 3,
+            "accuracy": 0.3
+          },
+          "medium": {
+            "n": 10,
+            "prospect_correct": 6,
+            "accuracy": 0.6
+          }
+        },
+        "errors": [
+          {
+            "id": "pcmonteur.nl",
+            "gold": {
+              "entity_type": "business",
+              "is_prospect": true,
+              "industry": "technology"
+            },
+            "pred": {
+              "entity_type": "business",
+              "is_prospect": true,
+              "industry": "unknown"
+            },
+            "rationale": "keyword rules (matched: no industry keyword)"
+          },
+          {
+            "id": "reyengineers.com",
+            "gold": {
+              "entity_type": "business",
+              "is_prospect": true,
+              "industry": "professional_services"
+            },
+            "pred": {
+              "entity_type": "hosting_provider",
+              "is_prospect": false,
+              "industry": "hosting_telecom"
+            },
+            "rationale": "keyword rules (matched: no industry keyword)"
+          },
+          {
+            "id": "bankruptcyattorneyshingham.com",
+            "gold": {
+              "entity_type": "business",
+              "is_prospect": true,
+              "industry": "professional_services"
+            },
+            "pred": {
+              "entity_type": "business",
+              "is_prospect": true,
+              "industry": "finance"
+            },
+            "rationale": "keyword rules (matched: bank)"
+          },
+          {
+            "id": "zonevs.eu",
+            "gold": {
+              "entity_type": "hosting_provider",
+              "is_prospect": false,
+              "industry": "hosting_telecom"
+            },
+            "pred": {
+              "entity_type": "business",
+              "is_prospect": true,
+              "industry": "unknown"
+            },
+            "rationale": "keyword rules (matched: no industry keyword)"
+          },
+          {
+            "id": "org:ALEXHOST S.R.L.",
+            "gold": {
+              "entity_type": "hosting_provider",
+              "is_prospect": false,
+              "industry": "hosting_telecom"
+            },
+            "pred": {
+              "entity_type": "business",
+              "is_prospect": true,
+              "industry": "unknown"
+            },
+            "rationale": "keyword rules (matched: no industry keyword)"
+          },
+          {
+            "id": "org:Telepoint Ltd",
+            "gold": {
+              "entity_type": "hosting_provider",
+              "is_prospect": false,
+              "industry": "hosting_telecom"
+            },
+            "pred": {
+              "entity_type": "business",
+              "is_prospect": true,
+              "industry": "unknown"
+            },
+            "rationale": "keyword rules (matched: no industry keyword)"
+          },
+          {
+            "id": "vulut.com",
+            "gold": {
+              "entity_type": "hosting_provider",
+              "is_prospect": false,
+              "industry": "hosting_telecom"
+            },
+            "pred": {
+              "entity_type": "business",
+              "is_prospect": true,
+              "industry": "unknown"
+            },
+            "rationale": "keyword rules (matched: no industry keyword)"
+          },
+          {
+            "id": "liquidnetlimited.com",
+            "gold": {
+              "entity_type": "hosting_provider",
+              "is_prospect": false,
+              "industry": "hosting_telecom"
+            },
+            "pred": {
+              "entity_type": "business",
+              "is_prospect": true,
+              "industry": "unknown"
+            },
+            "rationale": "keyword rules (matched: no industry keyword)"
+          },
+          {
+            "id": "org:3nt solutions LLP",
+            "gold": {
+              "entity_type": "hosting_provider",
+              "is_prospect": false,
+              "industry": "hosting_telecom"
+            },
+            "pred": {
+              "entity_type": "business",
+              "is_prospect": true,
+              "industry": "technology"
+            },
+            "rationale": "keyword rules (matched: solutions)"
+          },
+          {
+            "id": "org:PT. Mora Telematika Indonesia",
+            "gold": {
+              "entity_type": "telecom_isp",
+              "is_prospect": false,
+              "industry": "hosting_telecom"
+            },
+            "pred": {
+              "entity_type": "business",
+              "is_prospect": true,
+              "industry": "unknown"
+            },
+            "rationale": "keyword rules (matched: no industry keyword)"
+          },
+          {
+            "id": "org:Logix",
+            "gold": {
+              "entity_type": "telecom_isp",
+              "is_prospect": false,
+              "industry": "hosting_telecom"
+            },
+            "pred": {
+              "entity_type": "business",
+              "is_prospect": true,
+              "industry": "unknown"
+            },
+            "rationale": "keyword rules (matched: no industry keyword)"
+          },
+          {
+            "id": "nowinynet.pl",
+            "gold": {
+              "entity_type": "telecom_isp",
+              "is_prospect": false,
+              "industry": "hosting_telecom"
+            },
+            "pred": {
+              "entity_type": "business",
+              "is_prospect": true,
+              "industry": "unknown"
+            },
+            "rationale": "keyword rules (matched: no industry keyword)"
+          },
+          {
+            "id": "org:SoftBank Corp.",
+            "gold": {
+              "entity_type": "telecom_isp",
+              "is_prospect": false,
+              "industry": "hosting_telecom"
+            },
+            "pred": {
+              "entity_type": "business",
+              "is_prospect": true,
+              "industry": "technology"
+            },
+            "rationale": "keyword rules (matched: Software)"
+          },
+          {
+            "id": "alticeusa.com",
+            "gold": {
+              "entity_type": "telecom_isp",
+              "is_prospect": false,
+              "industry": "hosting_telecom"
+            },
+            "pred": {
+              "entity_type": "business",
+              "is_prospect": true,
+              "industry": "unknown"
+            },
+            "rationale": "keyword rules (matched: no industry keyword)"
+          }
+        ],
+        "ops": {
+          "model": "rules-v0",
+          "provider": "offline",
+          "models_used": {
+            "rules-v0": 30
+          },
+          "total_cost_usd": 0.0,
+          "cost_per_example_usd": 0.0,
+          "latency_p50_ms": 0,
+          "latency_p95_ms": 0,
+          "statuses": {
+            "ok": 30
+          }
+        }
+      },
+      "rows": [
+        {
+          "id": "uni-kl.de",
+          "pred": {
+            "entity_type": "education",
+            "is_prospect": true,
+            "industry": "education",
+            "confidence": "low",
+            "rationale": "keyword rules (matched: Univ)"
+          },
+          "status": "ok",
+          "note": null,
+          "call_id": "17f7f7a31942422a88416cbe343b7a45",
+          "gold": {
+            "entity_type": "education",
+            "is_prospect": true,
+            "industry": "education",
+            "industry_ok": [
+              "education"
+            ]
+          },
+          "difficulty": "easy"
+        },
+        {
+          "id": "mit.edu",
+          "pred": {
+            "entity_type": "education",
+            "is_prospect": true,
+            "industry": "education",
+            "confidence": "low",
+            "rationale": "keyword rules (matched: .edu)"
+          },
+          "status": "ok",
+          "note": null,
+          "call_id": "86eca3a6b3904b1584118623f850c0fa",
+          "gold": {
+            "entity_type": "education",
+            "is_prospect": true,
+            "industry": "education",
+            "industry_ok": [
+              "education"
+            ]
+          },
+          "difficulty": "easy"
+        },
+        {
+          "id": "fuller.edu",
+          "pred": {
+            "entity_type": "education",
+            "is_prospect": true,
+            "industry": "education",
+            "confidence": "low",
+            "rationale": "keyword rules (matched: .edu)"
+          },
+          "status": "ok",
+          "note": null,
+          "call_id": "6f6a354026904256bbfa0d362acfffba",
+          "gold": {
+            "entity_type": "education",
+            "is_prospect": true,
+            "industry": "education",
+            "industry_ok": [
+              "education"
+            ]
+          },
+          "difficulty": "easy"
+        },
+        {
+          "id": "utoronto.ca",
+          "pred": {
+            "entity_type": "education",
+            "is_prospect": true,
+            "industry": "education",
+            "confidence": "low",
+            "rationale": "keyword rules (matched: Univ)"
+          },
+          "status": "ok",
+          "note": null,
+          "call_id": "e82b9d23c5ff4c4bb3c041d85306887e",
+          "gold": {
+            "entity_type": "education",
+            "is_prospect": true,
+            "industry": "education",
+            "industry_ok": [
+              "education"
+            ]
+          },
+          "difficulty": "easy"
+        },
+        {
+          "id": "ohioschoolboards.org",
+          "pred": {
+            "entity_type": "education",
+            "is_prospect": true,
+            "industry": "education",
+            "confidence": "low",
+            "rationale": "keyword rules (matched: school)"
+          },
+          "status": "ok",
+          "note": null,
+          "call_id": "c7a1416505cf4ea283006aec3f890a87",
+          "gold": {
+            "entity_type": "nonprofit",
+            "is_prospect": true,
+            "industry": "nonprofit",
+            "industry_ok": [
+              "nonprofit",
+              "education"
+            ]
+          },
+          "difficulty": "medium"
+        },
+        {
+          "id": "ooda-health.io",
+          "pred": {
+            "entity_type": "healthcare_provider",
+            "is_prospect": true,
+            "industry": "healthcare",
+            "confidence": "low",
+            "rationale": "keyword rules (matched: health)"
+          },
+          "status": "ok",
+          "note": null,
+          "call_id": "c33a27cdd8f74ff1b33b885cc29d9702",
+          "gold": {
+            "entity_type": "business",
+            "is_prospect": true,
+            "industry": "healthcare",
+            "industry_ok": [
+              "healthcare",
+              "technology",
+              "finance"
+            ]
+          },
+          "difficulty": "medium"
+        },
+        {
+          "id": "mwdental.com",
+          "pred": {
+            "entity_type": "healthcare_provider",
+            "is_prospect": true,
+            "industry": "healthcare",
+            "confidence": "low",
+            "rationale": "keyword rules (matched: dental)"
+          },
+          "status": "ok",
+          "note": null,
+          "call_id": "7670ac816ef149628820df9d38ba0dfd",
+          "gold": {
+            "entity_type": "healthcare_provider",
+            "is_prospect": true,
+            "industry": "healthcare",
+            "industry_ok": [
+              "healthcare"
+            ]
+          },
+          "difficulty": "easy"
+        },
+        {
+          "id": "biotechclinical.com",
+          "pred": {
+            "entity_type": "healthcare_provider",
+            "is_prospect": true,
+            "industry": "healthcare",
+            "confidence": "low",
+            "rationale": "keyword rules (matched: biotech)"
+          },
+          "status": "ok",
+          "note": null,
+          "call_id": "47423128adc243a6a002ac3bb5ba8912",
+          "gold": {
+            "entity_type": "healthcare_provider",
+            "is_prospect": true,
+            "industry": "healthcare",
+            "industry_ok": [
+              "healthcare"
+            ]
+          },
+          "difficulty": "easy"
+        },
+        {
+          "id": "chippewachiropracticclinic.com",
+          "pred": {
+            "entity_type": "healthcare_provider",
+            "is_prospect": true,
+            "industry": "healthcare",
+            "confidence": "low",
+            "rationale": "keyword rules (matched: clinic)"
+          },
+          "status": "ok",
+          "note": null,
+          "call_id": "5408f8e5bb5a490ea88dc9a45bf78745",
+          "gold": {
+            "entity_type": "healthcare_provider",
+            "is_prospect": true,
+            "industry": "healthcare",
+            "industry_ok": [
+              "healthcare"
+            ]
+          },
+          "difficulty": "easy"
+        },
+        {
+          "id": "caredental.com",
+          "pred": {
+            "entity_type": "healthcare_provider",
+            "is_prospect": true,
+            "industry": "healthcare",
+            "confidence": "low",
+            "rationale": "keyword rules (matched: dental)"
+          },
+          "status": "ok",
+          "note": null,
+          "call_id": "6b890e4de48047fca9909c8d896b25c8",
+          "gold": {
+            "entity_type": "healthcare_provider",
+            "is_prospect": true,
+            "industry": "healthcare",
+            "industry_ok": [
+              "healthcare"
+            ]
+          },
+          "difficulty": "easy"
+        },
+        {
+          "id": "connection-technologies.co.uk",
+          "pred": {
+            "entity_type": "business",
+            "is_prospect": true,
+            "industry": "technology",
+            "confidence": "low",
+            "rationale": "keyword rules (matched: technolog)"
+          },
+          "status": "ok",
+          "note": null,
+          "call_id": "602f20e24bb24bab8bd6c0a43b42b151",
+          "gold": {
+            "entity_type": "business",
+            "is_prospect": true,
+            "industry": "technology",
+            "industry_ok": [
+              "technology",
+              "professional_services"
+            ]
+          },
+          "difficulty": "medium"
+        },
+        {
+          "id": "softwareforculture.com",
+          "pred": {
+            "entity_type": "business",
+            "is_prospect": true,
+            "industry": "technology",
+            "confidence": "low",
+            "rationale": "keyword rules (matched: software)"
+          },
+          "status": "ok",
+          "note": null,
+          "call_id": "7dd1d8def70c4ba18bcb1a37c5bb81e1",
+          "gold": {
+            "entity_type": "business",
+            "is_prospect": true,
+            "industry": "technology",
+            "industry_ok": [
+              "technology"
+            ]
+          },
+          "difficulty": "easy"
+        },
+        {
+          "id": "pcmonteur.nl",
+          "pred": {
+            "entity_type": "business",
+            "is_prospect": true,
+            "industry": "unknown",
+            "confidence": "low",
+            "rationale": "keyword rules (matched: no industry keyword)"
+          },
+          "status": "ok",
+          "note": null,
+          "call_id": "76a4bcb0eebc44cfac3304831e73e78e",
+          "gold": {
+            "entity_type": "business",
+            "is_prospect": true,
+            "industry": "technology",
+            "industry_ok": [
+              "technology",
+              "professional_services",
+              "retail_ecommerce"
+            ]
+          },
+          "difficulty": "medium"
+        },
+        {
+          "id": "reyengineers.com",
+          "pred": {
+            "entity_type": "hosting_provider",
+            "is_prospect": false,
+            "industry": "hosting_telecom",
+            "confidence": "low",
+            "rationale": "keyword rules (matched: no industry keyword)"
+          },
+          "status": "ok",
+          "note": null,
+          "call_id": "9c04642b91dc471ba92678d7d4f3e356",
+          "gold": {
+            "entity_type": "business",
+            "is_prospect": true,
+            "industry": "professional_services",
+            "industry_ok": [
+              "professional_services",
+              "manufacturing"
+            ]
+          },
+          "difficulty": "medium"
+        },
+        {
+          "id": "bankruptcyattorneyshingham.com",
+          "pred": {
+            "entity_type": "business",
+            "is_prospect": true,
+            "industry": "finance",
+            "confidence": "low",
+            "rationale": "keyword rules (matched: bank)"
+          },
+          "status": "ok",
+          "note": null,
+          "call_id": "75061f48b75041b6bab43934fa997ec6",
+          "gold": {
+            "entity_type": "business",
+            "is_prospect": true,
+            "industry": "professional_services",
+            "industry_ok": [
+              "professional_services"
+            ]
+          },
+          "difficulty": "hard"
+        },
+        {
+          "id": "zonevs.eu",
+          "pred": {
+            "entity_type": "business",
+            "is_prospect": true,
+            "industry": "unknown",
+            "confidence": "low",
+            "rationale": "keyword rules (matched: no industry keyword)"
+          },
+          "status": "ok",
+          "note": null,
+          "call_id": "8cf82b95c9ca44ec9e869b3d759fabb5",
+          "gold": {
+            "entity_type": "hosting_provider",
+            "is_prospect": false,
+            "industry": "hosting_telecom",
+            "industry_ok": [
+              "hosting_telecom"
+            ]
+          },
+          "difficulty": "medium"
+        },
+        {
+          "id": "org:ALEXHOST S.R.L.",
+          "pred": {
+            "entity_type": "business",
+            "is_prospect": true,
+            "industry": "unknown",
+            "confidence": "low",
+            "rationale": "keyword rules (matched: no industry keyword)"
+          },
+          "status": "ok",
+          "note": null,
+          "call_id": "c99c158f229747d3b6a75155f70bd5de",
+          "gold": {
+            "entity_type": "hosting_provider",
+            "is_prospect": false,
+            "industry": "hosting_telecom",
+            "industry_ok": [
+              "hosting_telecom"
+            ]
+          },
+          "difficulty": "easy"
+        },
+        {
+          "id": "org:Telepoint Ltd",
+          "pred": {
+            "entity_type": "business",
+            "is_prospect": true,
+            "industry": "unknown",
+            "confidence": "low",
+            "rationale": "keyword rules (matched: no industry keyword)"
+          },
+          "status": "ok",
+          "note": null,
+          "call_id": "1b452b9a378948fca637b548b8ee87db",
+          "gold": {
+            "entity_type": "hosting_provider",
+            "is_prospect": false,
+            "industry": "hosting_telecom",
+            "industry_ok": [
+              "hosting_telecom"
+            ]
+          },
+          "difficulty": "hard"
+        },
+        {
+          "id": "vulut.com",
+          "pred": {
+            "entity_type": "business",
+            "is_prospect": true,
+            "industry": "unknown",
+            "confidence": "low",
+            "rationale": "keyword rules (matched: no industry keyword)"
+          },
+          "status": "ok",
+          "note": null,
+          "call_id": "089d2613031745a5a868c2eef3f6f12e",
+          "gold": {
+            "entity_type": "hosting_provider",
+            "is_prospect": false,
+            "industry": "hosting_telecom",
+            "industry_ok": [
+              "hosting_telecom"
+            ]
+          },
+          "difficulty": "hard"
+        },
+        {
+          "id": "liquidnetlimited.com",
+          "pred": {
+            "entity_type": "business",
+            "is_prospect": true,
+            "industry": "unknown",
+            "confidence": "low",
+            "rationale": "keyword rules (matched: no industry keyword)"
+          },
+          "status": "ok",
+          "note": null,
+          "call_id": "1b9e9e5c1d5f42f580fb48019e2f62c1",
+          "gold": {
+            "entity_type": "hosting_provider",
+            "is_prospect": false,
+            "industry": "hosting_telecom",
+            "industry_ok": [
+              "hosting_telecom"
+            ]
+          },
+          "difficulty": "medium"
+        },
+        {
+          "id": "privatelayer.com",
+          "pred": {
+            "entity_type": "hosting_provider",
+            "is_prospect": false,
+            "industry": "hosting_telecom",
+            "confidence": "low",
+            "rationale": "keyword rules (matched: no industry keyword)"
+          },
+          "status": "ok",
+          "note": null,
+          "call_id": "53fdfba368534aed9bf81dff15a29b1c",
+          "gold": {
+            "entity_type": "hosting_provider",
+            "is_prospect": false,
+            "industry": "hosting_telecom",
+            "industry_ok": [
+              "hosting_telecom"
+            ]
+          },
+          "difficulty": "hard"
+        },
+        {
+          "id": "org:3nt solutions LLP",
+          "pred": {
+            "entity_type": "business",
+            "is_prospect": true,
+            "industry": "technology",
+            "confidence": "low",
+            "rationale": "keyword rules (matched: solutions)"
+          },
+          "status": "ok",
+          "note": null,
+          "call_id": "518d0dc31522424f830685e9a85d7f0c",
+          "gold": {
+            "entity_type": "hosting_provider",
+            "is_prospect": false,
+            "industry": "hosting_telecom",
+            "industry_ok": [
+              "hosting_telecom"
+            ]
+          },
+          "difficulty": "hard"
+        },
+        {
+          "id": "org:PT. Mora Telematika Indonesia",
+          "pred": {
+            "entity_type": "business",
+            "is_prospect": true,
+            "industry": "unknown",
+            "confidence": "low",
+            "rationale": "keyword rules (matched: no industry keyword)"
+          },
+          "status": "ok",
+          "note": null,
+          "call_id": "4190dcc7381b43eeb1e2b3324123a9cc",
+          "gold": {
+            "entity_type": "telecom_isp",
+            "is_prospect": false,
+            "industry": "hosting_telecom",
+            "industry_ok": [
+              "hosting_telecom"
+            ]
+          },
+          "difficulty": "medium"
+        },
+        {
+          "id": "org:Logix",
+          "pred": {
+            "entity_type": "business",
+            "is_prospect": true,
+            "industry": "unknown",
+            "confidence": "low",
+            "rationale": "keyword rules (matched: no industry keyword)"
+          },
+          "status": "ok",
+          "note": null,
+          "call_id": "313d4650821e4866abb5be0aa6674c36",
+          "gold": {
+            "entity_type": "telecom_isp",
+            "is_prospect": false,
+            "industry": "hosting_telecom",
+            "industry_ok": [
+              "hosting_telecom"
+            ]
+          },
+          "difficulty": "hard"
+        },
+        {
+          "id": "org:Part Payam Paya LLC",
+          "pred": {
+            "entity_type": "hosting_provider",
+            "is_prospect": false,
+            "industry": "hosting_telecom",
+            "confidence": "low",
+            "rationale": "keyword rules (matched: no industry keyword)"
+          },
+          "status": "ok",
+          "note": null,
+          "call_id": "46e7d2a44ad34abc85e8a1645f15ab35",
+          "gold": {
+            "entity_type": "telecom_isp",
+            "is_prospect": false,
+            "industry": "hosting_telecom",
+            "industry_ok": [
+              "hosting_telecom"
+            ]
+          },
+          "difficulty": "medium"
+        },
+        {
+          "id": "nowinynet.pl",
+          "pred": {
+            "entity_type": "business",
+            "is_prospect": true,
+            "industry": "unknown",
+            "confidence": "low",
+            "rationale": "keyword rules (matched: no industry keyword)"
+          },
+          "status": "ok",
+          "note": null,
+          "call_id": "bd746c7098f94c54ade69666fb47bd4c",
+          "gold": {
+            "entity_type": "telecom_isp",
+            "is_prospect": false,
+            "industry": "hosting_telecom",
+            "industry_ok": [
+              "hosting_telecom"
+            ]
+          },
+          "difficulty": "hard"
+        },
+        {
+          "id": "datafon.net.tr",
+          "pred": {
+            "entity_type": "hosting_provider",
+            "is_prospect": false,
+            "industry": "hosting_telecom",
+            "confidence": "low",
+            "rationale": "keyword rules (matched: no industry keyword)"
+          },
+          "status": "ok",
+          "note": null,
+          "call_id": "33e2fe5acf9e4aa68810319fc7b90437",
+          "gold": {
+            "entity_type": "telecom_isp",
+            "is_prospect": false,
+            "industry": "hosting_telecom",
+            "industry_ok": [
+              "hosting_telecom"
+            ]
+          },
+          "difficulty": "medium"
+        },
+        {
+          "id": "org:Korbank S. A.",
+          "pred": {
+            "entity_type": "hosting_provider",
+            "is_prospect": false,
+            "industry": "hosting_telecom",
+            "confidence": "low",
+            "rationale": "keyword rules (matched: Host)"
+          },
+          "status": "ok",
+          "note": null,
+          "call_id": "db81c99bfabf49da9083538b4bcefd5e",
+          "gold": {
+            "entity_type": "telecom_isp",
+            "is_prospect": false,
+            "industry": "hosting_telecom",
+            "industry_ok": [
+              "hosting_telecom"
+            ]
+          },
+          "difficulty": "hard"
+        },
+        {
+          "id": "org:SoftBank Corp.",
+          "pred": {
+            "entity_type": "business",
+            "is_prospect": true,
+            "industry": "technology",
+            "confidence": "low",
+            "rationale": "keyword rules (matched: Software)"
+          },
+          "status": "ok",
+          "note": null,
+          "call_id": "ff238acee1804cec886a5ea4d5a93dd2",
+          "gold": {
+            "entity_type": "telecom_isp",
+            "is_prospect": false,
+            "industry": "hosting_telecom",
+            "industry_ok": [
+              "hosting_telecom"
+            ]
+          },
+          "difficulty": "hard"
+        },
+        {
+          "id": "alticeusa.com",
+          "pred": {
+            "entity_type": "business",
+            "is_prospect": true,
+            "industry": "unknown",
+            "confidence": "low",
+            "rationale": "keyword rules (matched: no industry keyword)"
+          },
+          "status": "ok",
+          "note": null,
+          "call_id": "c2f9cc56c6b4452fbbfe6601f18d0a42",
+          "gold": {
+            "entity_type": "telecom_isp",
+            "is_prospect": false,
+            "industry": "hosting_telecom",
+            "industry_ok": [
+              "hosting_telecom"
+            ]
+          },
+          "difficulty": "hard"
+        }
+      ]
+    },
+    "v1": {
+      "version": "v1",
+      "metrics": {
+        "n": 30,
+        "prospect": {
+          "precision": 0.625,
+          "recall": 1.0,
+          "f1": 0.769,
+          "accuracy": 0.7,
+          "confusion": {
+            "tp": 15,
+            "fp": 9,
+            "fn": 0,
+            "tn": 6
+          }
+        },
+        "entity_type_accuracy": 0.8,
+        "industry_accuracy": 0.867,
+        "consistency_violations": 5,
+        "by_difficulty": {
+          "easy": {
+            "n": 10,
+            "prospect_correct": 10,
+            "accuracy": 1.0
+          },
+          "hard": {
+            "n": 10,
+            "prospect_correct": 5,
+            "accuracy": 0.5
+          },
+          "medium": {
+            "n": 10,
+            "prospect_correct": 6,
+            "accuracy": 0.6
+          }
+        },
+        "errors": [
+          {
+            "id": "vulut.com",
+            "gold": {
+              "entity_type": "hosting_provider",
+              "is_prospect": false,
+              "industry": "hosting_telecom"
+            },
+            "pred": {
+              "entity_type": "business",
+              "is_prospect": true,
+              "industry": "technology"
+            },
+            "rationale": "The entity appears to be a Turkish technology or IT services company operating its own infrastructure."
+          },
+          {
+            "id": "liquidnetlimited.com",
+            "gold": {
+              "entity_type": "hosting_provider",
+              "is_prospect": false,
+              "industry": "hosting_telecom"
+            },
+            "pred": {
+              "entity_type": "business",
+              "is_prospect": true,
+              "industry": "technology"
+            },
+            "rationale": "The entity appears to be a corporate network operating its own infrastructure and could benefit from cybersecurity solutions."
+          },
+          {
+            "id": "org:PT. Mora Telematika Indonesia",
+            "gold": {
+              "entity_type": "telecom_isp",
+              "is_prospect": false,
+              "industry": "hosting_telecom"
+            },
+            "pred": {
+              "entity_type": "telecom_isp",
+              "is_prospect": true,
+              "industry": "hosting_telecom"
+            },
+            "rationale": "PT. Mora Telematika Indonesia is a telecommunications and internet service provider operating its own network."
+          },
+          {
+            "id": "org:Logix",
+            "gold": {
+              "entity_type": "telecom_isp",
+              "is_prospect": false,
+              "industry": "hosting_telecom"
+            },
+            "pred": {
+              "entity_type": "business",
+              "is_prospect": true,
+              "industry": "technology"
+            },
+            "rationale": "Logix appears to be an enterprise entity managing its own network infrastructure and security appliances."
+          },
+          {
+            "id": "org:Part Payam Paya LLC",
+            "gold": {
+              "entity_type": "telecom_isp",
+              "is_prospect": false,
+              "industry": "hosting_telecom"
+            },
+            "pred": {
+              "entity_type": "telecom_isp",
+              "is_prospect": true,
+              "industry": "hosting_telecom"
+            },
+            "rationale": "Part Payam Paya LLC operates network infrastructure and routing equipment, acting as a regional telecom or ISP."
+          },
+          {
+            "id": "datafon.net.tr",
+            "gold": {
+              "entity_type": "telecom_isp",
+              "is_prospect": false,
+              "industry": "hosting_telecom"
+            },
+            "pred": {
+              "entity_type": "business",
+              "is_prospect": true,
+              "industry": "technology"
+            },
+            "rationale": "Datafon Teknoloji appears to be a technology business providing hosting or telecom services."
+          },
+          {
+            "id": "org:Korbank S. A.",
+            "gold": {
+              "entity_type": "telecom_isp",
+              "is_prospect": false,
+              "industry": "hosting_telecom"
+            },
+            "pred": {
+              "entity_type": "telecom_isp",
+              "is_prospect": true,
+              "industry": "hosting_telecom"
+            },
+            "rationale": "Korbank S.A. is a known Polish telecommunications and ISP network operator managing its own IP infrastructure."
+          },
+          {
+            "id": "org:SoftBank Corp.",
+            "gold": {
+              "entity_type": "telecom_isp",
+              "is_prospect": false,
+              "industry": "hosting_telecom"
+            },
+            "pred": {
+              "entity_type": "telecom_isp",
+              "is_prospect": true,
+              "industry": "hosting_telecom"
+            },
+            "rationale": "SoftBank Corp. is a major telecommunications and internet service provider operating its own network infrastructure."
+          },
+          {
+            "id": "alticeusa.com",
+            "gold": {
+              "entity_type": "telecom_isp",
+              "is_prospect": false,
+              "industry": "hosting_telecom"
+            },
+            "pred": {
+              "entity_type": "telecom_isp",
+              "is_prospect": true,
+              "industry": "hosting_telecom"
+            },
+            "rationale": "Altice USA is a major telecommunications and cable provider operating its own network infrastructure."
+          }
+        ],
+        "ops": {
+          "model": "gemini-3.5-flash-lite",
+          "provider": "gemini",
+          "models_used": {
+            "gemini-3.5-flash-lite": 30
+          },
+          "total_cost_usd": 0.0,
+          "cost_per_example_usd": 0.0,
+          "latency_p50_ms": 4013,
+          "latency_p95_ms": 4315,
+          "statuses": {
+            "ok": 30
+          }
+        }
+      },
+      "rows": [
+        {
+          "id": "uni-kl.de",
+          "pred": {
+            "entity_type": "education",
+            "is_prospect": true,
+            "industry": "education",
+            "confidence": "high",
+            "rationale": "The domain and network ownership explicitly indicate a German university."
+          },
+          "status": "ok",
+          "note": null,
+          "call_id": "95e05274cec64499a6914a9f40d78cae",
+          "gold": {
+            "entity_type": "education",
+            "is_prospect": true,
+            "industry": "education",
+            "industry_ok": [
+              "education"
+            ]
+          },
+          "difficulty": "easy"
+        },
+        {
+          "id": "mit.edu",
+          "pred": {
+            "entity_type": "education",
+            "is_prospect": true,
+            "industry": "education",
+            "confidence": "high",
+            "rationale": "The domain mit.edu clearly identifies this as the Massachusetts Institute of Technology, an educational institution."
+          },
+          "status": "ok",
+          "note": null,
+          "call_id": "a6b793f9378242a68faf2edf8b5f7b78",
+          "gold": {
+            "entity_type": "education",
+            "is_prospect": true,
+            "industry": "education",
+            "industry_ok": [
+              "education"
+            ]
+          },
+          "difficulty": "easy"
+        },
+        {
+          "id": "fuller.edu",
+          "pred": {
+            "entity_type": "education",
+            "is_prospect": true,
+            "industry": "education",
+            "confidence": "high",
+            "rationale": "Fuller Theological Seminary is a higher education institution that operates its own IT infrastructure."
+          },
+          "status": "ok",
+          "note": null,
+          "call_id": "131dc0530d4b4a2bb64f0df625186036",
+          "gold": {
+            "entity_type": "education",
+            "is_prospect": true,
+            "industry": "education",
+            "industry_ok": [
+              "education"
+            ]
+          },
+          "difficulty": "easy"
+        },
+        {
+          "id": "utoronto.ca",
+          "pred": {
+            "entity_type": "education",
+            "is_prospect": true,
+            "industry": "education",
+            "confidence": "high",
+            "rationale": "The entity is the University of Toronto, representing a major higher education institution and a strong cybersecurity prospect."
+          },
+          "status": "ok",
+          "note": null,
+          "call_id": "ca24981b597b4613801bf3e8d9894b8c",
+          "gold": {
+            "entity_type": "education",
+            "is_prospect": true,
+            "industry": "education",
+            "industry_ok": [
+              "education"
+            ]
+          },
+          "difficulty": "easy"
+        },
+        {
+          "id": "ohioschoolboards.org",
+          "pred": {
+            "entity_type": "nonprofit",
+            "is_prospect": true,
+            "industry": "education",
+            "confidence": "high",
+            "rationale": "The organization represents school boards in Ohio and serves as an educational association."
+          },
+          "status": "ok",
+          "note": null,
+          "call_id": "73e56d1217a149068681de2b73d12750",
+          "gold": {
+            "entity_type": "nonprofit",
+            "is_prospect": true,
+            "industry": "nonprofit",
+            "industry_ok": [
+              "nonprofit",
+              "education"
+            ]
+          },
+          "difficulty": "medium"
+        },
+        {
+          "id": "ooda-health.io",
+          "pred": {
+            "entity_type": "business",
+            "is_prospect": true,
+            "industry": "healthcare",
+            "confidence": "medium",
+            "rationale": "Ooda Health is a healthcare technology business that could be a prospective buyer for cybersecurity software."
+          },
+          "status": "ok",
+          "note": null,
+          "call_id": "adaab29341a848f69b5f218a98c42bf2",
+          "gold": {
+            "entity_type": "business",
+            "is_prospect": true,
+            "industry": "healthcare",
+            "industry_ok": [
+              "healthcare",
+              "technology",
+              "finance"
+            ]
+          },
+          "difficulty": "medium"
+        },
+        {
+          "id": "mwdental.com",
+          "pred": {
+            "entity_type": "healthcare_provider",
+            "is_prospect": true,
+            "industry": "healthcare",
+            "confidence": "high",
+            "rationale": "The domain name strongly indicates a dental healthcare practice."
+          },
+          "status": "ok",
+          "note": null,
+          "call_id": "3117225ee14e438a927129044f385281",
+          "gold": {
+            "entity_type": "healthcare_provider",
+            "is_prospect": true,
+            "industry": "healthcare",
+            "industry_ok": [
+              "healthcare"
+            ]
+          },
+          "difficulty": "easy"
+        },
+        {
+          "id": "biotechclinical.com",
+          "pred": {
+            "entity_type": "business",
+            "is_prospect": true,
+            "industry": "healthcare",
+            "confidence": "high",
+            "rationale": "Biotech Clinical Laboratories is a healthcare-related business that would benefit from cybersecurity solutions."
+          },
+          "status": "ok",
+          "note": null,
+          "call_id": "3d4df717127845bba1e0200ce4f9ecb0",
+          "gold": {
+            "entity_type": "healthcare_provider",
+            "is_prospect": true,
+            "industry": "healthcare",
+            "industry_ok": [
+              "healthcare"
+            ]
+          },
+          "difficulty": "easy"
+        },
+        {
+          "id": "chippewachiropracticclinic.com",
+          "pred": {
+            "entity_type": "healthcare_provider",
+            "is_prospect": true,
+            "industry": "healthcare",
+            "confidence": "high",
+            "rationale": "The organization is a chiropractic clinic which operates as a healthcare provider and a strong sales prospect."
+          },
+          "status": "ok",
+          "note": null,
+          "call_id": "58b0cf8f0c8e45118e67c36ab236437e",
+          "gold": {
+            "entity_type": "healthcare_provider",
+            "is_prospect": true,
+            "industry": "healthcare",
+            "industry_ok": [
+              "healthcare"
+            ]
+          },
+          "difficulty": "easy"
+        },
+        {
+          "id": "caredental.com",
+          "pred": {
+            "entity_type": "business",
+            "is_prospect": true,
+            "industry": "healthcare",
+            "confidence": "medium",
+            "rationale": "The domain suggests a dental care business, which is a potential buyer for cybersecurity software."
+          },
+          "status": "ok",
+          "note": null,
+          "call_id": "a288f35d7bab4452938a5625dde29a52",
+          "gold": {
+            "entity_type": "healthcare_provider",
+            "is_prospect": true,
+            "industry": "healthcare",
+            "industry_ok": [
+              "healthcare"
+            ]
+          },
+          "difficulty": "easy"
+        },
+        {
+          "id": "connection-technologies.co.uk",
+          "pred": {
+            "entity_type": "business",
+            "is_prospect": true,
+            "industry": "technology",
+            "confidence": "medium",
+            "rationale": "The domain suggests a technology-focused business entity operating on cloud infrastructure."
+          },
+          "status": "ok",
+          "note": null,
+          "call_id": "b548d121b2d042178bed68ad47405636",
+          "gold": {
+            "entity_type": "business",
+            "is_prospect": true,
+            "industry": "technology",
+            "industry_ok": [
+              "technology",
+              "professional_services"
+            ]
+          },
+          "difficulty": "medium"
+        },
+        {
+          "id": "softwareforculture.com",
+          "pred": {
+            "entity_type": "business",
+            "is_prospect": true,
+            "industry": "technology",
+            "confidence": "medium",
+            "rationale": "The entity appears to be a software vendor producing cultural management tools hosted on a cloud provider."
+          },
+          "status": "ok",
+          "note": null,
+          "call_id": "5f017d742d81445a9da6e327eebb7aa5",
+          "gold": {
+            "entity_type": "business",
+            "is_prospect": true,
+            "industry": "technology",
+            "industry_ok": [
+              "technology"
+            ]
+          },
+          "difficulty": "easy"
+        },
+        {
+          "id": "pcmonteur.nl",
+          "pred": {
+            "entity_type": "business",
+            "is_prospect": true,
+            "industry": "professional_services",
+            "confidence": "high",
+            "rationale": "This is a small local computer repair and IT services business."
+          },
+          "status": "ok",
+          "note": null,
+          "call_id": "faf80041b70c4ac3a6fa2a91f47ba64b",
+          "gold": {
+            "entity_type": "business",
+            "is_prospect": true,
+            "industry": "technology",
+            "industry_ok": [
+              "technology",
+              "professional_services",
+              "retail_ecommerce"
+            ]
+          },
+          "difficulty": "medium"
+        },
+        {
+          "id": "reyengineers.com",
+          "pred": {
+            "entity_type": "business",
+            "is_prospect": true,
+            "industry": "professional_services",
+            "confidence": "high",
+            "rationale": "R.E.Y. Engineers is an engineering consulting firm that maintains its own web and intranet infrastructure."
+          },
+          "status": "ok",
+          "note": null,
+          "call_id": "3e4ee8597d574e06be4ee7e678be52a1",
+          "gold": {
+            "entity_type": "business",
+            "is_prospect": true,
+            "industry": "professional_services",
+            "industry_ok": [
+              "professional_services",
+              "manufacturing"
+            ]
+          },
+          "difficulty": "medium"
+        },
+        {
+          "id": "bankruptcyattorneyshingham.com",
+          "pred": {
+            "entity_type": "business",
+            "is_prospect": true,
+            "industry": "professional_services",
+            "confidence": "high",
+            "rationale": "The entity is a local law firm operating its own digital presence."
+          },
+          "status": "ok",
+          "note": null,
+          "call_id": "dcc49d7f556349daaa76bb0748663645",
+          "gold": {
+            "entity_type": "business",
+            "is_prospect": true,
+            "industry": "professional_services",
+            "industry_ok": [
+              "professional_services"
+            ]
+          },
+          "difficulty": "hard"
+        },
+        {
+          "id": "zonevs.eu",
+          "pred": {
+            "entity_type": "hosting_provider",
+            "is_prospect": false,
+            "industry": "hosting_telecom",
+            "confidence": "high",
+            "rationale": "The infrastructure and network owners indicate this is a hosting provider rather than an end-user business."
+          },
+          "status": "ok",
+          "note": null,
+          "call_id": "7bf4f090d91f46478f4b245a7f24d696",
+          "gold": {
+            "entity_type": "hosting_provider",
+            "is_prospect": false,
+            "industry": "hosting_telecom",
+            "industry_ok": [
+              "hosting_telecom"
+            ]
+          },
+          "difficulty": "medium"
+        },
+        {
+          "id": "org:ALEXHOST S.R.L.",
+          "pred": {
+            "entity_type": "hosting_provider",
+            "is_prospect": false,
+            "industry": "hosting_telecom",
+            "confidence": "high",
+            "rationale": "Alexhost S.R.L. is a known hosting and VPS provider, not an end-user enterprise prospect."
+          },
+          "status": "ok",
+          "note": null,
+          "call_id": "2098ba9405bc4de1837b28f1ed35ee70",
+          "gold": {
+            "entity_type": "hosting_provider",
+            "is_prospect": false,
+            "industry": "hosting_telecom",
+            "industry_ok": [
+              "hosting_telecom"
+            ]
+          },
+          "difficulty": "easy"
+        },
+        {
+          "id": "org:Telepoint Ltd",
+          "pred": {
+            "entity_type": "hosting_provider",
+            "is_prospect": false,
+            "industry": "hosting_telecom",
+            "confidence": "high",
+            "rationale": "Telepoint Ltd is a telecommunications and hosting infrastructure provider."
+          },
+          "status": "ok",
+          "note": null,
+          "call_id": "f34a13dca2e84178a0c4e2518396a825",
+          "gold": {
+            "entity_type": "hosting_provider",
+            "is_prospect": false,
+            "industry": "hosting_telecom",
+            "industry_ok": [
+              "hosting_telecom"
+            ]
+          },
+          "difficulty": "hard"
+        },
+        {
+          "id": "vulut.com",
+          "pred": {
+            "entity_type": "business",
+            "is_prospect": true,
+            "industry": "technology",
+            "confidence": "medium",
+            "rationale": "The entity appears to be a Turkish technology or IT services company operating its own infrastructure."
+          },
+          "status": "ok",
+          "note": null,
+          "call_id": "f2820907a3a04f2ea614efa5588cc4d5",
+          "gold": {
+            "entity_type": "hosting_provider",
+            "is_prospect": false,
+            "industry": "hosting_telecom",
+            "industry_ok": [
+              "hosting_telecom"
+            ]
+          },
+          "difficulty": "hard"
+        },
+        {
+          "id": "liquidnetlimited.com",
+          "pred": {
+            "entity_type": "business",
+            "is_prospect": true,
+            "industry": "technology",
+            "confidence": "medium",
+            "rationale": "The entity appears to be a corporate network operating its own infrastructure and could benefit from cybersecurity solutions."
+          },
+          "status": "ok",
+          "note": null,
+          "call_id": "d21bbdbe3b7f43b3be231ae4d9d1f90a",
+          "gold": {
+            "entity_type": "hosting_provider",
+            "is_prospect": false,
+            "industry": "hosting_telecom",
+            "industry_ok": [
+              "hosting_telecom"
+            ]
+          },
+          "difficulty": "medium"
+        },
+        {
+          "id": "privatelayer.com",
+          "pred": {
+            "entity_type": "hosting_provider",
+            "is_prospect": false,
+            "industry": "hosting_telecom",
+            "confidence": "high",
+            "rationale": "PrivateLayer is a hosting and infrastructure provider offering services rather than an end-user enterprise prospect."
+          },
+          "status": "ok",
+          "note": null,
+          "call_id": "52edf83850c04d96a2dabc6a5e74cdd5",
+          "gold": {
+            "entity_type": "hosting_provider",
+            "is_prospect": false,
+            "industry": "hosting_telecom",
+            "industry_ok": [
+              "hosting_telecom"
+            ]
+          },
+          "difficulty": "hard"
+        },
+        {
+          "id": "org:3nt solutions LLP",
+          "pred": {
+            "entity_type": "hosting_provider",
+            "is_prospect": false,
+            "industry": "hosting_telecom",
+            "confidence": "high",
+            "rationale": "The network owner and footprint indicate a hosting or infrastructure service provider rather than an end-user enterprise."
+          },
+          "status": "ok",
+          "note": null,
+          "call_id": "79ce509cf97f4191bdbda0e93d1153f8",
+          "gold": {
+            "entity_type": "hosting_provider",
+            "is_prospect": false,
+            "industry": "hosting_telecom",
+            "industry_ok": [
+              "hosting_telecom"
+            ]
+          },
+          "difficulty": "hard"
+        },
+        {
+          "id": "org:PT. Mora Telematika Indonesia",
+          "pred": {
+            "entity_type": "telecom_isp",
+            "is_prospect": true,
+            "industry": "hosting_telecom",
+            "confidence": "high",
+            "rationale": "PT. Mora Telematika Indonesia is a telecommunications and internet service provider operating its own network."
+          },
+          "status": "ok",
+          "note": null,
+          "call_id": "0884830b60004e278effe97067e9411a",
+          "gold": {
+            "entity_type": "telecom_isp",
+            "is_prospect": false,
+            "industry": "hosting_telecom",
+            "industry_ok": [
+              "hosting_telecom"
+            ]
+          },
+          "difficulty": "medium"
+        },
+        {
+          "id": "org:Logix",
+          "pred": {
+            "entity_type": "business",
+            "is_prospect": true,
+            "industry": "technology",
+            "confidence": "medium",
+            "rationale": "Logix appears to be an enterprise entity managing its own network infrastructure and security appliances."
+          },
+          "status": "ok",
+          "note": null,
+          "call_id": "3b9f56cedd354214bf6ac1c94d08ef8e",
+          "gold": {
+            "entity_type": "telecom_isp",
+            "is_prospect": false,
+            "industry": "hosting_telecom",
+            "industry_ok": [
+              "hosting_telecom"
+            ]
+          },
+          "difficulty": "hard"
+        },
+        {
+          "id": "org:Part Payam Paya LLC",
+          "pred": {
+            "entity_type": "telecom_isp",
+            "is_prospect": true,
+            "industry": "hosting_telecom",
+            "confidence": "high",
+            "rationale": "Part Payam Paya LLC operates network infrastructure and routing equipment, acting as a regional telecom or ISP."
+          },
+          "status": "ok",
+          "note": null,
+          "call_id": "a0ec5e296be0425a9346fc8df08084df",
+          "gold": {
+            "entity_type": "telecom_isp",
+            "is_prospect": false,
+            "industry": "hosting_telecom",
+            "industry_ok": [
+              "hosting_telecom"
+            ]
+          },
+          "difficulty": "medium"
+        },
+        {
+          "id": "nowinynet.pl",
+          "pred": {
+            "entity_type": "telecom_isp",
+            "is_prospect": false,
+            "industry": "hosting_telecom",
+            "confidence": "medium",
+            "rationale": "The entity appears to be a local ISP or network operator rather than a standard commercial software buyer."
+          },
+          "status": "ok",
+          "note": null,
+          "call_id": "a846e8bd77674feb9a9a06d7dc691253",
+          "gold": {
+            "entity_type": "telecom_isp",
+            "is_prospect": false,
+            "industry": "hosting_telecom",
+            "industry_ok": [
+              "hosting_telecom"
+            ]
+          },
+          "difficulty": "hard"
+        },
+        {
+          "id": "datafon.net.tr",
+          "pred": {
+            "entity_type": "business",
+            "is_prospect": true,
+            "industry": "technology",
+            "confidence": "medium",
+            "rationale": "Datafon Teknoloji appears to be a technology business providing hosting or telecom services."
+          },
+          "status": "ok",
+          "note": null,
+          "call_id": "fe1f2014b94c42a4958a74879502b415",
+          "gold": {
+            "entity_type": "telecom_isp",
+            "is_prospect": false,
+            "industry": "hosting_telecom",
+            "industry_ok": [
+              "hosting_telecom"
+            ]
+          },
+          "difficulty": "medium"
+        },
+        {
+          "id": "org:Korbank S. A.",
+          "pred": {
+            "entity_type": "telecom_isp",
+            "is_prospect": true,
+            "industry": "hosting_telecom",
+            "confidence": "high",
+            "rationale": "Korbank S.A. is a known Polish telecommunications and ISP network operator managing its own IP infrastructure."
+          },
+          "status": "ok",
+          "note": null,
+          "call_id": "451153835af24916b08df3a65cd48fa9",
+          "gold": {
+            "entity_type": "telecom_isp",
+            "is_prospect": false,
+            "industry": "hosting_telecom",
+            "industry_ok": [
+              "hosting_telecom"
+            ]
+          },
+          "difficulty": "hard"
+        },
+        {
+          "id": "org:SoftBank Corp.",
+          "pred": {
+            "entity_type": "telecom_isp",
+            "is_prospect": true,
+            "industry": "hosting_telecom",
+            "confidence": "high",
+            "rationale": "SoftBank Corp. is a major telecommunications and internet service provider operating its own network infrastructure."
+          },
+          "status": "ok",
+          "note": null,
+          "call_id": "f8eef66f7ee54326b659dc7dd533c9fc",
+          "gold": {
+            "entity_type": "telecom_isp",
+            "is_prospect": false,
+            "industry": "hosting_telecom",
+            "industry_ok": [
+              "hosting_telecom"
+            ]
+          },
+          "difficulty": "hard"
+        },
+        {
+          "id": "alticeusa.com",
+          "pred": {
+            "entity_type": "telecom_isp",
+            "is_prospect": true,
+            "industry": "hosting_telecom",
+            "confidence": "high",
+            "rationale": "Altice USA is a major telecommunications and cable provider operating its own network infrastructure."
+          },
+          "status": "ok",
+          "note": null,
+          "call_id": "e60991b488f24245ab42e0c532a87f2a",
+          "gold": {
+            "entity_type": "telecom_isp",
+            "is_prospect": false,
+            "industry": "hosting_telecom",
+            "industry_ok": [
+              "hosting_telecom"
+            ]
+          },
+          "difficulty": "hard"
+        }
+      ]
+    },
+    "v2": {
+      "version": "v2",
+      "metrics": {
+        "n": 30,
+        "prospect": {
+          "precision": 0.938,
+          "recall": 1.0,
+          "f1": 0.968,
+          "accuracy": 0.967,
+          "confusion": {
+            "tp": 15,
+            "fp": 1,
+            "fn": 0,
+            "tn": 14
+          }
+        },
+        "entity_type_accuracy": 0.833,
+        "industry_accuracy": 0.933,
+        "consistency_violations": 0,
+        "by_difficulty": {
+          "easy": {
+            "n": 10,
+            "prospect_correct": 10,
+            "accuracy": 1.0
+          },
+          "hard": {
+            "n": 10,
+            "prospect_correct": 10,
+            "accuracy": 1.0
+          },
+          "medium": {
+            "n": 10,
+            "prospect_correct": 9,
+            "accuracy": 0.9
+          }
+        },
+        "errors": [
+          {
+            "id": "zonevs.eu",
+            "gold": {
+              "entity_type": "hosting_provider",
+              "is_prospect": false,
+              "industry": "hosting_telecom"
+            },
+            "pred": {
+              "entity_type": "business",
+              "is_prospect": true,
+              "industry": "technology"
+            },
+            "rationale": "The domain hosts development and container management tools like Portainer and MinIO, indicating a self-hosted technology business environment."
+          },
+          {
+            "id": "liquidnetlimited.com",
+            "gold": {
+              "entity_type": "hosting_provider",
+              "is_prospect": false,
+              "industry": "hosting_telecom"
+            },
+            "pred": {
+              "entity_type": "unknown",
+              "is_prospect": false,
+              "industry": "unknown"
+            },
+            "rationale": "The domain lacks clear business identification and shows default web server placeholder titles."
+          }
+        ],
+        "ops": {
+          "model": "gemini-3.5-flash-lite",
+          "provider": "gemini",
+          "models_used": {
+            "gemini-3.5-flash-lite": 30
+          },
+          "total_cost_usd": 0.0,
+          "cost_per_example_usd": 0.0,
+          "latency_p50_ms": 3964,
+          "latency_p95_ms": 4264,
+          "statuses": {
+            "ok": 30
+          }
+        }
+      },
+      "rows": [
+        {
+          "id": "uni-kl.de",
+          "pred": {
+            "entity_type": "education",
+            "is_prospect": true,
+            "industry": "education",
+            "confidence": "high",
+            "rationale": "The domain and certificate organisations clearly identify a university."
+          },
+          "status": "ok",
+          "note": null,
+          "call_id": "5f1454a8e6b94afc8cdb00c0e298e6fc",
+          "gold": {
+            "entity_type": "education",
+            "is_prospect": true,
+            "industry": "education",
+            "industry_ok": [
+              "education"
+            ]
+          },
+          "difficulty": "easy"
+        },
+        {
+          "id": "mit.edu",
+          "pred": {
+            "entity_type": "education",
+            "is_prospect": true,
+            "industry": "education",
+            "confidence": "high",
+            "rationale": "The domain and certificate organisations clearly identify the Massachusetts Institute of Technology."
+          },
+          "status": "ok",
+          "note": null,
+          "call_id": "e38dadd98de442aa8e705ebe3a632ec6",
+          "gold": {
+            "entity_type": "education",
+            "is_prospect": true,
+            "industry": "education",
+            "industry_ok": [
+              "education"
+            ]
+          },
+          "difficulty": "easy"
+        },
+        {
+          "id": "fuller.edu",
+          "pred": {
+            "entity_type": "education",
+            "is_prospect": true,
+            "industry": "education",
+            "confidence": "high",
+            "rationale": "The certificate organisation explicitly identifies the entity as Fuller Theological Seminary."
+          },
+          "status": "ok",
+          "note": null,
+          "call_id": "7b54b5133ca6408cb66dc7061cd6cfaa",
+          "gold": {
+            "entity_type": "education",
+            "is_prospect": true,
+            "industry": "education",
+            "industry_ok": [
+              "education"
+            ]
+          },
+          "difficulty": "easy"
+        },
+        {
+          "id": "utoronto.ca",
+          "pred": {
+            "entity_type": "education",
+            "is_prospect": true,
+            "industry": "education",
+            "confidence": "high",
+            "rationale": "The certificate organisation explicitly names the University of Toronto, confirming it is an educational institution."
+          },
+          "status": "ok",
+          "note": null,
+          "call_id": "8ffdd35c26344d5ca88813e1424960bf",
+          "gold": {
+            "entity_type": "education",
+            "is_prospect": true,
+            "industry": "education",
+            "industry_ok": [
+              "education"
+            ]
+          },
+          "difficulty": "easy"
+        },
+        {
+          "id": "ohioschoolboards.org",
+          "pred": {
+            "entity_type": "nonprofit",
+            "is_prospect": true,
+            "industry": "nonprofit",
+            "confidence": "high",
+            "rationale": "The domain belongs to the Ohio School Boards Association, an educational service organization and advocacy group."
+          },
+          "status": "ok",
+          "note": null,
+          "call_id": "29c22af0838d44dfacba971de363e044",
+          "gold": {
+            "entity_type": "nonprofit",
+            "is_prospect": true,
+            "industry": "nonprofit",
+            "industry_ok": [
+              "nonprofit",
+              "education"
+            ]
+          },
+          "difficulty": "medium"
+        },
+        {
+          "id": "ooda-health.io",
+          "pred": {
+            "entity_type": "business",
+            "is_prospect": true,
+            "industry": "technology",
+            "confidence": "high",
+            "rationale": "The domain ooda-health.io clearly identifies a technology business with dedicated infrastructure and subdomains."
+          },
+          "status": "ok",
+          "note": null,
+          "call_id": "086a7a29692941a6a0449d5e4df95f67",
+          "gold": {
+            "entity_type": "business",
+            "is_prospect": true,
+            "industry": "healthcare",
+            "industry_ok": [
+              "healthcare",
+              "technology",
+              "finance"
+            ]
+          },
+          "difficulty": "medium"
+        },
+        {
+          "id": "mwdental.com",
+          "pred": {
+            "entity_type": "healthcare_provider",
+            "is_prospect": true,
+            "industry": "healthcare",
+            "confidence": "medium",
+            "rationale": "The domain mwdental.com and associated hostnames strongly indicate a dental practice defending its own internal servers."
+          },
+          "status": "ok",
+          "note": null,
+          "call_id": "1d6a051aa0324073bf124fc0efb325b1",
+          "gold": {
+            "entity_type": "healthcare_provider",
+            "is_prospect": true,
+            "industry": "healthcare",
+            "industry_ok": [
+              "healthcare"
+            ]
+          },
+          "difficulty": "easy"
+        },
+        {
+          "id": "biotechclinical.com",
+          "pred": {
+            "entity_type": "business",
+            "is_prospect": true,
+            "industry": "healthcare",
+            "confidence": "high",
+            "rationale": "The domain and page titles clearly indicate a clinical laboratory operating its own web infrastructure."
+          },
+          "status": "ok",
+          "note": null,
+          "call_id": "d312cfcacf8443a0b2af175a6314b827",
+          "gold": {
+            "entity_type": "healthcare_provider",
+            "is_prospect": true,
+            "industry": "healthcare",
+            "industry_ok": [
+              "healthcare"
+            ]
+          },
+          "difficulty": "easy"
+        },
+        {
+          "id": "chippewachiropracticclinic.com",
+          "pred": {
+            "entity_type": "healthcare_provider",
+            "is_prospect": true,
+            "industry": "healthcare",
+            "confidence": "high",
+            "rationale": "The domain name explicitly identifies a chiropractic clinic, making it a healthcare business and a valid prospect."
+          },
+          "status": "ok",
+          "note": null,
+          "call_id": "21ce2d0ec2c4415abff223f2bb00bae4",
+          "gold": {
+            "entity_type": "healthcare_provider",
+            "is_prospect": true,
+            "industry": "healthcare",
+            "industry_ok": [
+              "healthcare"
+            ]
+          },
+          "difficulty": "easy"
+        },
+        {
+          "id": "caredental.com",
+          "pred": {
+            "entity_type": "healthcare_provider",
+            "is_prospect": true,
+            "industry": "healthcare",
+            "confidence": "medium",
+            "rationale": "The domain name strongly indicates a dental healthcare provider."
+          },
+          "status": "ok",
+          "note": null,
+          "call_id": "283c5127a7eb4b569900485f3779cff3",
+          "gold": {
+            "entity_type": "healthcare_provider",
+            "is_prospect": true,
+            "industry": "healthcare",
+            "industry_ok": [
+              "healthcare"
+            ]
+          },
+          "difficulty": "easy"
+        },
+        {
+          "id": "connection-technologies.co.uk",
+          "pred": {
+            "entity_type": "business",
+            "is_prospect": true,
+            "industry": "technology",
+            "confidence": "low",
+            "rationale": "The domain suggests a technology business, but the servers only show a default web page on AWS infrastructure."
+          },
+          "status": "ok",
+          "note": null,
+          "call_id": "c4b45173835f4bd8adb7a2ec6af4e6b0",
+          "gold": {
+            "entity_type": "business",
+            "is_prospect": true,
+            "industry": "technology",
+            "industry_ok": [
+              "technology",
+              "professional_services"
+            ]
+          },
+          "difficulty": "medium"
+        },
+        {
+          "id": "softwareforculture.com",
+          "pred": {
+            "entity_type": "business",
+            "is_prospect": true,
+            "industry": "technology",
+            "confidence": "medium",
+            "rationale": "The domain name and page titles indicate a software business developing cultural management solutions."
+          },
+          "status": "ok",
+          "note": null,
+          "call_id": "6be9a62d913946bc88d33a6d6e8a5234",
+          "gold": {
+            "entity_type": "business",
+            "is_prospect": true,
+            "industry": "technology",
+            "industry_ok": [
+              "technology"
+            ]
+          },
+          "difficulty": "easy"
+        },
+        {
+          "id": "pcmonteur.nl",
+          "pred": {
+            "entity_type": "business",
+            "is_prospect": true,
+            "industry": "professional_services",
+            "confidence": "medium",
+            "rationale": "The sample page title indicates a local computer repair and IT service business."
+          },
+          "status": "ok",
+          "note": null,
+          "call_id": "358ddec3e853457ebe86fbc0a55b3b8d",
+          "gold": {
+            "entity_type": "business",
+            "is_prospect": true,
+            "industry": "technology",
+            "industry_ok": [
+              "technology",
+              "professional_services",
+              "retail_ecommerce"
+            ]
+          },
+          "difficulty": "medium"
+        },
+        {
+          "id": "reyengineers.com",
+          "pred": {
+            "entity_type": "business",
+            "is_prospect": true,
+            "industry": "professional_services",
+            "confidence": "high",
+            "rationale": "The domain and page titles clearly indicate R.E.Y. Engineers, Inc., an engineering firm."
+          },
+          "status": "ok",
+          "note": null,
+          "call_id": "50227edcb3ac4ea09810f535a14f294f",
+          "gold": {
+            "entity_type": "business",
+            "is_prospect": true,
+            "industry": "professional_services",
+            "industry_ok": [
+              "professional_services",
+              "manufacturing"
+            ]
+          },
+          "difficulty": "medium"
+        },
+        {
+          "id": "bankruptcyattorneyshingham.com",
+          "pred": {
+            "entity_type": "business",
+            "is_prospect": true,
+            "industry": "professional_services",
+            "confidence": "high",
+            "rationale": "The page titles and domain clearly identify a law practice operating in Hingham, MA."
+          },
+          "status": "ok",
+          "note": null,
+          "call_id": "8e2397d5e603419c938907d27d3afaac",
+          "gold": {
+            "entity_type": "business",
+            "is_prospect": true,
+            "industry": "professional_services",
+            "industry_ok": [
+              "professional_services"
+            ]
+          },
+          "difficulty": "hard"
+        },
+        {
+          "id": "zonevs.eu",
+          "pred": {
+            "entity_type": "business",
+            "is_prospect": true,
+            "industry": "technology",
+            "confidence": "medium",
+            "rationale": "The domain hosts development and container management tools like Portainer and MinIO, indicating a self-hosted technology business environment."
+          },
+          "status": "ok",
+          "note": null,
+          "call_id": "8bb69ec3b7c94e329138ac5043b10fa6",
+          "gold": {
+            "entity_type": "hosting_provider",
+            "is_prospect": false,
+            "industry": "hosting_telecom",
+            "industry_ok": [
+              "hosting_telecom"
+            ]
+          },
+          "difficulty": "medium"
+        },
+        {
+          "id": "org:ALEXHOST S.R.L.",
+          "pred": {
+            "entity_type": "hosting_provider",
+            "is_prospect": false,
+            "industry": "hosting_telecom",
+            "confidence": "high",
+            "rationale": "The account is identified as a hosting provider and network owner based on its network registration and hosting management software like Plesk."
+          },
+          "status": "ok",
+          "note": null,
+          "call_id": "d93076be41864fdbb0abcceffe3fb44f",
+          "gold": {
+            "entity_type": "hosting_provider",
+            "is_prospect": false,
+            "industry": "hosting_telecom",
+            "industry_ok": [
+              "hosting_telecom"
+            ]
+          },
+          "difficulty": "easy"
+        },
+        {
+          "id": "org:Telepoint Ltd",
+          "pred": {
+            "entity_type": "hosting_provider",
+            "is_prospect": false,
+            "industry": "hosting_telecom",
+            "confidence": "high",
+            "rationale": "Telepoint Ltd is a well-known Bulgarian data center and colocation hosting provider."
+          },
+          "status": "ok",
+          "note": null,
+          "call_id": "39f01ae47ebb45fe8b48ef70a0b86959",
+          "gold": {
+            "entity_type": "hosting_provider",
+            "is_prospect": false,
+            "industry": "hosting_telecom",
+            "industry_ok": [
+              "hosting_telecom"
+            ]
+          },
+          "difficulty": "hard"
+        },
+        {
+          "id": "vulut.com",
+          "pred": {
+            "entity_type": "hosting_provider",
+            "is_prospect": false,
+            "industry": "hosting_telecom",
+            "confidence": "high",
+            "rationale": "The network owner and domain name indicate a technology and hosting provider offering proxy and management services."
+          },
+          "status": "ok",
+          "note": null,
+          "call_id": "4cabc5dde12c4e9b8d699bbaad51c19f",
+          "gold": {
+            "entity_type": "hosting_provider",
+            "is_prospect": false,
+            "industry": "hosting_telecom",
+            "industry_ok": [
+              "hosting_telecom"
+            ]
+          },
+          "difficulty": "hard"
+        },
+        {
+          "id": "liquidnetlimited.com",
+          "pred": {
+            "entity_type": "unknown",
+            "is_prospect": false,
+            "industry": "unknown",
+            "confidence": "low",
+            "rationale": "The domain lacks clear business identification and shows default web server placeholder titles."
+          },
+          "status": "ok",
+          "note": null,
+          "call_id": "0776095d5a7f423f86a16d56c3333aa6",
+          "gold": {
+            "entity_type": "hosting_provider",
+            "is_prospect": false,
+            "industry": "hosting_telecom",
+            "industry_ok": [
+              "hosting_telecom"
+            ]
+          },
+          "difficulty": "medium"
+        },
+        {
+          "id": "privatelayer.com",
+          "pred": {
+            "entity_type": "hosting_provider",
+            "is_prospect": false,
+            "industry": "hosting_telecom",
+            "confidence": "high",
+            "rationale": "PrivateLayer is a known web hosting and server provider offering dedicated servers and infrastructure."
+          },
+          "status": "ok",
+          "note": null,
+          "call_id": "43791f567bad44deb019f853e5ba0e09",
+          "gold": {
+            "entity_type": "hosting_provider",
+            "is_prospect": false,
+            "industry": "hosting_telecom",
+            "industry_ok": [
+              "hosting_telecom"
+            ]
+          },
+          "difficulty": "hard"
+        },
+        {
+          "id": "org:3nt solutions LLP",
+          "pred": {
+            "entity_type": "hosting_provider",
+            "is_prospect": false,
+            "industry": "hosting_telecom",
+            "confidence": "high",
+            "rationale": "The network owner and sample page titles like FASTPANEL indicate this is a hosting or control panel infrastructure provider rather than an end-user organization."
+          },
+          "status": "ok",
+          "note": null,
+          "call_id": "f30fe9698b9b4de99749ecd0314aeb36",
+          "gold": {
+            "entity_type": "hosting_provider",
+            "is_prospect": false,
+            "industry": "hosting_telecom",
+            "industry_ok": [
+              "hosting_telecom"
+            ]
+          },
+          "difficulty": "hard"
+        },
+        {
+          "id": "org:PT. Mora Telematika Indonesia",
+          "pred": {
+            "entity_type": "telecom_isp",
+            "is_prospect": false,
+            "industry": "hosting_telecom",
+            "confidence": "high",
+            "rationale": "The account is identified as a telecommunications and network operator by its organization name and network ownership."
+          },
+          "status": "ok",
+          "note": null,
+          "call_id": "bb7156de37d44838bf2328720aa45c01",
+          "gold": {
+            "entity_type": "telecom_isp",
+            "is_prospect": false,
+            "industry": "hosting_telecom",
+            "industry_ok": [
+              "hosting_telecom"
+            ]
+          },
+          "difficulty": "medium"
+        },
+        {
+          "id": "org:Logix",
+          "pred": {
+            "entity_type": "hosting_provider",
+            "is_prospect": false,
+            "industry": "hosting_telecom",
+            "confidence": "medium",
+            "rationale": "The network owner name and multiple vendor gateway devices suggest an infrastructure provider rather than a single end-user enterprise prospect."
+          },
+          "status": "ok",
+          "note": null,
+          "call_id": "f306b8bd365641e3ab5e7fd126f20810",
+          "gold": {
+            "entity_type": "telecom_isp",
+            "is_prospect": false,
+            "industry": "hosting_telecom",
+            "industry_ok": [
+              "hosting_telecom"
+            ]
+          },
+          "difficulty": "hard"
+        },
+        {
+          "id": "org:Part Payam Paya LLC",
+          "pred": {
+            "entity_type": "hosting_provider",
+            "is_prospect": false,
+            "industry": "hosting_telecom",
+            "confidence": "medium",
+            "rationale": "The network owner name and router equipment profiles indicate network infrastructure rather than an end-user business."
+          },
+          "status": "ok",
+          "note": null,
+          "call_id": "c8e2160b15b64a55a6767d642d3be484",
+          "gold": {
+            "entity_type": "telecom_isp",
+            "is_prospect": false,
+            "industry": "hosting_telecom",
+            "industry_ok": [
+              "hosting_telecom"
+            ]
+          },
+          "difficulty": "medium"
+        },
+        {
+          "id": "nowinynet.pl",
+          "pred": {
+            "entity_type": "telecom_isp",
+            "is_prospect": false,
+            "industry": "hosting_telecom",
+            "confidence": "medium",
+            "rationale": "The network owner is a trading ISP or local network provider operating under the name Net Center."
+          },
+          "status": "ok",
+          "note": null,
+          "call_id": "ff599af42596405196a3f0ef72858121",
+          "gold": {
+            "entity_type": "telecom_isp",
+            "is_prospect": false,
+            "industry": "hosting_telecom",
+            "industry_ok": [
+              "hosting_telecom"
+            ]
+          },
+          "difficulty": "hard"
+        },
+        {
+          "id": "datafon.net.tr",
+          "pred": {
+            "entity_type": "telecom_isp",
+            "is_prospect": false,
+            "industry": "hosting_telecom",
+            "confidence": "medium",
+            "rationale": "The network owner and domain name indicate a technology and telecommunications service provider rather than an end-user organisation."
+          },
+          "status": "ok",
+          "note": null,
+          "call_id": "7235a904d4434ccd97477ff6dec37bdf",
+          "gold": {
+            "entity_type": "telecom_isp",
+            "is_prospect": false,
+            "industry": "hosting_telecom",
+            "industry_ok": [
+              "hosting_telecom"
+            ]
+          },
+          "difficulty": "medium"
+        },
+        {
+          "id": "org:Korbank S. A.",
+          "pred": {
+            "entity_type": "telecom_isp",
+            "is_prospect": false,
+            "industry": "hosting_telecom",
+            "confidence": "high",
+            "rationale": "Korbank S.A. is identified as a network owner and ISP providing connectivity and hosting services rather than an end organisation."
+          },
+          "status": "ok",
+          "note": null,
+          "call_id": "30dfdfe8863d4aaea6568020490ed41e",
+          "gold": {
+            "entity_type": "telecom_isp",
+            "is_prospect": false,
+            "industry": "hosting_telecom",
+            "industry_ok": [
+              "hosting_telecom"
+            ]
+          },
+          "difficulty": "hard"
+        },
+        {
+          "id": "org:SoftBank Corp.",
+          "pred": {
+            "entity_type": "telecom_isp",
+            "is_prospect": false,
+            "industry": "hosting_telecom",
+            "confidence": "high",
+            "rationale": "SoftBank Corp. is a major telecommunications operator and ISP."
+          },
+          "status": "ok",
+          "note": null,
+          "call_id": "e1c48b07381e412e8ee9211c8c196d15",
+          "gold": {
+            "entity_type": "telecom_isp",
+            "is_prospect": false,
+            "industry": "hosting_telecom",
+            "industry_ok": [
+              "hosting_telecom"
+            ]
+          },
+          "difficulty": "hard"
+        },
+        {
+          "id": "alticeusa.com",
+          "pred": {
+            "entity_type": "telecom_isp",
+            "is_prospect": false,
+            "industry": "hosting_telecom",
+            "confidence": "high",
+            "rationale": "Altice USA is a major telecommunications and cable provider."
+          },
+          "status": "ok",
+          "note": null,
+          "call_id": "30d83628d95f45b29a1638efb6962765",
+          "gold": {
+            "entity_type": "telecom_isp",
+            "is_prospect": false,
+            "industry": "hosting_telecom",
+            "industry_ok": [
+              "hosting_telecom"
+            ]
+          },
+          "difficulty": "hard"
+        }
+      ]
+    }
+  },
+  "summaries": [
+    {
+      "feature": "account-classify",
+      "version": "baseline",
+      "run_id": "20261012T175210Z-f2c372",
+      "status": "ran",
+      "n": 30,
+      "headline": {
+        "prospect_precision": 0.56,
+        "prospect_recall": 0.933,
+        "prospect_f1": 0.7,
+        "entity_type_acc": 0.433,
+        "industry_acc": 0.533
+      },
+      "ops": {
+        "model": "rules-v0",
+        "provider": "offline",
+        "models_used": {
+          "rules-v0": 30
+        },
+        "total_cost_usd": 0.0,
+        "cost_per_example_usd": 0.0,
+        "latency_p50_ms": 0,
+        "latency_p95_ms": 0,
+        "statuses": {
+          "ok": 30
+        }
+      },
+      "previous": {
+        "prospect_precision": 0.56,
+        "prospect_recall": 0.933,
+        "prospect_f1": 0.7,
+        "entity_type_acc": 0.433,
+        "industry_acc": 0.533
+      },
+      "ts": "2026-10-12T17:52:10+00:00"
+    },
+    {
+      "feature": "account-classify",
+      "version": "v1",
+      "run_id": "20261012T175210Z-f2c372",
+      "status": "ran",
+      "n": 30,
+      "headline": {
+        "prospect_precision": 0.625,
+        "prospect_recall": 1.0,
+        "prospect_f1": 0.769,
+        "entity_type_acc": 0.8,
+        "industry_acc": 0.867
+      },
+      "ops": {
+        "model": "gemini-3.5-flash-lite",
+        "provider": "gemini",
+        "models_used": {
+          "gemini-3.5-flash-lite": 30
+        },
+        "total_cost_usd": 0.0,
+        "cost_per_example_usd": 0.0,
+        "latency_p50_ms": 4013,
+        "latency_p95_ms": 4315,
+        "statuses": {
+          "ok": 30
+        }
+      },
+      "previous": null,
+      "ts": "2026-10-12T17:54:08+00:00"
+    },
+    {
+      "feature": "account-classify",
+      "version": "v2",
+      "run_id": "20261012T175210Z-f2c372",
+      "status": "ran",
+      "n": 30,
+      "headline": {
+        "prospect_precision": 0.938,
+        "prospect_recall": 1.0,
+        "prospect_f1": 0.968,
+        "entity_type_acc": 0.833,
+        "industry_acc": 0.933
+      },
+      "ops": {
+        "model": "gemini-3.5-flash-lite",
+        "provider": "gemini",
+        "models_used": {
+          "gemini-3.5-flash-lite": 30
+        },
+        "total_cost_usd": 0.0,
+        "cost_per_example_usd": 0.0,
+        "latency_p50_ms": 3964,
+        "latency_p95_ms": 4264,
+        "statuses": {
+          "ok": 30
+        }
+      },
+      "previous": null,
+      "ts": "2026-10-12T17:56:08+00:00"
+    }
+  ]
+}

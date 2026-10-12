@@ -4,12 +4,12 @@
 #              only after the candidate wins on the labelled set (see evals/README.md).
 features:
   account-classify:
-    active: v1
+    active: v2        # promoted 2026-10-12: precision 0.625 -> 0.938, recall 1.0 -> 1.0 (run 20261012T175210Z-f2c372)
     candidate: v2
     owner: sales-intel
     description: Decide whether an account is a real prospect (vs hosting/ISP/platform noise) and its industry.
   outreach-draft:
-    active: v1
+    active: v2        # promoted 2026-10-12: guardrail failures 3/9 -> 0/9 (same run)
     candidate: v2
     owner: sales-intel
     description: Evidence-grounded account brief + first-touch email for a rep.

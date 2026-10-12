@@ -142,3 +142,54 @@ def test_live_request_uses_structured_output_and_fallbacks():
     assert params["output_config"]["format"]["type"] == "json_schema"
     assert params["output_config"]["effort"] == "medium"
     assert params["extra_body"] == {"fallbacks": "default"}
+
+
+# ---------------------------------------------------------------- gemini provider (no network)
+def test_gemini_response_parsing():
+    from salesintel.llm.providers import parse_gemini_response
+
+    ok = parse_gemini_response({
+        "candidates": [{"content": {"parts": [{"text": "thinking...", "thought": True}, {"text": '{"a": 1}'}]},
+                        "finishReason": "STOP"}],
+        "usageMetadata": {"promptTokenCount": 900, "candidatesTokenCount": 60, "thoughtsTokenCount": 140},
+        "modelVersion": "gemini-3.5-flash-lite", "responseId": "r1"}, "gemini-3.5-flash-lite")
+    assert ok.text == '{"a": 1}' and ok.stop_reason == "end_turn"
+    assert (ok.input_tokens, ok.output_tokens) == (900, 200)  # thinking tokens are billed as output
+    assert parse_gemini_response({"candidates": [{"finishReason": "SAFETY"}]}, "m").stop_reason == "refusal"
+    assert parse_gemini_response({"promptFeedback": {"blockReason": "OTHER"}}, "m").stop_reason == "refusal"
+    assert parse_gemini_response({"candidates": [{"content": {"parts": [{"text": "{"}]},
+                                                  "finishReason": "MAX_TOKENS"}]}, "m").stop_reason == "max_tokens"
+
+
+def test_gemini_tier_mapping_and_request_shape():
+    from salesintel import config
+    from salesintel.llm.providers import GeminiProvider
+
+    cheap, strong = registry.load("account-classify", "v2"), registry.load("outreach-draft", "v2")
+    assert GeminiProvider.models_for(cheap) == [config.GEMINI_CHEAP_MODEL]
+    assert GeminiProvider.models_for(strong) == config.GEMINI_STRONG_MODELS
+    body = GeminiProvider.request_body(cheap, "S", "U")
+    assert body["generationConfig"]["responseMimeType"] == "application/json"
+    assert body["generationConfig"]["responseJsonSchema"]["required"]
+
+
+def test_gemini_retries_overload_then_succeeds(ctx, tracer, monkeypatch):
+    import httpx
+    from salesintel import config
+    from salesintel.llm.providers import GeminiProvider
+
+    monkeypatch.setattr(config, "GEMINI_MIN_INTERVAL_S", 0)
+    monkeypatch.setattr("salesintel.llm.providers.time.sleep", lambda s: None)
+    calls = []
+
+    def handler(request):
+        calls.append(request.url.path)
+        if len(calls) == 1:
+            return httpx.Response(503, json={"error": {"message": "high demand"}})
+        return httpx.Response(200, json={
+            "candidates": [{"content": {"parts": [{"text": json.dumps(VALID_CLS)}]}, "finishReason": "STOP"}],
+            "usageMetadata": {"promptTokenCount": 10, "candidatesTokenCount": 5}, "modelVersion": "gemini-x"})
+
+    provider = GeminiProvider(api_key="test", client=httpx.Client(transport=httpx.MockTransport(handler)))
+    res = run_feature("account-classify", ctx, provider=provider, tracer=tracer, env="eval")
+    assert res.status == "ok" and res.output == VALID_CLS and len(calls) == 2

@@ -49,11 +49,41 @@ A candidate replaces the active prompt (edit `prompts/registry.yaml`) only if, o
 it is no worse on precision **and** recall by more than one example, and it is better on F1 (classify) or
 guardrail pass rate (outreach). Record the decision in the prompt's `changelog`.
 
-## Current status
-No API key was available while building, so only the baselines have numbers so far (see `REPORT.md`):
-rules baseline for classify: precision 0.56, recall 0.93, F1 0.70; template baseline for outreach: 100%
-guardrail pass (it never names a CVE, which is safe but bland). To produce v1-vs-v2:
+## Current results (measured on Gemini free tier, 2026-10-12)
+Measured on Google's free tier because no paid Claude key was available: classify on
+`gemini-3.5-flash-lite` (cheap tier), outreach on `gemini-3-flash-preview` / `gemini-3.8-flash` (strong tier).
+
+**account-classify**, 30 examples, two live runs (the model is not deterministic, so both are shown):
+
+| version | prospect precision | recall | F1 | entity-type acc | industry acc | hard-case acc |
+|---|---|---|---|---|---|---|
+| rules baseline | 0.56 | 0.93 | 0.70 | 0.43 | 0.53 | 0.3 |
+| v1 | 0.63 / 0.71 | 1.00 / 1.00 | 0.77 / 0.83 | 0.80 / 0.77 | 0.87 / 0.90 | 0.5 / 0.5 |
+| **v2 (active)** | **0.94 / 1.00** | **1.00 / 1.00** | **0.97 / 1.00** | 0.83 / 0.93 | 0.93 / 1.00 | **1.0 / 1.0** |
+
+- **v1's characteristic failure:** it labels an ISP correctly as `telecom_isp` and still says `is_prospect: true`
+  (3–5 cases per run; see `consistency_violations`), because v1 never defines what a prospect is. v2's explicit
+  decision procedure removes it entirely.
+- **v2's remaining misses (run 1):** `zonevs.eu`, a VPS host read as a self-hosting business; `liquidnetlimited.com`,
+  entity "unknown" (prospect decision still correct). With 30 examples, one example = 3 points: v2's 0.94 vs 1.00
+  across runs is noise, while v1 → v2 (+0.23 to +0.31 precision) is not.
+- p50 latency ~1.1 s per classification (run 2, rate-limit pacing excluded).
+
+**outreach-draft**, 9 examples (run 1; run 2 hit the free-tier daily quota, see `REPORT.md`):
+
+| version | guardrail pass | CVE grounding | supported points | fallback rate |
+|---|---|---|---|---|
+| template baseline | 1.00 | 1.00 | 1.00 | 0 |
+| v1 | 0.67 (3 failures in 8 live drafts) | 1.00 | 1.00 | 0.11 |
+| **v2 (active)** | **1.00 (0 failures in 8 live drafts)** | 1.00 | 1.00 | 0.11 |
+
+v1's failures are exactly what v2 targets: "hacked" in a compromise-indicator email, a malformed evidence id
+(`desert E4`), and an over-long subject. The template baseline passes trivially because it never names a CVE
+(safe but bland), which is why guardrails alone don't measure quality; see the human rubric above.
+Run 1 latency (~21 s p50) includes free-tier rate-limit pacing and 503 retries, so it is not model latency.
+
+**Caveats.** These are Gemini numbers; the production target is Claude (Haiku 5.5 / Sonnet 5.5), so re-run
+before promoting on Claude. The labels are still `reviewed: false`.
 ```bash
-set ANTHROPIC_API_KEY=sk-ant-...      # PowerShell: $env:ANTHROPIC_API_KEY="sk-ant-..."
-python -m evals.run                   # ≈ 30×2 Haiku + 9×2 Sonnet calls ≈ $0.35
+python -m evals.run --versions baseline v1 v2      # re-run all versions (needs GEMINI_API_KEY or ANTHROPIC_API_KEY)
 ```
