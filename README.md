@@ -3,6 +3,11 @@
 Turns a 10.66M-record internet scan snapshot into a ranked, filterable list of companies that need security
 help **now**, with the evidence that proves it and an AI-drafted, guardrail-checked first touch.
 
+**Live demo:** https://exposure-radar-4bbp.onrender.com (free tier: the first load can take ~30 s to wake up).
+The demo serves the 13.4k A/B-tier accounts with the 300 AI classifications pre-computed. Google currently
+refuses the Gemini key from Render's servers (403), so new AI requests there return clearly labelled rule
+fallbacks. See [docs/HOW_I_BUILD.md](docs/HOW_I_BUILD.md).
+
 | | |
 |---|---|
 | Planning (use cases, research, assumptions) | [docs/PLANNING.md](docs/PLANNING.md) |
