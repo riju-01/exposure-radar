@@ -1,0 +1,16 @@
+# Render Blueprint: one-click deploy of the API + UI from the Dockerfile.
+# Render dashboard -> New -> Blueprint -> pick this repo. Then set GEMINI_API_KEY (or ANTHROPIC_API_KEY)
+# in the service's Environment tab; without a key the app runs in offline mode with labelled fallbacks.
+services:
+  - type: web
+    name: exposure-radar
+    runtime: docker
+    plan: free
+    healthCheckPath: /api/health
+    envVars:
+      - key: GEMINI_API_KEY
+        sync: false            # secret: entered in the dashboard, never committed
+      - key: SI_LLM_DAILY_BUDGET_USD
+        value: "1"
+      - key: SI_LLM_PROVIDER
+        value: auto
