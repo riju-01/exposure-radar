@@ -47,11 +47,16 @@ Run every command from the repo root.
 
 **LLM mode.** Copy `.env.example` to `.env` and add a key. The app picks a provider automatically:
 
-| Key in `.env` | Provider | Models |
-|---|---|---|
-| `ANTHROPIC_API_KEY` | Claude (production design target) | Haiku 5.5 (classify) · Sonnet 5.5 (outreach) |
-| `GEMINI_API_KEY` | Gemini free tier (how the evals were measured) | gemini-3.5-flash-lite (classify) · gemini-3.8-flash → 3.6-flash → 3-flash-preview (outreach) |
-| none | offline | clearly labelled rule/template fallbacks |
+| Key in `.env` | Provider | Models | Used in this submission? |
+|---|---|---|---|
+| `ANTHROPIC_API_KEY` | Claude (production design target) | Haiku 5.5 (classify) · Sonnet 5.5 (outreach) | **No.** Supported and tested with a fake provider, never called live |
+| `GEMINI_API_KEY` | Gemini free tier | gemini-3.5-flash-lite (classify) · gemini-3.8-flash → 3.6-flash → 3-flash-preview (outreach) | **Yes.** All measured AI results (evals, 300 classifications) |
+| none | offline | clearly labelled rule/template fallbacks | Yes, in the hosted demo for new AI requests (Google returns 403 there) |
+
+> **Note:** no Anthropic API key was available for this submission, so no Claude model was called. Every
+> measured AI number in this repo (eval results, the 300 pre-computed classifications) comes from **Gemini's
+> free tier**. The Claude models and prices appear because the architecture and cost model are designed for
+> them; anyone with a key can add `ANTHROPIC_API_KEY` to `.env` and re-run `python -m evals.run`.
 
 Prompts declare a Claude tier (cheap/strong); on Gemini each tier maps to the models above. Every call,
 whichever provider, goes through the same runner: tracing, daily budget, schema validation, guardrails, fallbacks.
